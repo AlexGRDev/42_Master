@@ -6,7 +6,7 @@
 /*   By: agarcia2 <agarcia2@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 09:32:37 by agarcia2          #+#    #+#             */
-/*   Updated: 2025/09/23 09:36:52 by agarcia2         ###   ########.fr       */
+/*   Updated: 2025/09/23 09:51:25 by agarcia2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_print_alphabet(void)
 	char	c;
 
 	c = 'a';
-	while (c <= 'z') 
+	while (c <= 'z')
 	{
 		ft_putchar(c);
 		c++;
