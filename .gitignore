@@ -3,3 +3,5 @@
 .DS_Store
 *.swap
 *.tmp
+main.c
+ft_putchar.c
