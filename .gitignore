@@ -1,1 +1,5 @@
-*.pdf, *.out
+*.pdf
+*.out
+.DS_Store
+*.swap
+*.tmp
