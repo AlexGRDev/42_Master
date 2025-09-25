@@ -1,24 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_abs.h                                           :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvan-pee <mvan-pee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/10 13:36:33 by mvan-pee          #+#    #+#             */
-/*   Updated: 2023/10/10 16:23:32 by mvan-pee         ###   ########.fr       */
+/*   Created: 2023/10/10 15:20:16 by mvan-pee          #+#    #+#             */
+/*   Updated: 2023/10/10 15:23:47 by mvan-pee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_ABS_H
-# define FT_ABS_H
+#include "../includes/ft.h"
 
-# define ABS abs
-
-int	abs(int Value)
+void	ft_putstr(int output, char *str)
 {
-	if (Value < 0)
-		Value *= -1;
-	return (Value);
+	int	i;
+
+	i = -1;
+	while (str[++i])
+		ft_putchar(output, str[i]);
 }
-#endif

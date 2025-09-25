@@ -1,13 +1,50 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: mvan-pee <mvan-pee@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/10/10 13:57:07 by mvan-pee          #+#    #+#              #
+#    Updated: 2023/10/10 15:21:53 by mvan-pee         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+# Compiler and flags
+CC = cc
+CFLAGS = -Wall -Wextra -Werror
+
+# Directories
+SRCDIR = srcs
+INCDIR = includes
+
+# Source files and object files
+SRC = $(addprefix $(SRCDIR)/, \
+	main.c \
+	ft_putstr.c \
+	ft_putchar.c \
+)
+
 NAME = ft_display_file
-FILES = display_file.c
 
-.PHONY: all clean fclean
+RM = rm -f
 
-all:
-	    @gcc -Wall -Wextra -Werror -o $(NAME) $(FILES)
+OBJS = ${SRC:.c=.o}
+
+all: $(NAME)
+
+$(NAME): $(OBJS)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
+
+%.o: %.c
+	$(CC) $(CFLAGS) -I$(INCDIR) -c $< -o $@
 
 clean:
-	    @rm -f *.o
+	$(RM) $(OBJS)
 
 fclean: clean
-	    @rm -f $(NAME)
+	$(RM) $(NAME)
+
+re: fclean all
+
+.PHONY: all clean fclean re
