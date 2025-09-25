@@ -1,2 +1,2 @@
 #!/bin/sh
-ifconfig | grep -E "^\tether" | cut -d " " -f 2
+ifconfig | grep "ether " | cut -c 8- | rev | cut -c 2- | rev
