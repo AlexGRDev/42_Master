@@ -1,2 +1,1 @@
-#!/bin/sh
-ifconfig | grep "ether " | cut -c 8- | rev | cut -c 2- | rev
+ifconfig | grep -o -E '([0-9a-fA-F]{2}:){5}[0-9a-fA-F]{2}'
