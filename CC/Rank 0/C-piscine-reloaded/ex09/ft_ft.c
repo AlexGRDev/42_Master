@@ -3,18 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_ft.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agarcia2 <agarcia2@student.42barcelona.co  +#+  +:+       +#+        */
+/*   By: mvan-pee <mvan-pee@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/23 15:44:05 by agarcia2          #+#    #+#             */
-/*   Updated: 2025/09/23 15:55:40 by agarcia2         ###   ########.fr       */
+/*   Created: 2023/10/10 12:26:19 by mvan-pee          #+#    #+#             */
+/*   Updated: 2023/10/10 12:31:46 by mvan-pee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-void	ft_putchar(char c);
 
 void	ft_ft(int *nbr)
 {
 	*nbr = 42;
-	ft_putchar('4');
-	ft_putchar('2');
 }
