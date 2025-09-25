@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mvan-pee <mvan-pee@student.42.fr>          +#+  +:+       +#+         #
+#    By: agarcia2 <agarcia2@student.42barcelona.co  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/10/10 13:57:07 by mvan-pee          #+#    #+#              #
-#    Updated: 2023/10/10 15:21:53 by mvan-pee         ###   ########.fr        #
+#    Created: 2025/09/25 23:20:26 by agarcia2          #+#    #+#              #
+#    Updated: 2025/09/25 23:27:26 by agarcia2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,13 +16,10 @@ CFLAGS = -Wall -Wextra -Werror
 
 # Directories
 SRCDIR = srcs
-INCDIR = includes
 
 # Source files and object files
 SRC = $(addprefix $(SRCDIR)/, \
 	main.c \
-	ft_putstr.c \
-	ft_putchar.c \
 )
 
 NAME = ft_display_file
@@ -37,7 +34,7 @@ $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
 
 %.o: %.c
-	$(CC) $(CFLAGS) -I$(INCDIR) -c $< -o $@
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 	$(RM) $(OBJS)
