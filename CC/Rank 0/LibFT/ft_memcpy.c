@@ -6,13 +6,13 @@
 /*   By: agarcia2 <agarcia2@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/26 17:26:29 by agarcia2          #+#    #+#             */
-/*   Updated: 2025/09/26 17:59:49 by agarcia2         ###   ########.fr       */
+/*   Updated: 2025/09/26 18:17:44 by agarcia2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_memcpy(void *dest, void *src, size_t n)
+void	*ft_memcpy(void *dest, void *src, size_t n)
 {
 	unsigned char	*s;
 	unsigned char	*d;
