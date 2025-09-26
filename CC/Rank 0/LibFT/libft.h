@@ -6,7 +6,7 @@
 /*   By: agarcia2 <agarcia2@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/26 11:04:17 by agarcia2          #+#    #+#             */
-/*   Updated: 2025/09/26 18:18:38 by agarcia2         ###   ########.fr       */
+/*   Updated: 2025/09/26 18:20:43 by agarcia2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int		ft_isprint(int c);
 /* Memory */
 void	ft_bzero(void *s, size_t n);
 void	*ft_memcpy(void *dest, void *src, size_t n);
-void	ft_memset(void *b, int c, size_t len);
+void	*ft_memset(void *b, int c, size_t len);
 void	*ft_memmove(void *dst, void *src, size_t len);
 /* Strings */
 int		ft_strlen(char *str);
