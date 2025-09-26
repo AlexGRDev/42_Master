@@ -6,7 +6,7 @@
 /*   By: agarcia2 <agarcia2@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/26 11:30:21 by agarcia2          #+#    #+#             */
-/*   Updated: 2025/09/26 11:32:08 by agarcia2         ###   ########.fr       */
+/*   Updated: 2025/09/26 11:35:43 by agarcia2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_strlen(char *str)
 {
-	int	len;
+	int	len;	
 	
 	len = 0;
 	while (*str)
