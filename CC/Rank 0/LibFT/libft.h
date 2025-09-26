@@ -6,7 +6,7 @@
 /*   By: agarcia2 <agarcia2@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/26 11:04:17 by agarcia2          #+#    #+#             */
-/*   Updated: 2025/09/26 11:10:10 by agarcia2         ###   ########.fr       */
+/*   Updated: 2025/09/26 11:14:03 by agarcia2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,6 @@
 # define LIBFT_H
 
 int	ft_isalpha(int c);
+int	ft_isalnum(int c);
 int	ft_isdigit(int c);
 #endif
