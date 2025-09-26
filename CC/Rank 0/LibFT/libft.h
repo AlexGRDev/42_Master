@@ -6,14 +6,13 @@
 /*   By: agarcia2 <agarcia2@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/26 11:04:17 by agarcia2          #+#    #+#             */
-/*   Updated: 2025/09/26 17:45:56 by agarcia2         ###   ########.fr       */
+/*   Updated: 2025/09/26 18:02:33 by agarcia2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
-#include <cstddef>
 # include <stddef.h>
 
 /* Checks */
