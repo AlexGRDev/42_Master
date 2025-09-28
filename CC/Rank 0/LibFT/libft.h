@@ -6,7 +6,7 @@
 /*   By: agarcia2 <agarcia2@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/26 11:04:17 by agarcia2          #+#    #+#             */
-/*   Updated: 2025/09/28 09:16:10 by agarcia2         ###   ########.fr       */
+/*   Updated: 2025/09/28 09:17:26 by agarcia2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,6 @@ void	*ft_memmove(void *dst, void *src, size_t len);
 int		ft_strlen(char *str);
 int		ft_strlcpy(char *dst, char *src, size_t size);
 int		ft_strlcat(char *dst, char *src, size_t size);
-char		*ft_strchr(const char *s, int c);
-char		*ft_strrchr(const char *s, int c);
+char	*ft_strchr(const char *s, int c);
+char	*ft_strrchr(const char *s, int c);
 #endif
