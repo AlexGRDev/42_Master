@@ -6,7 +6,7 @@
 /*   By: agarcia2 <agarcia2@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/28 13:03:17 by agarcia2          #+#    #+#             */
-/*   Updated: 2025/09/28 15:42:41 by agarcia2         ###   ########.fr       */
+/*   Updated: 2025/09/28 15:45:29 by agarcia2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ size_t	ft_strlen(char *str)
 {
 	char	*s;
 
-	*s = *str;
+	s = str;
 	while (*s)
 		*s++ = *str++;
 	return (*s - *str);
