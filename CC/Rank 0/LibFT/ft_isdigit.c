@@ -1,25 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agarcia2 <agarcia2@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/28 11:35:03 by agarcia2          #+#    #+#             */
-/*   Updated: 2025/09/28 12:48:04 by agarcia2         ###   ########.fr       */
+/*   Created: 2025/09/28 12:47:05 by agarcia2          #+#    #+#             */
+/*   Updated: 2025/09/28 12:47:46 by agarcia2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#include "libft.h"
 
-# include <stddef.h>
-
-/* Checks */
-int	ft_isalpha(int c);
-int	ft_isdigit(int c);
-/* Memory */
-
-/* Strings */
-
-#endif
+int	ft_isdigit(int c)
+{
+	return (c >= 0 && c <= 9);
+}
