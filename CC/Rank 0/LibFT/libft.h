@@ -6,7 +6,7 @@
 /*   By: agarcia2 <agarcia2@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/26 11:04:17 by agarcia2          #+#    #+#             */
-/*   Updated: 2025/09/28 07:25:28 by agarcia2         ###   ########.fr       */
+/*   Updated: 2025/09/28 07:30:32 by agarcia2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,14 @@ int		ft_isascii(int c);
 int		ft_isdigit(int c);
 int		ft_isprint(int c);
 int		ft_toupper(int c);
+int		ft_tolower(int c);
+
 /* Memory */
 void	ft_bzero(void *s, size_t n);
 void	*ft_memcpy(void *dest, void *src, size_t n);
 void	*ft_memset(void *b, int c, size_t len);
 void	*ft_memmove(void *dst, void *src, size_t len);
+
 /* Strings */
 int		ft_strlen(char *str);
 int		ft_strlcpy(char *dst, char *src, size_t size);
