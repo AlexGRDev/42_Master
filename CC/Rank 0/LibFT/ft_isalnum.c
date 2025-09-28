@@ -1,26 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_isalumn.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agarcia2 <agarcia2@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/28 11:35:03 by agarcia2          #+#    #+#             */
-/*   Updated: 2025/09/28 12:50:49 by agarcia2         ###   ########.fr       */
+/*   Created: 2025/09/28 12:48:59 by agarcia2          #+#    #+#             */
+/*   Updated: 2025/09/28 12:50:17 by agarcia2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#include "libft.h"
 
-# include <stddef.h>
-
-/* Checks */
-int	ft_isalpha(int c);
-int	ft_isdigit(int c);
-int	ft_isalnum(int c);
-/* Memory */
-
-/* Strings */
-
-#endif
+int	ft_isalunum(int c)
+{
+	return (ft_isdigit(c) || ft_isdigit(c));
+}
