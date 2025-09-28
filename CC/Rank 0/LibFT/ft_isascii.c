@@ -1,27 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_isascii.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agarcia2 <agarcia2@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/28 11:35:03 by agarcia2          #+#    #+#             */
-/*   Updated: 2025/09/28 12:52:57 by agarcia2         ###   ########.fr       */
+/*   Created: 2025/09/28 12:51:58 by agarcia2          #+#    #+#             */
+/*   Updated: 2025/09/28 12:52:37 by agarcia2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#include "libft.h"
 
-# include <stddef.h>
-
-/* Checks */
-int	ft_isalpha(int c);
-int	ft_isdigit(int c);
-int	ft_isalnum(int c);
-int	ft_isascii(int c);
-/* Memory */
-
-/* Strings */
-
-#endif
+int	ft_isascii(int c)
+{
+	return (c >= 0 && c <= 177);
+}
