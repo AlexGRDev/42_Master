@@ -6,7 +6,7 @@
 /*   By: agarcia2 <agarcia2@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 13:50:25 by agarcia2          #+#    #+#             */
-/*   Updated: 2025/09/29 14:02:35 by agarcia2         ###   ########.fr       */
+/*   Updated: 2025/09/29 14:07:37 by agarcia2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,6 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	chr = (unsigned char)c;
 	while (n-- > 0)
 		if (*str == chr)
-			return ((void *)(*str + n));
+			return ((void *)str++);
 	return (NULL);
 }
