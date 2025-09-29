@@ -6,7 +6,7 @@
 /*   By: agarcia2 <agarcia2@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/28 13:03:17 by agarcia2          #+#    #+#             */
-/*   Updated: 2025/09/29 22:41:06 by agarcia2         ###   ########.fr       */
+/*   Updated: 2025/09/29 22:43:24 by agarcia2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 size_t	ft_strlen(const char *str)
 {
 	const char	*s;
-	int		len;
+	int			len;
 
 	s = str;
 	len = 0;
