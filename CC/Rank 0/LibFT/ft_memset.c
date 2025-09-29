@@ -6,7 +6,7 @@
 /*   By: agarcia2 <agarcia2@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/28 15:58:30 by agarcia2          #+#    #+#             */
-/*   Updated: 2025/09/28 16:37:27 by agarcia2         ###   ########.fr       */
+/*   Updated: 2025/09/29 18:38:42 by agarcia2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,5 @@ void	*ft_memset(void *b, int c, size_t len)
 	chr = (unsigned char)c;
 	while (len-- > 0)
 		*str++ = chr;
-	return (str);
+	return (b);
 }
