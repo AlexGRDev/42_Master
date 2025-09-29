@@ -6,13 +6,13 @@
 /*   By: agarcia2 <agarcia2@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/28 12:48:59 by agarcia2          #+#    #+#             */
-/*   Updated: 2025/09/29 22:32:14 by agarcia2         ###   ########.fr       */
+/*   Updated: 2025/09/29 22:34:43 by agarcia2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isalunum(int c)
+int	ft_isalnum(int c)
 {
 	return (ft_isalpha(c) || ft_isdigit(c));
 }
