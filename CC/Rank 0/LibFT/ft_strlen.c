@@ -6,15 +6,15 @@
 /*   By: agarcia2 <agarcia2@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/28 13:03:17 by agarcia2          #+#    #+#             */
-/*   Updated: 2025/09/29 18:52:08 by agarcia2         ###   ########.fr       */
+/*   Updated: 2025/09/29 22:41:06 by agarcia2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlen(char *str)
+size_t	ft_strlen(const char *str)
 {
-	char	*s;
+	const char	*s;
 	int		len;
 
 	s = str;
