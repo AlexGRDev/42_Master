@@ -6,7 +6,7 @@
 /*   By: agarcia2 <agarcia2@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/28 11:35:03 by agarcia2          #+#    #+#             */
-/*   Updated: 2025/10/01 12:36:15 by agarcia2         ###   ########.fr       */
+/*   Updated: 2025/10/01 12:50:30 by agarcia2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,5 @@ void	*ft_memmove(void *dst, const void *src, size_t len);
 void	*ft_memchr(const void *s, int c, size_t n);
 /* Strings */
 size_t	ft_strlen(const char *str);
+char	*ft_strchr(const char *s, int c);
 #endif
