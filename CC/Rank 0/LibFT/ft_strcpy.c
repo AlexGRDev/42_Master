@@ -1,27 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_strcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agarcia2 <agarcia2@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/29 12:22:34 by agarcia2          #+#    #+#             */
-/*   Updated: 2025/10/02 19:33:12 by agarcia2         ###   ########.fr       */
+/*   Created: 2025/10/02 18:37:35 by agarcia2          #+#    #+#             */
+/*   Updated: 2025/10/02 18:46:41 by agarcia2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void *dst, const void *src, size_t n)
+char	*ft_strcpy(char *dst, char *src)
 {
-	unsigned char	*d;
-	unsigned char	*s;
+	char	*s;
+	char	*d;
 
-	d = (unsigned char *)dst;
-	s = (unsigned char *)src;
-	if (!dst && !src)
-		return (NULL);
-	while (n--)
-		*d++ = *s++;
+	s = src;
+	d = dst;
+	while (*s)
+		*s++ = *d++;
+	*dst = '\0';
 	return (dst);
 }
