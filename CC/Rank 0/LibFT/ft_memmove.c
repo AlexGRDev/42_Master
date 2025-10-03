@@ -6,7 +6,7 @@
 /*   By: agarcia2 <agarcia2@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 12:46:52 by agarcia2          #+#    #+#             */
-/*   Updated: 2025/09/29 23:01:16 by agarcia2         ###   ########.fr       */
+/*   Updated: 2025/10/03 12:49:42 by agarcia2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,16 @@
 
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	unsigned char	*s;
-	unsigned char	*d;
+	const unsigned char	*s;
+	unsigned char		*d;
 
-	s = (unsigned char *)src;
+	s = (const unsigned char *)src;
 	d = (unsigned char *)dst;
 	if (!s && !d)
 		return (NULL);
-	if (d == s || len == 0)
-		return (dst);
 	if (d < s)
-	{
-		while (len--)
-			*d++ = *s++;
-	}
-	else
+		return (ft_memcpy(dst, src, len));
+	else if (d > s)
 	{
 		d += len;
 		s += len;
