@@ -6,7 +6,7 @@
 /*   By: agarcia2 <agarcia2@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 15:44:51 by agarcia2          #+#    #+#             */
-/*   Updated: 2025/10/09 15:45:38 by agarcia2         ###   ########.fr       */
+/*   Updated: 2025/10/14 13:02:09 by agarcia2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ int		ft_toupper(int c);
 void	ft_bzero(void *s, size_t n);
 void	*ft_calloc(size_t count, size_t size);
 void	*ft_memchr(const void *s, int c, size_t n);
-int		ft_memcmp(const void *s1, const void *s2, size_t n);
 void	*ft_memcpy(void *dst, const void *src, size_t n);
+int		ft_memcmp(void *s1, void *s2, size_t n);
 void	*ft_memmove(void *dst, const void *src, size_t len);
 void	*ft_memset(void *b, int c, size_t len);
 
@@ -51,11 +51,11 @@ char	*ft_strnstr(const char *big, const char *little, size_t len);
 char	*ft_strrchr(const char *s, int c);
 char	*ft_strtrim(char const *s1, char const *set);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
-
 /* → funciones que devuelven arrays de strings */
 char	**ft_split(char const *s, char c);
 
 /* → funciones que convierten entre tipos numéricos y cadenas */
+char	*ft_itoa(int n);
 int		ft_atoi(const char *str);
 
 #endif
