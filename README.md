@@ -20,7 +20,7 @@ Here you’ll find my progression from low-level C to full-stack and system deve
 
 | Rank | Project | Description | Language | Status |
 |:----:|:---------|:-------------|:----------|:--------:|
-| 00 | [LibFT](./Rank 0/LibFT) | Custom implementation of libc functions. | C | In Progress |
+| 00 | [LibFT] (Rank 0/LibFT/) | Custom implementation of libc functions. | C | In Progress |
 | 01 | [Get Next Line]() | Read a line from a file descriptor. | C |  |
 | 01 | [FT Printf]() | Reimplementation of printf. | C |  |
 | 01 | [Born2BeRoot]() | Linux system administration project. | Bash / Debian | |
