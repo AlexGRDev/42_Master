@@ -29,12 +29,12 @@ Here you’ll find my progression from low-level C to full-stack and system deve
 | 02 | [So Long]() | 2D game with pathfinding using MLX. | C | |
 | 03 | [Philosophers]() | Multithreading and synchronization. | C | |
 | 03 | [Minishell]() | Building a mini Unix shell. | C | |
-| 04 | [Cub3D]() | 3D raycasting engine. | C | ⏳ Pending |
+| 04 | [Cub3D]() | 3D raycasting engine. | C | |
 | 04 | [MiniRT]() | Simple ray tracer with lights and shadows. | C | |
 | 04 | [NetPractice]() | Networking and IP routing exercises. | Networking | |
 | 05 | [CPP Modules]() | Introduction to Object-Oriented Programming. | C++ | |
 | 05 | [Inception]() | Docker-based virtualization and DevOps. | Docker / Bash | |
-| 05 | [Webserv]() | HTTP server in C++. | C++ | ⏳ Pending |
+| 05 | [Webserv]() | HTTP server in C++. | C++ | |
 | 05 | [Ft_Transcendence]() | Full-stack multiplayer pong with NestJS. | TS / Docker / SQL | | 
 
 ---
