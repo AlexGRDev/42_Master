@@ -16,32 +16,6 @@ Here you’ll find my progression from low-level C to full-stack and system deve
 
 ---
 
-## 🧩 Structure
-42_Master/
-├── Rank_00/
-│   └── LibFT
-├── Rank_01/
-│   ├── get_next_line
-│   ├── ft_printf
-│   └── Born2BeRoot
-├── Rank_02/
-│   ├── pipex
-│   ├── push_swap
-│   └── so_long
-├── Rank_03/
-│   ├── philosophers
-│   └── minishell
-├── Rank_04/
-│   ├── cub3d
-│   ├── miniRT
-│   └── netpractice
-└── Rank_05/
-├── cpp_modules
-├── inception
-├── webserv
-└── ft_transcendence
----
-
 ## 🧭 Common Core Progress
 
 | Rank | Project | Description | Language | Status |
