@@ -22,6 +22,7 @@ make clean      # Remove object files
 make fclean     # Remove object files and libft.a
 make re         # Recompile everything from scratch
 ```
+🧩 Part 1 — Reimplemented libc Functions
 | Nº  | Function                                   | Prototype                                           | Description                                      |
 |:---:|:--------------------------------------------|:----------------------------------------------------|:-------------------------------------------------|
 | 1   | [`ft_isalpha`](./ft_isalpha.c)             | `int ft_isalpha(int c);`                            | Checks if `c` is an alphabetic character.        |
