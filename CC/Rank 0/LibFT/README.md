@@ -47,3 +47,19 @@ make re         # Recompile everything from scratch
 | 21  | [`ft_atoi`](./ft_atoi.c)                   | `int ft_atoi(const char *str);`                     | Converts a string to an integer.                 |
 | 22  | [`ft_calloc`](./ft_calloc.c)               | `void *ft_calloc(size_t count, size_t size);`       | Allocates zero-initialized memory.               |
 | 23  | [`ft_strdup`](./ft_strdup.c)               | `char *ft_strdup(const char *s1);`                  | Duplicates a string.                             |
+
+## 🧮 Part 2 — Additional Utility Functions
+
+| Nº  | Function                                   | Prototype                                                   | Description                                         |
+|:---:|:-------------------------------------------|:-------------------------------------------------------------|:----------------------------------------------------|
+| 24  | [`ft_substr`](./ft_substr.c)              | `char *ft_substr(char const *s, unsigned int start, size_t len);` | Extracts a substring from a string.                |
+| 25  | [`ft_strjoin`](./ft_strjoin.c)            | `char *ft_strjoin(char const *s1, char const *s2);`               | Joins two strings into a new one.                  |
+| 26  | [`ft_strtrim`](./ft_strtrim.c)            | `char *ft_strtrim(char const *s1, char const *set);`             | Trims specific characters from both ends of a string. |
+| 27  | [`ft_split`](./ft_split.c)                | `char **ft_split(char const *s, char c);`                        | Splits a string into an array of words using a delimiter. |
+| 28  | [`ft_itoa`](./ft_itoa.c)                  | `char *ft_itoa(int n);`                                         | Converts an integer into a string.                 |
+| 29  | [`ft_strmapi`](./ft_strmapi.c)            | `char *ft_strmapi(char const *s, char (*f)(unsigned int, char));` | Applies a function to each character (creates a new string). |
+| 30  | [`ft_striteri`](./ft_striteri.c)          | `void ft_striteri(char *s, void (*f)(unsigned int, char*));`     | Applies a function to each character (in-place).   |
+| 31  | [`ft_putchar_fd`](./ft_putchar_fd.c)      | `void ft_putchar_fd(char c, int fd);`                            | Writes a character to a given file descriptor.     |
+| 32  | [`ft_putstr_fd`](./ft_putstr_fd.c)        | `void ft_putstr_fd(char *s, int fd);`                            | Writes a string to a given file descriptor.        |
+| 33  | [`ft_putendl_fd`](./ft_putendl_fd.c)      | `void ft_putendl_fd(char *s, int fd);`                           | Writes a string followed by a newline.             |
+| 34  | [`ft_putnbr_fd`](./ft_putnbr_fd.c)        | `void ft_putnbr_fd(int n, int fd);`                              | Writes an integer as characters to a file descriptor. |
