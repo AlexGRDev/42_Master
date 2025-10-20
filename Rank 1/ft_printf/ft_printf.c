@@ -6,30 +6,33 @@
 /*   By: agarcia2 <agarcia2@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/19 22:12:38 by agarcia2          #+#    #+#             */
-/*   Updated: 2025/10/20 10:23:41 by agarcia2         ###   ########.fr       */
+/*   Updated: 2025/10/20 22:25:31 by agarcia2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include <__stdarg_va_list.h>
 
-int	ft_printf(const char *format, ...)
+int	ft_printf(const char *str, ...)
 {
+	int		i;
 	va_list	args;
-	int		len;
+	int		print_length;
 
-	len = 0;
-	va_start(args, format);
-	while (*format)
+	i = 0;
+	print_length = 0;
+	va_start(args, str);
+	while (str[i])
 	{
-		if (*format == '%')
+		if (str[i] == '%')
 		{
-			format++;
-			len += ft_formats(args, format);
+			print_length += ft_formats(args, str[i + 1]);
+			i++;
 		}
 		else
-			len += write(1, format, 1);
-		format++;
+			print_length += ft_print_char(str[i]);
+		i++;
 	}
 	va_end(args);
-	return (len);
+	return (print_length);
 }

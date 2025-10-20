@@ -6,7 +6,7 @@
 /*   By: agarcia2 <agarcia2@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/20 17:39:22 by agarcia2          #+#    #+#             */
-/*   Updated: 2025/10/20 18:23:08 by agarcia2         ###   ########.fr       */
+/*   Updated: 2025/10/20 21:51:26 by agarcia2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 
 int	ft_print_str(char *s)
 {
+	if (!s)
+		write(1, "(null)", 6);
 	while (*s)
 		write (1, s++, 1);
-	return (0);
+	return (*s);
 }
