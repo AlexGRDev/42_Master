@@ -1,19 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_char.c                                    :+:      :+:    :+:   */
+/*   ft_print_str.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agarcia2 <agarcia2@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/20 09:30:03 by agarcia2          #+#    #+#             */
-/*   Updated: 2025/10/20 17:45:04 by agarcia2         ###   ########.fr       */
+/*   Created: 2025/10/20 17:39:22 by agarcia2          #+#    #+#             */
+/*   Updated: 2025/10/20 18:23:08 by agarcia2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_print_char(int c)
+int	ft_print_str(char *s)
 {
-	write (1, &c, 1);
-	return (1);
+	while (*s)
+		write (1, s++, 1);
+	return (0);
 }
