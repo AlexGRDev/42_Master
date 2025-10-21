@@ -6,7 +6,7 @@
 /*   By: agarcia2 <agarcia2@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/19 22:12:38 by agarcia2          #+#    #+#             */
-/*   Updated: 2025/10/21 10:30:03 by agarcia2         ###   ########.fr       */
+/*   Updated: 2025/10/21 17:43:37 by agarcia2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static int	dispatch(char str, va_list ap)
 {
 	if (str == 'c')
 		return (ft_putc((char)va_arg(ap, int)));
-	else if (str == 's')
+	if (str == 's')
 		return (ft_putstr((char *)va_arg(ap, char *)));
 	if (str == '%')
 		return (write(1, "%", 1));
@@ -35,10 +35,8 @@ int	ft_printf(const char *str, ...)
 	{
 		if (*str == '%')
 		{
+			len += dispatch(*(str + 1), ap);
 			str++;
-			if (*str == '\0')
-				break ;
-			len += dispatch(*str, ap);
 		}
 		else
 			len += ft_putc(*str);
