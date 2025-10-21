@@ -6,7 +6,7 @@
 /*   By: agarcia2 <agarcia2@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/19 20:02:53 by agarcia2          #+#    #+#             */
-/*   Updated: 2025/10/20 22:31:46 by agarcia2         ###   ########.fr       */
+/*   Updated: 2025/10/21 08:02:03 by agarcia2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,6 @@
 # include <stdlib.h>
 
 int	ft_printf(const char *str, ...);
-int	ft_print_char(int c);
-int	ft_formats(va_list args, const char *format);
+int	ft_putc(char c);
+int	ft_putstr(char *s);
 #endif

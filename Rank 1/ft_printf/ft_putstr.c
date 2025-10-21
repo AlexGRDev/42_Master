@@ -1,22 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_str.c                                     :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agarcia2 <agarcia2@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/20 17:39:22 by agarcia2          #+#    #+#             */
-/*   Updated: 2025/10/20 21:51:26 by agarcia2         ###   ########.fr       */
+/*   Updated: 2025/10/21 09:56:02 by agarcia2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_print_str(char *s)
+int	ft_putstr(char *s)
 {
+	int	w;
+
 	if (!s)
-		write(1, "(null)", 6);
+		return (write(1, "(null)", 6));
+	w = 0;
 	while (*s)
-		write (1, s++, 1);
-	return (*s);
+		w += write(1, s++, 1);
+	return (w);
 }
