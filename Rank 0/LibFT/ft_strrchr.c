@@ -6,7 +6,7 @@
 /*   By: agarcia2 <agarcia2@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/03 14:45:23 by agarcia2          #+#    #+#             */
-/*   Updated: 2025/10/03 19:41:45 by agarcia2         ###   ########.fr       */
+/*   Updated: 2025/10/22 10:57:25 by agarcia2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	*ft_strrchr(const char *s, int c)
 
 	str = (char *)s;
 	len = ft_strlen(str);
-	chr = (unsigned char)c;
+	chr = (char)c;
 	if (chr == '\0')
 		return ((char *)str + len);
 	ocurrences = NULL;
