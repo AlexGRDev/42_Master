@@ -26,7 +26,7 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	$(AR) $(NAME) $(OBJ)
 
-%.o: %.c
+%.o: %.c Makefile libft.h
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
