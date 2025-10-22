@@ -6,7 +6,7 @@
 /*   By: agarcia2 <agarcia2@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 11:17:48 by agarcia2          #+#    #+#             */
-/*   Updated: 2025/10/22 18:29:51 by agarcia2         ###   ########.fr       */
+/*   Updated: 2025/10/22 18:34:59 by agarcia2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ char	**ft_split(char const *s, char c)
 	if (!s || !split)
 		return (NULL);
 	ptr = split;
-	if(!ptr)
+	if (!ptr)
 		return (free_all(split));
 	while (*s)
 	{
