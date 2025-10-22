@@ -6,7 +6,7 @@
 /*   By: agarcia2 <agarcia2@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 11:17:48 by agarcia2          #+#    #+#             */
-/*   Updated: 2025/10/22 18:34:59 by agarcia2         ###   ########.fr       */
+/*   Updated: 2025/10/22 18:59:16 by agarcia2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,18 +29,6 @@ static size_t	word_count(char const *s, char c)
 		}
 	}
 	return (count);
-}
-
-static char	*word_dup(const char *start, const char *end)
-{
-	char	*word;
-
-	word = malloc(end - start + 1);
-	if (!word)
-		return (NULL);
-	ft_memcpy(word, start, end - start);
-	word[end - start] = '\0';
-	return (word);
 }
 
 static void	*free_all(char **arr)
@@ -75,7 +63,7 @@ char	**ft_split(char const *s, char c)
 			s++;
 		if (s > start)
 		{
-			*ptr = word_dup(start, s);
+			*ptr = ft_substr(start, 0, s - start);
 			ptr++;
 		}
 	}
