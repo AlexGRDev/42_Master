@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: agarcia2 <agarcia2@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/09 11:17:48 by agarcia2          #+#    #+#             */
-/*   Updated: 2025/10/22 18:59:16 by agarcia2         ###   ########.fr       */
+/*   Created: 2025/10/23 10:50:51 by agarcia2          #+#    #+#             */
+/*   Updated: 2025/10/23 11:05:00 by agarcia2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ static size_t	word_count(char const *s, char c)
 {
 	size_t	count;
 
+	if (!s)
+		return (0);
 	count = 0;
 	while (*s)
 	{
@@ -31,10 +33,20 @@ static size_t	word_count(char const *s, char c)
 	return (count);
 }
 
+static int	assign_split(char **dst, const char *start, const char *end)
+{
+	*dst = ft_substr(start, 0, (size_t)(end - start));
+	if (!*dst)
+		return (0);
+	return (1);
+}
+
 static void	*free_all(char **arr)
 {
 	char	**tmp;
 
+	if (!arr)
+		return (NULL);
 	tmp = arr;
 	while (*tmp)
 		free(*tmp++);
@@ -49,11 +61,9 @@ char	**ft_split(char const *s, char c)
 	const char	*start;
 
 	split = malloc((word_count(s, c) + 1) * sizeof(char *));
-	if (!s || !split)
+	if (!split)
 		return (NULL);
 	ptr = split;
-	if (!ptr)
-		return (free_all(split));
 	while (*s)
 	{
 		while (*s == c)
@@ -63,7 +73,8 @@ char	**ft_split(char const *s, char c)
 			s++;
 		if (s > start)
 		{
-			*ptr = ft_substr(start, 0, s - start);
+			if (!assign_split(ptr, (const char *)start, s))
+				return (free_all(split));
 			ptr++;
 		}
 	}
