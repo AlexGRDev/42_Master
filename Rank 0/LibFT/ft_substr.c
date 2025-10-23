@@ -6,7 +6,7 @@
 /*   By: agarcia2 <agarcia2@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 13:18:25 by agarcia2          #+#    #+#             */
-/*   Updated: 2025/10/06 13:23:45 by agarcia2         ###   ########.fr       */
+/*   Updated: 2025/10/22 22:26:53 by agarcia2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*ft_substr(const char *s, unsigned int start, size_t len)
 
 	if (!s)
 		return (NULL);
-	if (start >= ft_strlen(s))
+	if (start > ft_strlen(s))
 		return (ft_strdup(""));
 	if (len > ft_strlen(s + start))
 		len = ft_strlen(s + start);
