@@ -21,9 +21,9 @@ Here you’ll find my progression from low-level C to full-stack and system deve
 | Rank | Project | Description | Language | Status |
 |:----:|:---------|:-------------|:----------|:--------:|
 | 00 | [LibFT](https://github.com/AlexGRDev/LibFT) | Custom implementation of libc functions. | C | In Progress |
-| 01 | [Get Next Line]() | Read a line from a file descriptor. | C |  |
-| 01 | [FT Printf](https://github.com/AlexGRDev/printf) | Reimplementation of printf. | C |  |
-| 01 | [Born2BeRoot]() | Linux system administration project. | Bash / Debian | |
+| 01 | [Get Next Line]() | Read a line from a file descriptor. | C |  In Progress  |
+| 01 | [FT Printf](https://github.com/AlexGRDev/printf) | Reimplementation of printf. | C |  In Progress |
+| 01 | [Born2BeRoot]() | Linux system administration project. | Bash / Debian | In Progress |
 | 02 | [Pipex]() | UNIX pipe and process management. | C |  |
 | 02 | [Push Swap]() | Stack sorting algorithm challenge. | C | |
 | 02 | [So Long]() | 2D game with pathfinding using MLX. | C | |
