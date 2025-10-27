@@ -6,7 +6,7 @@
 /*   By: agarcia2 <agarcia2@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/25 18:05:19 by agarcia2          #+#    #+#             */
-/*   Updated: 2025/10/26 16:30:04 by agarcia2         ###   ########.fr       */
+/*   Updated: 2025/10/26 18:54:32 by agarcia2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ static int	formats(va_list args, const char **str)
 	count = 0;
 	if (**str == 'c')
 		count += ft_putchar(va_arg(args, int));
+	else if (**str == 's')
+		count += ft_putstr(va_arg(args, char *));
 	va_end(args);
 	return (count);
 }
