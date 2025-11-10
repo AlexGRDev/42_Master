@@ -6,7 +6,7 @@
 /*   By: agarcia2 <agarcia2@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/25 18:05:19 by agarcia2          #+#    #+#             */
-/*   Updated: 2025/11/04 07:48:07 by agarcia2         ###   ########.fr       */
+/*   Updated: 2025/11/10 16:41:26 by agarcia2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,4 @@ int	ft_printf(const char *str, ...)
 	}
 	va_end(args);
 	return (count);
-
+}
