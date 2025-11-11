@@ -6,7 +6,7 @@
 /*   By: agarcia2 <agarcia2@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/25 18:05:19 by agarcia2          #+#    #+#             */
-/*   Updated: 2025/11/11 15:28:00 by agarcia2         ###   ########.fr       */
+/*   Updated: 2025/11/11 17:35:17 by agarcia2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,11 @@ static int	formats(va_list args, const char **str)
 		return (ft_printptr(va_arg(args, uintptr_t)));
 	else if (**str == 'u')
 		return (ft_putu(va_arg(args, unsigned int)));
+	else if (**str == 'X' || **str == 'x')
+		return (ft_printhex(va_arg(args, unsigned int), "0123456789ABCDEF")
+				|| ft_printhex(va_arg(args, unsigned int), "0123456789abcdef"));
+	else if (**str == '%')
+		return (ft_putchar('%'));
 	return (1);
 }
 
