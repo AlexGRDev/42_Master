@@ -6,7 +6,7 @@
 #    By: agarcia2 <agarcia2@student.42barcelona.co  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/25 22:49:28 by agarcia2          #+#    #+#              #
-#    Updated: 2025/11/04 07:31:05 by agarcia2         ###   ########.fr        #
+#    Updated: 2025/11/11 15:31:06 by agarcia2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ AR      = ar rcs
 RM      = rm -r
 
 SRCS    = ft_printf.c	ft_putchar.c	ft_putstr.c	ft_ptrintptr.c\
-	  ft_putnbr.c
+	  ft_putnbr.c	ft_putu.c
 OBJS    = $(SRCS:.c=.o)
 
 all: $(NAME)
