@@ -6,7 +6,7 @@
 /*   By: agarcia2 <agarcia2@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/11 17:35:37 by agarcia2          #+#    #+#             */
-/*   Updated: 2025/11/11 19:11:19 by agarcia2         ###   ########.fr       */
+/*   Updated: 2025/11/12 22:29:31 by agarcia2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,5 @@ int	ft_printhex(unsigned int nr, char *base)
 	}
 	while (--i >= 0)
 		result += ft_putchar(base[nr_base[i]]);
+	return (result);
 }
