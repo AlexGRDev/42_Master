@@ -1,16 +1,25 @@
-# 🧠 Libft — My Own Implementation of libc
+# 🧠 Rank 0 — Libft: My Own Implementation of libc
 
-> 42 Barcelona Project — Author: **agarcia2**
+> 42 Barcelona — **Rank 0** of the Common Core.  
+> First step in the **42_Master** journey: building your own standard C library.
 
 ---
 
-## 📖 Description
+## 📚 Overview
 
-**Libft** is the first mandatory project at **42 School**.  
-The goal is to reimplement standard C library functions and build additional utilities from scratch.  
-This project teaches how to manage memory, strings, and linked lists while understanding low-level behavior in C.
+**Libft** is the first mandatory project at **42 School** and the only project in **Rank 0**.  
+The goal is to reimplement core C standard library functions and build a small toolkit of utilities from scratch.
 
-By the end, you will have your **own version of libc**, reusable in all your future C projects.
+By the end of this rank, you have your **own version of libc**, which you will reuse in many future projects
+(`ft_printf`, `get_next_line`, `push_swap`, etc.).
+
+---
+
+## 📂 Project in Rank 0
+
+| Project | Description | Language | Status |
+|:--------|:------------|:---------|:-------|
+| **Libft** | Custom implementation of standard C library functions and extra helpers. | C | 100/100 |
 
 ---
 
@@ -22,7 +31,19 @@ make clean      # Remove object files
 make fclean     # Remove object files and libft.a
 make re         # Recompile everything from scratch
 ```
-🧩 Part 1 — Reimplemented libc Functions
+
+---
+
+## 🧠 What you learn in Rank 0
+
+- Solid **C basics**: pointers, arrays, strings, memory layout.  
+- Manual **memory management** using `malloc`, `free`, and zero‑initialization.  
+- Building and using a **static library** (`libft.a`).  
+- Writing clean, reusable utility functions that you can plug into other projects.
+
+---
+
+## 🧩 Part 1 — Reimplemented libc Functions
 | Nº  | Function                                   | Prototype                                           | Description                                      |
 |:---:|:--------------------------------------------|:----------------------------------------------------|:-------------------------------------------------|
 | 1   | [`ft_isalpha`](./ft_isalpha.c)             | `int ft_isalpha(int c);`                            | Checks if `c` is an alphabetic character.        |
