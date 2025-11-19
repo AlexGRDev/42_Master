@@ -36,27 +36,26 @@ static int	formats(va_list *args, const char **str)
 
 int	ft_printf(const char *str, ...)
 {
-	int		count;
-	va_list	args;
+	int			count;
+	va_list		args;
+	const char	*ptr;
 
-	str = (char *)malloc(sizeof(*str * (ft_strlen((const char *)str) + 1)));
 	if (!str)
-		write(1, "(null)", 6);
+		return (write(1, "(null)", 6));
 	va_start(args, str);
 	count = 0;
-	while (*str)
+	ptr = str;
+	while (*ptr)
 	{
-		if (*str == '%')
+		if (*ptr == '%')
 		{
-			str++;
-			count += formats(&args, &str);
+			ptr++;
+			count += formats(&args, &ptr);
 		}
 		else
-			count += ft_putchar(*str);
-		str++;
+			count += ft_putchar(*ptr);
+		ptr++;
 	}
 	va_end(args);
-	free((void *)str);
-	str = NULL;
 	return (count);
 }
