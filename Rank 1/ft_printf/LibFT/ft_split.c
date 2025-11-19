@@ -54,15 +54,11 @@ static void	*free_all(char **arr)
 	return (NULL);
 }
 
-char	**ft_split(char const *s, char c)
+static char	**fill_split(char **split, char const *s, char c)
 {
-	char		**split;
 	char		**ptr;
 	const char	*start;
 
-	split = malloc((word_count(s, c) + 1) * sizeof(char *));
-	if (!split)
-		return (NULL);
 	ptr = split;
 	while (*s)
 	{
@@ -73,11 +69,26 @@ char	**ft_split(char const *s, char c)
 			s++;
 		if (s > start)
 		{
-			if (!assign_split(ptr, (const char *)start, s))
+			if (!assign_split(ptr, start, s))
+			{
+				*ptr = NULL;
 				return (free_all(split));
+			}
 			ptr++;
 		}
 	}
 	*ptr = NULL;
 	return (split);
+}
+
+char	**ft_split(char const *s, char c)
+{
+	char	**split;
+
+	if (!s)
+		return (NULL);
+	split = malloc((word_count(s, c) + 1) * sizeof(char *));
+	if (!split)
+		return (NULL);
+	return (fill_split(split, s, c));
 }

@@ -1,17 +1,29 @@
-# 🧠 Rank 0 — Libft: My Own Implementation of libc
+# 🧠 Rank 0 — First Steps in C: Libft
 
-> 42 Barcelona — **Rank 0** of the Common Core.  
-> First step in the **42_Master** journey: building your own standard C library.
+> Starting point of the **42 Common Core**.  
+> In this rank there is only one mandatory project: **Libft**.
 
 ---
 
-## 📚 Overview
+## 👤 Who is this README for?
 
-**Libft** is the first mandatory project at **42 School** and the only project in **Rank 0**.  
-The goal is to reimplement core C standard library functions and build a small toolkit of utilities from scratch.
+- If this is your **first serious C project**, this file is for you.  
+- If you come from the **Piscine** and have not done much “real” C yet, this is a guide so you do not get lost.  
+- If you already finished Libft, you can use this as a **quick recap** of what to focus on.
 
-By the end of this rank, you have your **own version of libc**, which you will reuse in many future projects
-(`ft_printf`, `get_next_line`, `push_swap`, etc.).
+---
+
+## 📚 What is Rank 0?
+
+Rank 0 is your first serious contact with **C** and with the 42 methodology.  
+Here you learn to:
+
+- Work on your own project from scratch.  
+- Understand how the **standard C library functions** really work.  
+- Manage **memory manually** (no helpers, no STL, no external libraries).  
+- Compile and organize your code as a **static library** (`libft.a`).
+
+This rank is the foundation for many later projects (`ft_printf`, `get_next_line`, `push_swap`, etc.).
 
 ---
 
@@ -19,84 +31,96 @@ By the end of this rank, you have your **own version of libc**, which you will r
 
 | Project | Description | Language | Status |
 |:--------|:------------|:---------|:-------|
-| **Libft** | Custom implementation of standard C library functions and extra helpers. | C | 100/100 |
+| **Libft** | Reimplementation of basic libc functions plus custom utilities, all packed into a static library. | C | 100/100 |
+
+Inside `LibFT/` you will find the full implementation of the project, with its `Makefile` and all required `.c` / `.h` files.
+
+---
+
+## ⚙️ What you do in Libft
+
+In Libft you rewrite many classic C functions and add some general‑purpose helpers:
+
+- Character checks (`ft_isalpha`, `ft_isdigit`, ...).  
+- Memory handling (`ft_memset`, `ft_bzero`, `ft_memcpy`, `ft_calloc`, ...).  
+- String handling (`ft_strlen`, `ft_strlcpy`, `ft_strlcat`, `ft_strchr`, `ft_strncmp`, ...).  
+- Type conversion (`ft_atoi`, `ft_itoa`, ...).  
+- Extra helpers for strings and file descriptors (`ft_split`, `ft_substr`, `ft_strjoin`, `ft_putstr_fd`, ...).
+
+The goal is not just to "copy" libc, but to **understand its behavior**, edge cases, and to learn how to design reusable functions.
+
+---
+
+## ✅ Checklist before submitting Libft
+
+Before you submit / run Moulinette, check:
+
+- [ ] The `Makefile` builds **`libft.a`** with a plain `make` command.
+- [ ] You do not use **forbidden functions** (only what the subject allows).
+- [ ] Everything compiles with `-Wall -Wextra -Werror` **with zero warnings**.
+- [ ] Your functions behave like the real **libc** ones for the cases in the subject.
+- [ ] There are **no memory leaks** (check with `valgrind`).
+- [ ] `libft.h` only exposes what is needed and has no duplicates.
 
 ---
 
 ## ⚙️ Compilation
 
+From inside the `LibFT/` directory you typically use:
+
 ```bash
-make            # Compile libft.a
-make clean      # Remove object files
-make fclean     # Remove object files and libft.a
-make re         # Recompile everything from scratch
+make        # Build libft.a
+make clean  # Remove object files
+make fclean # Remove object files and libft.a
+make re     # Rebuild everything from scratch
 ```
+
+You can then link `libft.a` into your other C projects.
 
 ---
 
 ## 🧠 What you learn in Rank 0
 
-- Solid **C basics**: pointers, arrays, strings, memory layout.  
-- Manual **memory management** using `malloc`, `free`, and zero‑initialization.  
-- Building and using a **static library** (`libft.a`).  
-- Writing clean, reusable utility functions that you can plug into other projects.
+- Solid **C fundamentals**:  
+  - Pointers, arrays, and string handling.  
+  - Basic types, casting, and control flow.  
+  - Header files, includes, and function prototypes (`libft.h`).  
+  - Using a `Makefile` to compile multiple `.c` files into one library.  
+- **Memory management**:  
+  - Allocating and freeing memory correctly with `malloc` / `free`.  
+  - Avoiding leaks and invalid accesses.  
+- **Project organization**:  
+  - Splitting code across multiple `.c` and `.h` files.  
+  - Building a **static library** (`ar rcs libft.a`).  
+  - Writing and using a basic **Makefile**.
+- **Norminette and good practices**:  
+  - Respecting the 42 norm (function length, naming, formatting).  
+  - Writing readable and consistent code from the beginning.
+
+Everything you learn here is reused directly in the following ranks: your `libft` becomes your personal **toolbox**.
+
+Working through the actual functions also teaches a lot in practice:
+- Implementing `ft_split` forces you to think carefully about allocation, freeing on errors, and how to represent arrays of strings.
+- Writing `ft_itoa` and `ft_atoi` makes you deal with numeric edge cases, signs, and overflow behavior.
+- Recreating functions like `ft_strlcpy`, `ft_strlcat` and `ft_strncmp` trains you to reason about buffer sizes and off‑by‑one errors.
+- Functions such as `ft_memcpy`, `ft_memmove` and `ft_memchr` help you visualize memory as raw bytes instead of just strings.
 
 ---
 
-## 🧩 Part 1 — Reimplemented libc Functions
-| Nº  | Function                                   | Prototype                                           | Description                                      |
-|:---:|:--------------------------------------------|:----------------------------------------------------|:-------------------------------------------------|
-| 1   | [`ft_isalpha`](./ft_isalpha.c)             | `int ft_isalpha(int c);`                            | Checks if `c` is an alphabetic character.        |
-| 2   | [`ft_isdigit`](./ft_isdigit.c)             | `int ft_isdigit(int c);`                            | Checks if `c` is a decimal digit.                |
-| 3   | [`ft_isalnum`](./ft_isalnum.c)             | `int ft_isalnum(int c);`                            | Checks if `c` is alphanumeric.                   |
-| 4   | [`ft_isascii`](./ft_isascii.c)             | `int ft_isascii(int c);`                            | Checks if `c` belongs to the ASCII table.        |
-| 5   | [`ft_isprint`](./ft_isprint.c)             | `int ft_isprint(int c);`                            | Checks if `c` is printable.                      |
-| 6   | [`ft_strlen`](./ft_strlen.c)               | `size_t ft_strlen(const char *s);`                  | Returns the length of a string.                  |
-| 7   | [`ft_memset`](./ft_memset.c)               | `void *ft_memset(void *b, int c, size_t len);`      | Fills memory with a constant byte.               |
-| 8   | [`ft_bzero`](./ft_bzero.c)                 | `void ft_bzero(void *s, size_t n);`                 | Sets memory to zero.                             |
-| 9   | [`ft_memcpy`](./ft_memcpy.c)               | `void *ft_memcpy(void *dst, const void *src, size_t n);` | Copies `n` bytes from `src` to `dst`.      |
-| 10  | [`ft_memmove`](./ft_memmove.c)             | `void *ft_memmove(void *dst, const void *src, size_t len);` | Safely copies memory (handles overlap). |
-| 11  | [`ft_strlcpy`](./ft_strlcpy.c)             | `size_t ft_strlcpy(char *dst, const char *src, size_t dstsize);` | Copies a string with size limit. |
-| 12  | [`ft_strlcat`](./ft_strlcat.c)             | `size_t ft_strlcat(char *dst, const char *src, size_t dstsize);` | Concatenates strings with size limit. |
-| 13  | [`ft_toupper`](./ft_toupper.c)             | `int ft_toupper(int c);`                            | Converts a character to uppercase.               |
-| 14  | [`ft_tolower`](./ft_tolower.c)             | `int ft_tolower(int c);`                            | Converts a character to lowercase.               |
-| 15  | [`ft_strchr`](./ft_strchr.c)               | `char *ft_strchr(const char *s, int c);`            | Locates first occurrence of a character.         |
-| 16  | [`ft_strrchr`](./ft_strrchr.c)             | `char *ft_strrchr(const char *s, int c);`           | Locates last occurrence of a character.          |
-| 17  | [`ft_strncmp`](./ft_strncmp.c)             | `int ft_strncmp(const char *s1, const char *s2, size_t n);` | Compares two strings up to `n` bytes.  |
-| 18  | [`ft_memchr`](./ft_memchr.c)               | `void *ft_memchr(const void *s, int c, size_t n);`  | Searches for a byte in a memory block.           |
-| 19  | [`ft_memcmp`](./ft_memcmp.c)               | `int ft_memcmp(const void *s1, const void *s2, size_t n);` | Compares two memory blocks.             |
-| 20  | [`ft_strnstr`](./ft_strnstr.c)             | `char *ft_strnstr(const char *haystack, const char *needle, size_t len);` | Searches for a substring.             |
-| 21  | [`ft_atoi`](./ft_atoi.c)                   | `int ft_atoi(const char *str);`                     | Converts a string to an integer.                 |
-| 22  | [`ft_calloc`](./ft_calloc.c)               | `void *ft_calloc(size_t count, size_t size);`       | Allocates zero-initialized memory.               |
-| 23  | [`ft_strdup`](./ft_strdup.c)               | `char *ft_strdup(const char *s1);`                  | Duplicates a string.                             |
+## ⚠️ Common pitfalls
 
-## 🧮 Part 2 — Additional Utility Functions
-
-|| Nº  | Function                                   | Prototype                                                   | Description                                         |
-||:---:|:-------------------------------------------|:-------------------------------------------------------------|:----------------------------------------------------|
-|| 24  | [`ft_substr`](./ft_substr.c)              | `char *ft_substr(char const *s, unsigned int start, size_t len);` | Extracts a substring from a string.                |
-|| 25  | [`ft_strjoin`](./ft_strjoin.c)            | `char *ft_strjoin(char const *s1, char const *s2);`               | Joins two strings into a new one.                  |
-|| 26  | [`ft_strtrim`](./ft_strtrim.c)            | `char *ft_strtrim(char const *s1, char const *set);`             | Trims specific characters from both ends of a string. |
-|| 27  | [`ft_split`](./ft_split.c)                | `char **ft_split(char const *s, char c);`                        | Splits a string into an array of words using a delimiter. |
-|| 28  | [`ft_itoa`](./ft_itoa.c)                  | `char *ft_itoa(int n);`                                         | Converts an integer into a string.                 |
-|| 29  | [`ft_strmapi`](./ft_strmapi.c)            | `char *ft_strmapi(char const *s, char (*f)(unsigned int, char));` | Applies a function to each character (creates a new string). |
-|| 30  | [`ft_striteri`](./ft_striteri.c)          | `void ft_striteri(char *s, void (*f)(unsigned int, char*));`     | Applies a function to each character (in-place).   |
-|| 31  | [`ft_putchar_fd`](./ft_putchar_fd.c)      | `void ft_putchar_fd(char c, int fd);`                            | Writes a character to a given file descriptor.     |
-|| 32  | [`ft_putstr_fd`](./ft_putstr_fd.c)        | `void ft_putstr_fd(char *s, int fd);`                            | Writes a string to a given file descriptor.        |
-|| 33  | [`ft_putendl_fd`](./ft_putendl_fd.c)      | `void ft_putendl_fd(char *s, int fd);`                           | Writes a string followed by a newline.             |
-|| 34  | [`ft_putnbr_fd`](./ft_putnbr_fd.c)        | `void ft_putnbr_fd(int n, int fd);`                              | Writes an integer as characters to a file descriptor. |
+- Not freeing memory in functions like `ft_split` when something fails.
+- Assuming inputs will never be `NULL` or empty strings.
+- Not matching the exact behavior of libc (for example in `ft_memmove`, `ft_strlcpy`, etc.).
+- Using global variables to “fix” design problems.
+- Having a `Makefile` that does not follow the subject rules.
 
 ---
 
-## ✅ Implementation notes & testing
+## 🚀 How to use this rank
 
-- **Part 1** functions are designed to closely **match the behavior of the original libc** versions
-  (including edge cases like `n == 0`, `len == 0`, and `NULL` handling when it makes sense).
-- `ft_itoa` safely handles **`INT_MIN`** and large values by working internally with a `long`.
-- `ft_split` correctly manages **empty strings**, strings with only delimiters, and allocation
-  failures without leaking memory.
-- All functions respect the **42 Norminette** constraints (e.g. max 25 lines per function,
-  helper functions extracted when needed).
-- The library is compiled with **`-Wall -Wextra -Werror`** and has been tested locally by
-  comparing results against the standard C library and dedicated test programs (removed from
-  the final repository to keep it clean for evaluation).
+- Go to the library folder:  
+  `cd "Rank 0/LibFT"`
+- Build the library:  
+  `make`
+- Link `libft.a` in your future projects to reuse all your functions.

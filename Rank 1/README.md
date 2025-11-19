@@ -15,6 +15,18 @@ They are the first “big” steps after `libft` and focus on:
 
 ---
 
+## 🧩 How Rank 1 fits in the Common Core
+
+After **Libft (Rank 0)**, this rank is where you start to:
+
+- Write C programs larger than a single library.
+- Deal with **real I/O** (files, stdin/stdout, file descriptors).
+- Better understand how **Unix works underneath**.
+
+Having a solid Libft will save you a lot of time here.
+
+---
+
 ## 📂 Projects in Rank 1
 
 > The exact list can vary by campus; these are the most common Rank 1 projects.
@@ -47,6 +59,16 @@ As you complete each project, you can update this table with final status (e.g. 
 - Basic **system administration**: users, groups, SSH, sudo, firewall (UFW), etc.  
 - Managing **services**, logs, and simple monitoring tools.  
 - Following a long, constraint-heavy **subject** and documenting configuration choices.
+
+---
+
+## 🧭 Recommended order and workload
+
+- A common order that works well is:
+  1. `ft_printf` (very close to pure C + Libft).
+  2. `get_next_line` (buffers, chunked reads, memory management).
+  3. `Born2beroot` (long documentation, system configuration).
+- Keep in mind that **Born2beroot** can take more time than it seems: reserve time to read the subject carefully and take notes.
 
 ---
 
