@@ -4,6 +4,14 @@
 
 ---
 
+## 👤 Who is this README for?
+
+- Students who **just finished Libft (Rank 0)** and are about to start Rank 1.  
+- People who want a **high‑level map** of the Rank 1 projects before opening each subject.  
+- Anyone revisiting Rank 1 and wanting a quick reminder of **what each project teaches**.
+
+---
+
 ## 📚 Overview
 
 This directory contains the **Rank 1** projects from the 42 cursus.  
@@ -72,12 +80,20 @@ As you complete each project, you can update this table with final status (e.g. 
 
 ---
 
-## 🚀 How to use this folder
+## 🗺️ How to use this rank
+
+- Use this file as a **map of Rank 1**: projects, focus, and recommended order.  
+- Then go into each project directory (for example `Rank 1/ft_printf/`) and read its own README for **implementation details**.  
+- Always cross‑check with the **official subject PDF** to be sure you follow the exact rules.
+
+---
+
+## 🚀 How to work inside this folder
 
 - Each project lives in its own subdirectory (e.g. `ft_printf/`).  
 - For C projects, a typical workflow is:
   - `cd <project>`  
   - `make` to build the library or binary.  
-  - Run your own `main.c` or provided tester to try the project.
+  - Run your own `main.c` or a tester to try the project.
 - This `README.md` is meant to give a **high-level view** of Rank 1;  
   each project’s own README can go into build details, usage, and edge cases.

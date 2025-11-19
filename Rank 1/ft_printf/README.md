@@ -5,6 +5,22 @@
 
 ---
 
+## 👤 Who is this README for?
+
+- Students doing **ft_printf** for the first time in Rank 1.  
+- Anyone who wants a **quick overview** of what the project expects before diving into the subject.  
+- People who already passed ft_printf and want a **summary of the key ideas**.
+
+---
+
+## 🗺️ How to use this project
+
+- Read this README together with the **official ft_printf subject**.  
+- Use it to understand what is being evaluated, which specifiers you need, and how to structure your code.  
+- Come back to the testing section when you are close to submitting, to double‑check your coverage.
+
+---
+
 ## 🎯 What this project evaluates
 
 In `ft_printf` you will mainly work on:
@@ -48,7 +64,7 @@ A good strategy is to have **one helper function per type** (`ft_putstr`, `ft_pu
 
 ---
 
-## 🛠️ Comandos básicos (Makefile)
+## 🛠️ Basic Makefile commands
 
 ### Top-level ft_printf library
 
