@@ -81,5 +81,3 @@ As you complete each project, you can update this table with final status (e.g. 
   - Run your own `main.c` or provided tester to try the project.
 - This `README.md` is meant to give a **high-level view** of Rank 1;  
   each project’s own README can go into build details, usage, and edge cases.
-
-Feel free to expand this file as you progress: add screenshots, notes on what was hardest, or links to external testers and resources.
