@@ -13,6 +13,14 @@
 
 ---
 
+## 🗺️ How to use this rank
+
+- Start here to understand **what Libft is and why it matters** for later projects.  
+- Then go into `Rank 0/LibFT/` and read its README for more **project‑specific details** (build, contents, testing, etc.).  
+- Keep the **official Libft subject PDF** open while you work; use this README as extra guidance, not a replacement.
+
+---
+
 ## 📚 What is Rank 0?
 
 Rank 0 is your first serious contact with **C** and with the 42 methodology.  
@@ -116,11 +124,3 @@ Working through the actual functions also teaches a lot in practice:
 - Having a `Makefile` that does not follow the subject rules.
 
 ---
-
-## 🚀 How to use this rank
-
-- Go to the library folder:  
-  `cd "Rank 0/LibFT"`
-- Build the library:  
-  `make`
-- Link `libft.a` in your future projects to reuse all your functions.

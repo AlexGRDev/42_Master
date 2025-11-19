@@ -5,6 +5,22 @@
 
 ---
 
+## 👤 Who is this README for?
+
+- 42 students doing **Libft** (Rank 0) for the first time.  
+- People who want a **practical overview** of the project before diving into the subject.  
+- Anyone who already passed Libft and wants a **quick recap** of what the project contains.
+
+---
+
+## 🗺️ How to use this project
+
+- Read this file together with the **official Libft subject**.  
+- Use the sections below to understand the **big picture**: what the library contains, how to build it, and how to test it.  
+- Come back here during the project as a reminder of the **goals and expectations**.
+
+---
+
 ## 📚 Overview
 
 This directory contains the **Libft** project, the first mandatory assignment in the 42 Common Core.  
