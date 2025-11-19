@@ -6,7 +6,7 @@
 #    By: agarcia2 <agarcia2@student.42barcelona.co  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/25 22:49:28 by agarcia2          #+#    #+#              #
-#    Updated: 2025/11/11 17:48:44 by agarcia2         ###   ########.fr        #
+#    Updated: 2025/11/16 11:08:13 by agarcia2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,8 +16,9 @@ CFLAGS  = -Wall -Werror -Wextra
 AR      = ar rcs
 RM      = rm -r
 
-SRCS    = ft_printf.c	ft_putchar.c	ft_putstr.c	ft_ptrintptr.c\
-	  ft_putnbr.c	ft_putu.c	ft_printhex.c
+SRCS    = ft_printf.c	ft_putchar.c	ft_putstr.c	ft_printptr.c\
+	  ft_putnbr.c	ft_putu.c	ft_printhex.c	./LibFT/ft_putchar_fd.c \
+	./LibFT/ft_strlen.c
 OBJS    = $(SRCS:.c=.o)
 
 all: $(NAME)
