@@ -24,5 +24,5 @@ int	ft_putstr(char *str);
 int	ft_printptr(uintptr_t ptr);
 int	ft_putnbr(int n);
 int	ft_putu(unsigned int n);
-int	ft_printhex(unsigned int nr, char *base);
+int	ft_printhex(unsigned int nr, const char *base);
 #endif
