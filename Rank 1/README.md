@@ -1,35 +1,63 @@
-# Rank 1
+# 🧭 Rank 1 — Foundations in C & Unix
 
-This directory gathers the **Rank 1** projects from the 42 cursus. These are the first “big” exercises after `libft`, and they are designed to strengthen your C skills, your Unix knowledge, and your ability to work more independently.
+> Part of the **42_Master** journey — early projects that solidify C fundamentals, Unix basics, and independent problem‑solving.
 
-## Rank 1 projects
+---
 
-> Note: the exact list can vary by campus, but the most common projects are:
+## 📚 Overview
 
-- **ft_printf**  
-  Your own implementation of a simplified `printf`.
-  - What you learn:
-    - Advanced use of **variadic functions** (`va_list`, `va_start`, `va_arg`, `va_end`).
-    - How to organize a C project across **multiple source files** with a **Makefile**.
-    - Handling format specifiers (`%c`, `%s`, `%d`, `%i`, `%u`, `%x`, `%X`, `%p`, `%%`).
-    - Error handling and counting how many characters are written.
+This directory contains the **Rank 1** projects from the 42 cursus.  
+They are the first “big” steps after `libft` and focus on:
 
-- **get_next_line** *(usually appears in this rank as well)*  
-  A function that reads from a file descriptor or `stdin` **line by line**.
-  - What you learn:
-    - Managing **buffers** and reading with `read()`.
-    - Working with **dynamic memory** and avoiding leaks.
-    - Designing reusable functions that keep state between calls.
+- Writing larger C programs split across multiple files.  
+- Understanding how the Unix environment works (files, processes, permissions).  
+- Learning to read, debug, and iterate on your own code.
 
-- **Born2beroot** *(a system project, not written in C)*  
-  Setting up a Linux virtual machine following strict security and administration rules.
-  - What you learn:
-    - Basic **system administration** concepts (users, groups, SSH, sudo, UFW, etc.).
-    - Managing **services**, logs, and simple monitoring tools.
-    - Reading and following a long **subject** with many constraints.
+---
 
-As you add more Rank 1 projects to this `Rank 1` directory, you can extend this `README.md` to include:
+## 📂 Projects in Rank 1
 
-- A short description of each project.
-- What you personally learned or found difficult in each one.
-- How to compile, run, and test each project.
+> The exact list can vary by campus; these are the most common Rank 1 projects.
+
+| Project | Description | Language | Status |
+|:--------|:------------|:---------|:-------|
+| **[ft_printf](https://github.com/AlexGRDev/printf)** | Custom implementation of a subset of `printf`. | C | In Progress |
+| **Get Next Line** | Read a line from a file descriptor, one call at a time. | C | In Progress |
+| **Born2beroot** | Configure and harden a Debian-based virtual machine. | Bash / Debian | In Progress |
+
+As you complete each project, you can update this table with final status (e.g. `100/100`) and repository links.
+
+---
+
+## 🎯 What you learn in this rank
+
+### 🔡 ft_printf
+- Advanced use of **variadic functions**: `va_list`, `va_start`, `va_arg`, `va_end`.  
+- Organizing a C project into **multiple source files** with a central **Makefile**.  
+- Implementing and handling format specifiers:  
+  `%c`, `%s`, `%d`, `%i`, `%u`, `%x`, `%X`, `%p`, `%%`.  
+- Returning the **exact number of printed characters** and handling edge cases.
+
+### 📜 Get Next Line
+- Managing **buffers** and incremental reads with `read()`.  
+- Careful **dynamic memory** handling and avoiding leaks.  
+- Designing functions that **keep state between calls** while staying reusable.
+
+### 🖥️ Born2beroot
+- Basic **system administration**: users, groups, SSH, sudo, firewall (UFW), etc.  
+- Managing **services**, logs, and simple monitoring tools.  
+- Following a long, constraint-heavy **subject** and documenting configuration choices.
+
+---
+
+## 🚀 How to use this folder
+
+- Each project lives in its own subdirectory (e.g. `ft_printf/`).  
+- For C projects, a typical workflow is:
+  - `cd <project>`  
+  - `make` to build the library or binary.  
+  - Run your own `main.c` or provided tester to try the project.
+- This `README.md` is meant to give a **high-level view** of Rank 1;  
+  each project’s own README can go into build details, usage, and edge cases.
+
+Feel free to expand this file as you progress: add screenshots, notes on what was hardest, or links to external testers and resources.
