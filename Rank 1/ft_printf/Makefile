@@ -13,8 +13,9 @@
 NAME    = libftprintf.a
 CC      = cc
 CFLAGS  = -Wall -Werror -Wextra
+ASAN_FLAGS = -g3 -fsanitize=address
 AR      = ar rcs
-RM      = rm -r
+RM      = rm -f
 
 SRCS    = ft_printf.c	ft_putchar.c	ft_putstr.c	ft_printptr.c\
 	  ft_putnbr.c	ft_putu.c	ft_printhex.c	./LibFT/ft_putchar_fd.c \
@@ -37,4 +38,7 @@ fclean: clean all
 
 re: fclean all
 
-.PHONY: all clean fclean re
+asan: fclean
+	$(MAKE) CFLAGS="$(CFLAGS) $(ASAN_FLAGS)" all
+
+.PHONY: all clean fclean re asan
