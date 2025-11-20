@@ -6,7 +6,7 @@
 /*   By: agarcia2 <agarcia2@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/09 16:57:44 by agarcia2          #+#    #+#             */
-/*   Updated: 2025/10/14 12:54:11 by agarcia2         ###   ########.fr       */
+/*   Updated: 2025/11/20 08:26:14 by agarcia2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	ft_numlen(int n)
 {
-	int	len;
+	int		len;
 	long	nb;
 
 	nb = n;
