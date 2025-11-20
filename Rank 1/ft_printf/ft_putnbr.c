@@ -12,27 +12,55 @@
 
 #include "ft_printf.h"
 
-int	ft_putnbr(int n)
+static int	handle_int_min(void)
 {
-	unsigned int	ptr;
+	int	written;
+
+	written = write(1, "-2147483648", 11);
+	if (written != 11)
+		return (-1);
+	return (11);
+}
+
+static int	put_positive(int n)
+{
+	int	ptr;
+	int	written;
 
 	ptr = 0;
-	if (n == -2147483648)
-	{
-		write(1, "-2147483648", 11);
-		return (11);
-	}
-	if (n < 0)
-	{
-		ptr += ft_putchar('-');
-		n *= -1;
-	}
 	if (n > 9)
 	{
-		ptr += ft_putnbr(n / 10);
-		ptr += ft_putchar(n % 10 + '0');
+		written = put_positive(n / 10);
+		if (written == -1)
+			return (-1);
+		ptr += written;
 	}
-	else
-		ptr += ft_putchar(n + '0');
+	written = ft_putchar(n % 10 + '0');
+	if (written == -1)
+		return (-1);
+	ptr += written;
 	return (ptr);
+}
+
+int	ft_putnbr(int n)
+{
+	int	written;
+	int	count;
+
+	if (n == -2147483648)
+		return (handle_int_min());
+	count = 0;
+	if (n < 0)
+	{
+		written = ft_putchar('-');
+		if (written == -1)
+			return (-1);
+		count += written;
+		n *= -1;
+	}
+	written = put_positive(n);
+	if (written == -1)
+		return (-1);
+	count += written;
+	return (count);
 }
