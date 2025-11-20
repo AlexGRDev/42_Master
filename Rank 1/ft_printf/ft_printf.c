@@ -34,9 +34,20 @@ static int	formats(va_list *args, const char **str)
 	return (0);
 }
 
+static int	print_current(const char **ptr, va_list *args)
+{
+	if (**ptr == '%')
+	{
+		(*ptr)++;
+		return (formats(args, ptr));
+	}
+	return (ft_putchar(**ptr));
+}
+
 int	ft_printf(const char *str, ...)
 {
 	int			count;
+	int			printed;
 	va_list		args;
 	const char	*ptr;
 
@@ -47,13 +58,13 @@ int	ft_printf(const char *str, ...)
 	ptr = str;
 	while (*ptr)
 	{
-		if (*ptr == '%')
+		printed = print_current(&ptr, &args);
+		if (printed == -1)
 		{
-			ptr++;
-			count += formats(&args, &ptr);
+			va_end(args);
+			return (-1);
 		}
-		else
-			count += ft_putchar(*ptr);
+		count += printed;
 		ptr++;
 	}
 	va_end(args);
