@@ -12,47 +12,47 @@
 
 #include "ft_printf.h"
 
-static int	ft_ptr_len(uintptr_t num)
+static int	ft_put_ptr(uintptr_t num)
 {
-	int	len;
+	int		high;
+	int		low;
 
-	len = 0;
-	while (num != 0)
-	{
-		len++;
-		num = num / 16;
-	}
-	return (len);
-}
-
-static void	ft_put_ptr(uintptr_t num)
-{
 	if (num >= 16)
 	{
-		ft_put_ptr(num / 16);
-		ft_put_ptr(num % 16);
+		high = ft_put_ptr(num / 16);
+		if (high == -1)
+			return (-1);
+		low = ft_put_ptr(num % 16);
+		if (low == -1)
+			return (-1);
+		return (high + low);
 	}
+	if (num <= 9)
+		high = ft_putchar(num + '0');
 	else
-	{
-		if (num <= 9)
-			ft_putchar_fd((num + '0'), 1);
-		else
-			ft_putchar_fd((num - 10 + 'a'), 1);
-	}
+		high = ft_putchar(num - 10 + 'a');
+	if (high == -1)
+		return (-1);
+	return (1);
 }
 
 int	ft_printptr(uintptr_t ptr)
 {
-	int	lenght;
+	int	length;
+	int	written;
 
-	lenght = 0;
-	lenght += write(1, "0x", 2);
+	length = write(1, "0x", 2);
+	if (length != 2)
+		return (-1);
 	if (ptr == 0)
-		lenght += write(1, "0", 1);
-	else
 	{
-		ft_put_ptr(ptr);
-		lenght += ft_ptr_len(ptr);
+		written = write(1, "0", 1);
+		if (written != 1)
+			return (-1);
+		return (length + written);
 	}
-	return (lenght);
+	written = ft_put_ptr(ptr);
+	if (written == -1)
+		return (-1);
+	return (length + written);
 }
