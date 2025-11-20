@@ -16,10 +16,19 @@
 int	ft_putu(unsigned int n)
 {
 	int	ptr;
+	int	written;
 
 	ptr = 0;
 	if (n > 9)
-		ptr += ft_putu(n / 10);
-	ptr += ft_putchar((n % 10) + '0');
+	{
+		written = ft_putu(n / 10);
+		if (written == -1)
+			return (-1);
+		ptr += written;
+	}
+	written = ft_putchar((n % 10) + '0');
+	if (written == -1)
+		return (-1);
+	ptr += written;
 	return (ptr);
 }
