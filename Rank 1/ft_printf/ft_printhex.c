@@ -18,6 +18,7 @@ int	ft_printhex(unsigned int nr, const char *base)
 	int	nr_base[16];
 	int	i;
 	int	result;
+	int	written;
 
 	i = 0;
 	result = 0;
@@ -30,6 +31,11 @@ int	ft_printhex(unsigned int nr, const char *base)
 		i++;
 	}
 	while (--i >= 0)
-		result += ft_putchar(base[nr_base[i]]);
+	{
+		written = ft_putchar(base[nr_base[i]]);
+		if (written == -1)
+			return (-1);
+		result += written;
+	}
 	return (result);
 }
