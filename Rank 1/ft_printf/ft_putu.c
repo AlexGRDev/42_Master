@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <wchar.h>
 
 int	ft_putu(unsigned int n)
 {
