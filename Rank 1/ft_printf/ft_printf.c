@@ -6,12 +6,11 @@
 /*   By: agarcia2 <agarcia2@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 13:33:50 by agarcia2          #+#    #+#             */
-/*   Updated: 2025/11/17 13:34:00 by agarcia2         ###   ########.fr       */
+/*   Updated: 2025/11/24 11:28:37 by agarcia2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include "LibFT/libft.h"
 
 static int	formats(va_list *args, const char **str)
 {
