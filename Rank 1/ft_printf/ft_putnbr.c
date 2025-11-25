@@ -6,11 +6,12 @@
 /*   By: agarcia2 <agarcia2@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 07:31:16 by agarcia2          #+#    #+#             */
-/*   Updated: 2025/11/04 07:43:28 by agarcia2         ###   ########.fr       */
+/*   Updated: 2025/11/25 10:21:39 by agarcia2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include <unistd.h>
 
 static int	handle_int_min(void)
 {
