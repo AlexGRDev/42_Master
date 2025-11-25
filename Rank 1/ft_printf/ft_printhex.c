@@ -6,11 +6,10 @@
 /*   By: agarcia2 <agarcia2@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 13:34:36 by agarcia2          #+#    #+#             */
-/*   Updated: 2025/11/17 13:34:40 by agarcia2         ###   ########.fr       */
+/*   Updated: 2025/11/25 10:20:03 by agarcia2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "LibFT/libft.h"
 #include "ft_printf.h"
 
 int	ft_printhex(unsigned int nr, const char *base)
