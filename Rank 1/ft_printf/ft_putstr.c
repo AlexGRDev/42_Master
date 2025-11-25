@@ -6,11 +6,12 @@
 /*   By: agarcia2 <agarcia2@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 18:54:42 by agarcia2          #+#    #+#             */
-/*   Updated: 2025/11/16 22:16:07 by agarcia2         ###   ########.fr       */
+/*   Updated: 2025/11/25 10:22:00 by agarcia2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include <unistd.h>
 
 int	ft_putstr(char *str)
 {
