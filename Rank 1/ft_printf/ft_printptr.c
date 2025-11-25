@@ -6,11 +6,12 @@
 /*   By: agarcia2 <agarcia2@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 18:15:46 by agarcia2          #+#    #+#             */
-/*   Updated: 2025/11/04 07:25:55 by agarcia2         ###   ########.fr       */
+/*   Updated: 2025/11/25 10:20:22 by agarcia2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include <stdint.h>
 
 static int	ft_put_ptr(uintptr_t num)
 {
