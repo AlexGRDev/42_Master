@@ -6,7 +6,7 @@
 /*   By: agarcia2 <agarcia2@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/25 20:12:20 by agarcia2          #+#    #+#             */
-/*   Updated: 2025/11/27 11:02:19 by agarcia2         ###   ########.fr       */
+/*   Updated: 2025/11/28 19:29:05 by agarcia2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,24 +22,21 @@ int	pipex(char **argv, char **envp)
 	pid_t	pid2;
 
 	if (pipe(pipefd) == -1)
-	{
-		perror("pipe");
-		exit(1);
-	}
+		(perror("pipe"), exit(1));
 	pid1 = fork();
 	if (pid1 < 0)
 		return (perror("fork"), 1);
 	if (pid1 == 0)
 	{
-		child_one(argv[1], argv[2], &pipefd[0], &envp[0]);
+		child_one(argv[2], argv[1], &pipefd[0], &envp[0]);
 		exit(1);
 	}
 	pid2 = fork();
 	if (pid2 < 0)
-		return (perror("fork"), 1);
+		return (waitpid(pid1, NULL, 0), perror("fork"), 1);
 	if (pid2 == 0)
 	{
-		child_two(argv[4], argv[3], &pipefd[0], &envp[0]);
+		child_two(argv[3], argv[4], &pipefd[0], &envp[0]);
 		exit(1);
 	}
 	close(pipefd[0]);

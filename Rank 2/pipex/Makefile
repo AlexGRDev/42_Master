@@ -6,16 +6,16 @@
 #    By: agarcia2 <agarcia2@student.42barcelona.co  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/26 10:01:29 by agarcia2          #+#    #+#              #
-#    Updated: 2025/11/27 09:51:28 by agarcia2         ###   ########.fr        #
+#    Updated: 2025/11/28 19:30:36 by agarcia2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+MAKEFLAGS	+=	--no-print-directory
 NAME		=	pipex
 CC		=	cc
 CFLAGS		= 	-Wall -Werror -Wextra
-ASAN_FLAGS	=	-g3 -fsanitize=address
+ASAN_FLAGS	=	 -fsanitize=undefined,address
 RM		= 	rm -f
- 
 SRCS		= 	main.c	pipex.c pipex_utils.c
 OBJS		= 	$(SRCS:.c=.o)
 LIBFTPRINTF	=	ft_printf/libftprintf.a
@@ -50,6 +50,6 @@ fclean: clean
 re: fclean all
 
 asan: fclean
-	$(MAKE) CFLAGS="$(CFLAGS) $(ASAN_FLAGS)" all
+	$(MAKE) CFLAGS="$(CFLAGS) $(ASAN_FLAGS)" re
 
 .PHONY: all clean fclean re asan

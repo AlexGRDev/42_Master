@@ -6,10 +6,11 @@
 #    By: agarcia2 <agarcia2@student.42barcelona.co  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/25 22:49:28 by agarcia2          #+#    #+#              #
-#    Updated: 2025/11/27 10:07:13 by agarcia2         ###   ########.fr        #
+#    Updated: 2025/11/28 12:50:33 by agarcia2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+MAKEFLAGS	+=	--no-print-directory
 NAME		=	libftprintf.a
 CC		=	cc
 CFLAGS		=	-Wall -Werror -Wextra
