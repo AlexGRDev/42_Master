@@ -1,14 +1,144 @@
-*This project has been created as part of the 42 curriculum by <agarcia2>[agarcia2].*
+*This project has been created as part of the 42 curriculum by agarcia2.*
 
 # ft_printf
 
-## 📝 Description
-`ft_printf` is a custom implementation of the standard C `printf` function.  
-The goal of this project is to understand and re-create formatted output handling,
-with a focus on **variadic arguments**, **format parsing**, and **modular design**.
+## Description
+This project consists of recreating the standard C library function `printf`.
+The goal is to build a static library, `libftprintf.a`, containing a function
+`ft_printf()` that mimics the behavior of the original `printf` for a defined
+set of format specifiers.
 
-The project consists in building a static library `libftprintf.a` that provides the function:
+This project introduces the use of variadic functions in C and focuses on
+string parsing, formatted output, and modular code design.
+Once completed, `ft_printf` can be integrated into `libft` and reused in future
+C projects at 42.
 
-```c
-int ft_printf(const char *format, ....);
+---
+
+## Instructions
+
+### Compilation
+The project includes a `Makefile` with the mandatory rules:
+
+```bash
+make        # Compiles the library libftprintf.a
+make clean  # Removes object files
+make fclean # Removes object files and the library
+make re     # Recompiles the project
 ```
+
+Compilation is done using:
+```
+cc -Wall -Wextra -Werror
+```
+
+### Usage
+Include the header file in your source code:
+```c
+#include "ft_printf.h"
+```
+
+Compile your program with the library:
+```bash
+cc main.c libftprintf.a
+```
+
+Example:
+```c
+int main(void)
+{
+    ft_printf("Character: %c\n", 'A');
+    ft_printf("String: %s\n", "Hello 42");
+    ft_printf("Decimal: %d\n", 42);
+    ft_printf("Hex: %x\n", 255);
+    ft_printf("Pointer: %p\n", &main);
+    return (0);
+}
+```
+
+---
+
+## Supported Conversions
+The `ft_printf` function supports the following format specifiers:
+
+- `%c` : prints a single character
+- `%s` : prints a string
+- `%p` : prints a pointer address in hexadecimal format
+- `%d` : prints a signed decimal number
+- `%i` : prints an integer in base 10
+- `%u` : prints an unsigned decimal number
+- `%x` : prints a hexadecimal number (lowercase)
+- `%X` : prints a hexadecimal number (uppercase)
+- `%%` : prints a percent sign
+
+---
+
+## Algorithm and Data Structures
+
+### Format Parsing
+The function iterates through the format string character by character.
+
+- If the current character is not `%`, it is written directly to standard output.
+- When `%` is encountered, the following character is interpreted as a conversion specifier.
+
+### Variadic Arguments
+The project uses `<stdarg.h>` to handle a variable number of arguments:
+- `va_start` initializes argument processing.
+- `va_arg` retrieves each argument according to the detected format.
+- `va_end` cleans up once processing is finished.
+
+### Conversion Handling
+Each format specifier is handled by a dedicated function, improving readability
+and maintainability.
+Numeric values are converted using base-specific logic (base 10 or base 16),
+and characters are written using the `write()` system call.
+
+### Pointer Formatting
+Pointers are printed by:
+1. Writing the `"0x"` prefix.
+2. Converting the address to a lowercase hexadecimal representation.
+
+### Design Choices
+- No buffer management is implemented, as required by the subject.
+- The code is modular to allow easy extension (bonus part).
+- No unnecessary dynamic memory allocation is used.
+- All outputs are written directly to file descriptor `1`.
+
+---
+
+## Resources
+
+### References
+- `man 3 printf`
+- `man stdarg`
+- The C Programming Language – Kernighan & Ritchie
+- 42 subject PDF: **ft_printf (version 12.0)**
+
+### AI Usage
+AI tools were used exclusively for:
+- Understanding and summarizing the project requirements.
+- Structuring the  project directory.
+
+AI was **not** used to generate source code, implement algorithms, or debug the
+project logic, in accordance with the 42 AI usage guidelines.
+
+---
+
+## Bonus
+If implemented, the bonus part extends `ft_printf` with:
+- Flags: `-`, `0`, `.`, and minimum field width
+- Flags: `#`, `+`, and space
+
+The bonus is evaluated only if the mandatory part is fully correct.
+
+---
+
+## Project Output
+The final output of this project is the static library:
+
+```
+libftprintf.a
+```
+
+located at the root of the repository.
+
