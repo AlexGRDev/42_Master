@@ -6,123 +6,55 @@
 /*   By: agarcia2 <agarcia2@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/20 10:03:53 by agarcia2          #+#    #+#             */
-/*   Updated: 2025/11/20 16:50:30 by agarcia2         ###   ########.fr       */
+/*   Updated: 2025/12/12 11:31:43 by agarcia2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
+#include <unistd.h>
+
 #include "get_next_line.h"
 
-static int	gnl_read_append(int fd, char *buf, char **bytes, size_t *cap)
+static int	gnl_fill(int fd, char **stash)
 {
-	ssize_t	nread;
+	char	buf[BUFFER_SIZE + 1];
+	ssize_t	bytes;
 
-	nread = read(fd, buf, BUFFER_SIZE);
-	if (nread <= 0)
-		return ((int)nread);
-	*(buf + nread) = '\0';
-	*bytes = ft_bytes_join(*bytes, buf, cap);
-	if (!*bytes)
-		return (-1);
-	return (1);
-}
-
-static char	*read_to_bytes(int fd, char *bytes)
-{
-	char		*buf;
-	int			status;
-	size_t		cap;
-
-	buf = (char *)malloc(BUFFER_SIZE + 1);
-	if (!buf)
-		return (free(bytes), NULL);
-	cap = ft_strlen_gnl(bytes) + 1;
-	status = 1;
-	while (!ft_strchr_gnl(bytes, '\n') && status > 0)
-		status = gnl_read_append(fd, buf, &bytes, &cap);
-	if (status < 0)
+	bytes = 1;
+	if (!*stash)
 	{
-		free(buf);
-		free(bytes);
-		return (NULL);
+		*stash = gnl_substr("", 0, 0);
+		if (!*stash)
+			return (-1);
 	}
-	free(buf);
-	return (bytes);
-}
-
-static char	*extract_line(char *bytes)
-{
-	char	*line;
-	char	*src;
-	char	*dst;
-	size_t	len;
-
-	if (!bytes || !*bytes)
-		return (NULL);
-	src = bytes;
-	len = 0;
-	while (*src && *src != '\n')
+	while (!gnl_strchr(*stash, '\n') && bytes > 0)
 	{
-		src++;
-		len++;
+		bytes = read(fd, buf, BUFFER_SIZE);
+		if (bytes < 0)
+			return (-1);
+		buf[bytes] = '\0';
+		if (bytes > 0)
+			*stash = gnl_strjoin(*stash, buf);
+		if (!*stash)
+			return (-1);
 	}
-	if (*src == '\n')
-		len++;
-	line = (char *)malloc(len + 1);
-	if (!line)
-		return (NULL);
-	dst = line;
-	src = bytes;
-	while (len--)
-		*dst++ = *src++;
-	*dst = '\0';
-	return (line);
-}
-
-static char	*clean_bytes(char *bytes)
-{
-	char	*nl;
-	char	*dst;
-	char	*src;
-
-	if (!bytes)
-		return (NULL);
-	nl = ft_strchr_gnl(bytes, '\n');
-	if (!nl)
-	{
-		free(bytes);
-		return (NULL);
-	}
-	dst = bytes;
-	src = nl + 1;
-	while (*src)
-		*dst++ = *src++;
-	*dst = '\0';
-	return (bytes);
+	return (0);
 }
 
 char	*get_next_line(int fd)
 {
-	static char	*bytes = NULL;
+	static char	*stash;
 	char		*line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	bytes = read_to_bytes(fd, bytes);
-	if (!bytes)
+	if (gnl_fill(fd, &stash) < 0)
 		return (NULL);
-	if (!bytes[0])
+	line = gnl_split_line(&stash);
+	if (!line && stash)
 	{
-		free(bytes);
-		bytes = NULL;
-		return (NULL);
+		free(stash);
+		stash = NULL;
 	}
-	line = extract_line(bytes);
-	if (!line)
-	{
-		free(bytes);
-		bytes = NULL;
-		return (NULL);
-	}
-	bytes = clean_bytes(bytes);
 	return (line);
 }

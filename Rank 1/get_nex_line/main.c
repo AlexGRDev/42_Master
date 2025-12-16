@@ -1,29 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agarcia2 <agarcia2@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/20 10:04:16 by agarcia2          #+#    #+#             */
-/*   Updated: 2025/12/12 10:11:08 by agarcia2         ###   ########.fr       */
+/*   Created: 2025/12/02 10:33:55 by agarcia2          #+#    #+#             */
+/*   Updated: 2025/12/02 10:43:20 by agarcia2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "get_next_line.h"
+#include <fcntl.h>
+#include <stdio.h>
 
-# include <stddef.h>
+int	main(int argc, char **argv)
+{
+	int	fd;
+	char	*line;
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 512
-# endif
-
-char	*get_next_line(int fd);
-size_t	gnl_strlen(const char *s);
-char	*gnl_strchr(const char *s, int c);
-char	*gnl_substr(const char *s, unsigned int start, size_t len);
-char	*gnl_strjoin(char *s1, const char *s2);
-char	*gnl_split_line(char **stash);
-
-#endif
+	fd = open("test.txt", O_RDONLY);
+	line = get_next_line(fd);
+	while (line)
+	{
+		printf("line:%s\n",line);
+		free(line);
+		line = get_next_line(fd);
+	}
+	printf("last line: %s", get_next_line(fd));
+	close(fd);
+	return (0);
+}

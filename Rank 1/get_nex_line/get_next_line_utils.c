@@ -10,81 +10,107 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
+
 #include "get_next_line.h"
 
-size_t	ft_strlen_gnl(const char *s)
+size_t	gnl_strlen(const char *s)
 {
-	const char	*p;
+	size_t	i;
 
-	if (!s)
-		return (0);
-	p = s;
-	while (*p)
-		p++;
-	return ((size_t)(p - s));
+	i = 0;
+	while (s && s[i])
+		i++;
+	return (i);
 }
 
-char	*ft_strchr_gnl(const char *s, int c)
+char	*gnl_strchr(const char *s, int c)
 {
-	unsigned char	ch;
-
 	if (!s)
 		return (NULL);
-	ch = (unsigned char)c;
 	while (*s)
 	{
-		if ((unsigned char)*s == ch)
+		if (*s == (char)c)
 			return ((char *)s);
 		s++;
 	}
-	if (ch == '\0')
+	if ((char)c == '\0')
 		return ((char *)s);
 	return (NULL);
 }
 
-static char	*gnl_realloc_bytes(char *bytes, size_t *cap,
-		size_t need, size_t len1)
+char	*gnl_substr(const char *s, unsigned int start, size_t len)
 {
-	char	*new_bytes;
-	char	*dst;
-	char	*src;
+	size_t	slen;
+	size_t	i;
+	char	*sub;
 
-	if (*cap >= need)
-		return (bytes);
-	if (*cap == 0)
-		*cap = need;
-	while (*cap < need)
-		*cap *= 2;
-	new_bytes = (char *)malloc(*cap);
-	if (!new_bytes)
-	{
-		free(bytes);
+	if (!s)
 		return (NULL);
+	slen = gnl_strlen(s);
+	if (start >= slen)
+		len = 0;
+	else if (len > slen - start)
+		len = slen - start;
+	sub = (char *)malloc(len + 1);
+	if (!sub)
+		return (NULL);
+	i = 0;
+	while (i < len)
+	{
+		sub[i] = s[start + i];
+		i++;
 	}
-	dst = new_bytes;
-	src = bytes;
-	while (len1--)
-		*dst++ = *src++;
-	free(bytes);
-	return (new_bytes);
+	sub[i] = '\0';
+	return (sub);
 }
 
-char	*ft_bytes_join(char *bytes, const char *buf, size_t *cap)
+char	*gnl_strjoin(char *s1, const char *s2)
 {
-	size_t		len1;
-	size_t		need;
-	char		*dst;
-	const char	*src;
+	char	*joined;
+	size_t	len1;
+	size_t	i;
 
-	len1 = ft_strlen_gnl(bytes);
-	need = len1 + ft_strlen_gnl(buf) + 1;
-	bytes = gnl_realloc_bytes(bytes, cap, need, len1);
-	if (!bytes)
+	len1 = gnl_strlen(s1);
+	joined = (char *)malloc(len1 + gnl_strlen(s2) + 1);
+	if (!joined)
+	{
+		free(s1);
 		return (NULL);
-	dst = bytes + len1;
-	src = buf;
-	while (*src)
-		*dst++ = *src++;
-	*dst = '\0';
-	return (bytes);
+	}
+	i = len1;
+	while (i--)
+		joined[i] = s1[i];
+	i = len1;
+	while (*s2)
+		joined[i++] = *s2++;
+	joined[i] = '\0';
+	free(s1);
+	return (joined);
+}
+
+char	*gnl_split_line(char **stash)
+{
+	char	*nl;
+	char	*line;
+	char	*rest;
+	size_t	len;
+
+	if (!stash || !*stash || !**stash)
+		return (NULL);
+	nl = gnl_strchr(*stash, '\n');
+	if (!nl)
+	{
+		line = *stash;
+		*stash = NULL;
+		return (line);
+	}
+	len = (size_t)(nl - *stash) + 1;
+	line = gnl_substr(*stash, 0, len);
+	if (!line)
+		return (NULL);
+	rest = gnl_substr(*stash, (unsigned int)len, gnl_strlen(*stash) - len);
+	free(*stash);
+	*stash = rest;
+	return (line);
 }
