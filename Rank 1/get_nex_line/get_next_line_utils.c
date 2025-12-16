@@ -6,7 +6,7 @@
 /*   By: agarcia2 <agarcia2@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/20 10:04:04 by agarcia2          #+#    #+#             */
-/*   Updated: 2025/11/20 16:20:00 by agarcia2         ###   ########.fr       */
+/*   Updated: 2025/12/16 17:21:43 by agarcia2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ char	*gnl_substr(const char *s, unsigned int start, size_t len)
 		i++;
 	}
 	sub[i] = '\0';
+	free(sub);
 	return (sub);
 }
 

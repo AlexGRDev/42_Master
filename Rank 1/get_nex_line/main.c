@@ -6,15 +6,17 @@
 /*   By: agarcia2 <agarcia2@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/02 10:33:55 by agarcia2          #+#    #+#             */
-/*   Updated: 2025/12/02 10:43:20 by agarcia2         ###   ########.fr       */
+/*   Updated: 2025/12/16 17:23:40 by agarcia2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 #include <fcntl.h>
 #include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
 
-int	main(int argc, char **argv)
+int	main(void)
 {
 	int	fd;
 	char	*line;
@@ -27,7 +29,8 @@ int	main(int argc, char **argv)
 		free(line);
 		line = get_next_line(fd);
 	}
-	printf("last line: %s", get_next_line(fd));
+	printf("last line: %s\n", line);
+	free(line);
 	close(fd);
 	return (0);
 }
