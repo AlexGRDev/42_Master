@@ -6,7 +6,7 @@
 /*   By: agarcia2 <agarcia2@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 18:15:46 by agarcia2          #+#    #+#             */
-/*   Updated: 2025/11/28 12:03:47 by agarcia2         ###   ########.fr       */
+/*   Updated: 2025/12/25 09:30:27 by agarcia2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	ft_printptr(uintptr_t ptr)
 	int	length;
 	int	written;
 
-	length = write(1, ("nill"), 2);
+	length = write(1, "(nill)", 5);
 	if (length != 2)
 		return (-1);
 	if (ptr == 0)
