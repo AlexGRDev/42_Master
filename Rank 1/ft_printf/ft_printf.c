@@ -3,70 +3,59 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agarcia2 <agarcia2@student.42barcelona.co  +#+  +:+       +#+        */
+/*   By: alexgarcia2 <agarcia2@student.42barcelo    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/17 13:33:50 by agarcia2          #+#    #+#             */
-/*   Updated: 2025/11/25 10:16:28 by agarcia2         ###   ########.fr       */
+/*   Created: 2026/01/11 21:08:58 by alexgarcia2       #+#    #+#             */
+/*   Updated: 2026/01/11 21:31:26 by alexgarcia2      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdarg.h>
 
-static int	formats(va_list *args, const char **str)
+int	ft_format(char format, va_list ap)
 {
-	if (**str == 'c')
-		return (ft_putchar(va_arg(*args, int)));
-	else if (**str == 'd' || **str == 'i')
-		return (ft_putnbr(va_arg(*args, int)));
-	else if (**str == 's')
-		return (ft_putstr(va_arg(*args, char *)));
-	else if (**str == 'p')
-		return (ft_printptr(va_arg(*args, uintptr_t)));
-	else if (**str == 'u')
-		return (ft_putu(va_arg(*args, unsigned int)));
-	else if (**str == 'x')
-		return (ft_printhex(va_arg(*args, unsigned int), "0123456789abcdef"));
-	else if (**str == 'X')
-		return (ft_printhex(va_arg(*args, unsigned int), "0123456789ABCDEF"));
-	else if (**str == '%')
-		return (ft_putchar('%'));
-	return (0);
+	if (format == '\0')
+		return (-1);
+	else if (format == 'c')
+		return (ft_printf_c(va_arg(ap, int)));
+	else if (format == 's')
+		return (ft_printf_s(va_arg(ap, char *)));
+	else if (format == 'd' || format == 'i')
+		return (ft_printf_d(va_arg(ap, int)));
+	else if (format == 'u')
+		return (ft_printf_u(va_arg(ap, unsigned int)));
+	else if (format == 'x')
+		return (ft_printf_x(va_arg(ap, unsigned int), 0));
+	else if (format == 'X')
+		return (ft_printf_x(va_arg(ap, unsigned int), 1));
+	else if (format == 'p')
+		return (ft_printf_p(va_arg(ap, void *)));
+	else
+		return (ft_printf_c('%'));
 }
 
-static int	print_current(const char **ptr, va_list *args)
+int	ft_pirntf(const char *format, ...)
 {
-	if (**ptr == '%')
-	{
-		(*ptr)++;
-		return (formats(args, ptr));
-	}
-	return (ft_putchar(**ptr));
-}
+	int		len;
+	int		to_fomat;
+	va_list	ap;
 
-int	ft_printf(const char *str, ...)
-{
-	int			count;
-	int			printed;
-	va_list		args;
-	const char	*ptr;
-
-	if (!str)
-		return (write(1, "(null)", 6));
-	va_start(args, str);
-	count = 0;
-	ptr = str;
-	while (*ptr)
+	len = 0;
+	va_start(ap, format);
+	while (*format)
 	{
-		printed = print_current(&ptr, &args);
-		if (printed == -1)
+		if (*format == '%')
 		{
-			va_end(args);
-			return (-1);
+			format++;
+			to_fomat = ft_format(*format, ap);
+			if (to_fomat < 0)
+				return (to_fomat);
+			len += to_fomat;
 		}
-		count += printed;
-		ptr++;
+		else
+			len += ft_printf_c(*format);
+		format++;
 	}
-	va_end(args);
-	return (count);
+	va_end(ap);
+	return (len);
 }

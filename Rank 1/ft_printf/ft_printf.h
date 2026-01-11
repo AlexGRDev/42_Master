@@ -3,23 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agarcia2 <agarcia2@student.42barcelona.co  +#+  +:+       +#+        */
+/*   By: alexgarcia2 <agarcia2@student.42barcelo    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/23 14:10:24 by agarcia2          #+#    #+#             */
-/*   Updated: 2025/11/25 10:28:36 by agarcia2         ###   ########.fr       */
+/*   Created: 2026/01/11 21:16:23 by alexgarcia2       #+#    #+#             */
+/*   Updated: 2026/01/11 21:19:10 by agarcia2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
-# include "./LibFT/libft.h"
-# include <stdint.h>
 
-int	ft_printf(const char *str, ...);
-int	ft_putchar(int c);
-int	ft_putstr(char *str);
-int	ft_printptr(uintptr_t ptr);
-int	ft_putnbr(int n);
-int	ft_putu(unsigned int n);
-int	ft_printhex(unsigned int nr, const char *base);
+# include <unistd.h>
+# include <stdarg.h>
+
+int	ft_format(char format, va_list ap);
+int	ft_printf(char const *format, ...);
+int	ft_printf_c(char c);
+int	ft_printf_s(char *s);
+int	ft_printf_d(int d);
+int	ft_printf_u(unsigned int u);
+int	ft_printf_x(unsigned long x, int up);
+int	ft_printf_p(void *p);
 #endif

@@ -3,42 +3,37 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: agarcia2 <agarcia2@student.42barcelona.co  +#+  +:+       +#+         #
+#    By: alexgarcia2 <agarcia2@student.42barcelo    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/10/25 22:49:28 by agarcia2          #+#    #+#              #
-#    Updated: 2025/11/16 11:08:13 by agarcia2         ###   ########.fr        #
+#    Created: 2026/01/11 21:26:50 by alexgarcia2       #+#    #+#              #
+#    Updated: 2026/01/11 21:26:55 by alexgarcia2      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME    = libftprintf.a
-CC      = cc
-CFLAGS  = -Wall -Werror -Wextra
-ASAN_FLAGS = -g3 -fsanitize=address
-AR      = ar rcs
-RM      = rm -f
+NAME 	:= libftprintf.a
+SRC 	:= ft_printf.c ft_printf_utils.c ft_printf_utils2.c
+OBJ		:= $(SRC:.c=.o)
 
-SRCS    = ft_printf.c	ft_putchar.c	ft_putstr.c	ft_printptr.c\
-	  ft_putnbr.c	ft_putu.c	ft_printhex.c	./LibFT/ft_putchar_fd.c \
-	./LibFT/ft_strlen.c
-OBJS    = $(SRCS:.c=.o)
+CC 		:= cc
+CFLAGS 	:= -Wall -Werror -Wextra
+
+AR 		:= ar
+ARFLAGS	:= rcs
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
-	$(AR) $(NAME) $(OBJS)
+$(NAME): $(OBJ)
+	$(AR) $(ARFLAGS) $(NAME) $(OBJ)
 
-%.o: %.c  Makefile ft_printf.h
+%.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	$(RM) $(OBJS)
+	rm -f $(OBJ)
 
 fclean: clean
-	$(RM) $(NAME)
+	rm -f $(NAME)
 
 re: fclean all
 
-asan: fclean
-	$(MAKE) CFLAGS="$(CFLAGS) $(ASAN_FLAGS)" all
-
-.PHONY: all clean fclean re asan
+.PHONY: all clean fclean re 
