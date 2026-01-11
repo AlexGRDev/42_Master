@@ -6,7 +6,7 @@
 /*   By: alexgarcia2 <agarcia2@student.42barcelo    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 21:08:58 by alexgarcia2       #+#    #+#             */
-/*   Updated: 2026/01/11 21:31:26 by alexgarcia2      ###   ########.fr       */
+/*   Updated: 2026/01/11 21:41:46 by alexgarcia2      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	ft_format(char format, va_list ap)
 		return (ft_printf_c('%'));
 }
 
-int	ft_pirntf(const char *format, ...)
+int	ft_printf(char const *format, ...)
 {
 	int		len;
 	int		to_fomat;
