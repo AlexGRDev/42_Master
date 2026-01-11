@@ -6,7 +6,7 @@
 /*   By: alexgarcia2 <agarcia2@student.42barcelo    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/11 21:16:23 by alexgarcia2       #+#    #+#             */
-/*   Updated: 2026/01/11 21:19:10 by agarcia2         ###   ########.fr       */
+/*   Updated: 2026/01/11 22:18:28 by alexgarcia2      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 # include <unistd.h>
 # include <stdarg.h>
 
-int	ft_format(char format, va_list ap);
-int	ft_printf(char const *format, ...);
+int	ft_format(const char *format, va_list *ap);
+int	ft_printf(const char *format, ...);
 int	ft_printf_c(char c);
 int	ft_printf_s(char *s);
 int	ft_printf_d(int d);
