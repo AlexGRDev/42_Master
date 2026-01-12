@@ -43,7 +43,7 @@ Its purpose is to provide a **global view of the curriculum**, project progressi
     </td>
     <td>
       <img src="https://camo.githubusercontent.com/4d025bd80b45a763b721f73c19d08a66db09b02a91e68ceee1f62c5b24dbc7c5/68747470733a2f2f75706c6f61642e77696b696d656469612e6f72672f77696b6970656469612f636f6d6d6f6e732f7468756d622f662f66312f49636f6e73385f666c61745f6c696e75782e7376672f3230343870782d49636f6e73385f666c61745f6c696e75782e7376672e706e67" width="55"/>
-        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apple/apple-original.svg" width="55" style="filter: invert(1);" />
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apple/apple-original.svg" width="55" style="color: White;" />
         <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/windows8/windows8-original.svg" width="55"/>
     </td>
     <td>
