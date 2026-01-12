@@ -91,4 +91,4 @@ Its purpose is to provide a **global view of the curriculum**, project progressi
 > “The best way to learn is to build, break, and rebuild.”  
 
 ```bash
-git clone --recurse-submodules git@github.com:AlexGRDev/42_Master.git
+git clone https://github.com/AlexGRDev/42_Master.git
