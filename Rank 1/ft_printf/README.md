@@ -115,7 +115,7 @@ int	main(int argc, char **argv)
 	ft_printf("ret ft: %d | ret printf: %d\n\n", ret_ft, ret_pf);
 
 	ret_ft = ft_printf("ft_printf NULL: %p\n", NULL);
-	ret_pf = printf("printf   NULL: %p\n", NULL);
+	ret_pf =    printf("printf    NULL: %p\n", NULL);
 	ft_printf("ret ft: %d | ret printf: %d\n\n", ret_ft, ret_pf);
 
 	ft_printf("+==============+\n");
