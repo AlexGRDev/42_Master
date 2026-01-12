@@ -66,9 +66,9 @@ Its purpose is to provide a **global view of the curriculum**, project progressi
 
 | Rank | Project | Overview | Language | Status |
 |------|--------|----------|----------|--------|
-| ![R0](https://img.shields.io/badge/R0-%23000000) | [Libft](https://github.com/AlexGRDev/LibFT) | Custom implementation of core libc functions | C | https://img.shields.io/badge/100/100-%2300FF00 |
-| ![R1](https://img.shields.io/badge/R1-%23000000) | [Get Next Line](https://github.com/AlexGRDev/Get-Nex-Line) | Read one line at a time from a file descriptor | C | https://img.shields.io/badge/101/100-%2300FF00 |
-| ![R1](https://img.shields.io/badge/R1-%23000000) | [ft_printf](https://github.com/AlexGRDev/printf) | Reimplementation of printf with format parsing | C | https://img.shields.io/badge/0/100-%23DC143C |
+| ![R0](https://img.shields.io/badge/R0-%23000000) | [Libft](https://github.com/AlexGRDev/LibFT) | Custom implementation of core libc functions | C | [!Socre]https://img.shields.io/badge/100/100-%2300FF00 |
+| ![R1](https://img.shields.io/badge/R1-%23000000) | [Get Next Line](https://github.com/AlexGRDev/Get-Nex-Line) | Read one line at a time from a file descriptor | C | [!Socore]https://img.shields.io/badge/101/100-%2300FF00 |
+| ![R1](https://img.shields.io/badge/R1-%23000000) | [ft_printf](https://github.com/AlexGRDev/printf) | Reimplementation of printf with format parsing | C | [Score]https://img.shields.io/badge/0/100-%23DC143C |
 | ![R1](https://img.shields.io/badge/R1-%23000000) | Born2BeRoot | Basic Linux system administration and security | Bash / Debian | 🔄 |
 
 <h2>
