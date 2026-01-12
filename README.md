@@ -45,7 +45,7 @@ Here you can see my progression from low‑level C to systems and some full‑st
 | Rank | Project | Description | Language | Status |
 |:----:|:---------|:-------------|:----------|:--------:|
 | 00 | [LibFT](https://github.com/AlexGRDev/LibFT) | Custom implementation of libc functions. | C | 100/100 |
-| 01 | [Get Next Line](https://github.com/AlexGRDev/Get-Nex-Line) | Read a line from a file descriptor. | C |  In Progress  |
+| 01 | [Get Next Line](https://github.com/AlexGRDev/Get-Nex-Line) | Read a line from a file descriptor. | C | 101/100 |
 | 01 | [FT Printf](https://github.com/AlexGRDev/printf) | Reimplementation of printf. | C |  In Progress |
 | 01 | [Born2BeRoot]() | Linux system administration project. | Bash / Debian | In Progress |
 | 02 | [Pipex]() | UNIX pipe and process management. | C |  |
