@@ -64,12 +64,12 @@ Its purpose is to provide a **global view of the curriculum**, project progressi
   Common Core Projects
 </h2>
 
-| Rank | Project | Overview | Language | Status |
-|------|--------|----------|----------|--------|
-| ![R0](https://img.shields.io/badge/R0-%23000000) | [Libft](https://github.com/AlexGRDev/LibFT) | Custom implementation of core libc functions | C | [!Socre]https://img.shields.io/badge/100/100-%2300FF00 |
-| ![R1](https://img.shields.io/badge/R1-%23000000) | [Get Next Line](https://github.com/AlexGRDev/Get-Nex-Line) | Read one line at a time from a file descriptor | C | [!Socore]https://img.shields.io/badge/101/100-%2300FF00 |
-| ![R1](https://img.shields.io/badge/R1-%23000000) | [ft_printf](https://github.com/AlexGRDev/printf) | Reimplementation of printf with format parsing | C | [Score]https://img.shields.io/badge/0/100-%23DC143C |
-| ![R1](https://img.shields.io/badge/R1-%23000000) | Born2BeRoot | Basic Linux system administration and security | Bash / Debian | 🔄 |
+| RANK                                        | Project                                                    | Overview                                                       | Languages | Score                                                      |
+|--------------------------------------------------|------------------------------------------------------------|----------------------------------------------------------------|-----------|------------------------------------------------------------|
+| ![R0](https://img.shields.io/badge/R0-%23000000) | [Libft](https://github.com/AlexGRDev/42_Master/tree/main/Rank%200/LibFT)                 | Custom implementation of core C library functions              | C         | ![Score](https://img.shields.io/badge/100/100-%2300FF00)   |
+| ![R1](https://img.shields.io/badge/R1-%23000000) | [Printf](https://github.com/AlexGRDev/42_Master/tree/main/Rank%201/ft_printf)               | Recreate the printf() function with formatted output handling  | C         | ![Score](https://img.shields.io/badge/0/100-%23DC143C)   |
+| ![R1](https://img.shields.io/badge/R1-%23000000) | [Get_next_line](https://github.com/Itzskade/Get_next_line) | Function to read one line at a time from a file descriptor     | C         | ![Score](https://img.shields.io/badge/101/100-%2300FF00)   |
+| ![R1](https://img.shields.io/badge/R1-%23000000) | Born2BeRoot | asic Linux system administration and securit | Linux / Debian | 🔄
 
 <h2>
   <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExajgyZXczNzNxenh2MHF5cXpvenY0YTJjaDc4ZzdhY2R6a2szNXFtbyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/jUQHpQ3UjFBfRlQekP/giphy.gif" width="45" />
