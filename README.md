@@ -68,8 +68,8 @@ Its purpose is to provide a **global view of the curriculum**, project progressi
 | RANK                                        | Project                                                    | Overview                                                       | Languages | Score                                                      |
 |--------------------------------------------------|------------------------------------------------------------|----------------------------------------------------------------|-----------|------------------------------------------------------------|
 | ![R0](https://img.shields.io/badge/R0-%23000000) | [Libft](https://github.com/AlexGRDev/42_Master/tree/main/Rank%200/LibFT)                 | Custom implementation of core C library functions              | C         | ![Score](https://img.shields.io/badge/100/100-%2300FF00)   |
-| ![R1](https://img.shields.io/badge/R1-%23000000) | [Printf](https://github.com/AlexGRDev/42_Master/tree/main/Rank%201/ft_printf)               | Recreate the printf() function with formatted output handling  | C         | ![Score](https://img.shields.io/badge/0/100-%23DC143C)   |
-| ![R1](https://img.shields.io/badge/R1-%23000000) | [Get_next_line](https://github.com/Itzskade/Get_next_line) | Function to read one line at a time from a file descriptor     | C         | ![Score](https://img.shields.io/badge/101/100-%2300FF00)   |
+| ![R1](https://img.shields.io/badge/R1-%23000000) | [Printf](https://github.com/AlexGRDev/42_Master/tree/main/Rank%201/ft_printf)               | Recreate the printf() function with formatted output handling  | C         | ![Score](https://img.shields.io/badge/100/100-%\23000000  )   |
+| ![R1](https://img.shields.io/badge/R1-%23000000) | [Get_next_line](https://github.com/AlexGRDev/Get-Nex-Line) | Function to read one line at a time from a file descriptor     | C         | ![Score](https://img.shields.io/badge/101/100-%2300FF00)   |
 | ![R1](https://img.shields.io/badge/R1-%23000000) | Born2BeRoot | asic Linux system administration and securit | Linux / Debian | 🔄
 
 <h2>
