@@ -1,112 +1,95 @@
-# 🧠 42 Master — My Common Core Guide
+<p align="right">
+  <a href="es.README.md">
+    <img src="https://img.shields.io/badge/🌐%20Español-README-green?style=for-the-badge" alt="README Español" />
+  </a>
+</p>
 
-> 📍 **42 Barcelona** — Student: **Alex García** (`agarcia2`)  
-> 🚀 If you are new to **42**, you can use this repository as a **real project roadmap**: what each project is, what it evaluates, and how to approach it.
+<h1>
+  <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExY3U1dTlnMG1hbWF0dGNvanQxZ3ptM3p4Mng3eHA0OW9obXVnOXpmbiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/1lFYFYndRlBNjUoE0H/giphy.gif" width="45" />
+  42 Common Core — Project Roadmap
+</h1>
 
----
+<h2>
+  <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExMDAzMHRrZGQ4Z2Exd2x1NGp0dGt3aHdkOGk5cTl4dGN2cHRudmVweiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/5eLDrEaRGHegx2FeF2/giphy.gif" width="45" />
+  About this repository
+</h2>
 
-## 📖 Who is this repository for?
+📍 **Campus:** 42 Barcelona  
+👤 **Login:** agarcia2  
 
-This repo is mainly meant for:
+This repository is a **structured roadmap of the 42 Common Core**.  
+Its purpose is to provide a **global view of the curriculum**, project progression by rank, and the skills developed throughout the program.
 
-- 👶 **New 42 students** starting the Common Core who want a global view.
-- 🔁 Students who have already done some projects and want to **revisit concepts or compare approaches**.
-- 👀 Candidates curious about what you actually do at 42 and what C / Unix level is expected.
-
-It is not the official **subject** of any project, but you can use it as a companion while you read each PDF.
-
----
-
-## 🗺️ How to use this roadmap
-
-- Progress **by ranks** (`Rank 0`, `Rank 1`, etc.), just like on the intra.
-- In each rank, open the folder and read its `README.md` to understand:
-  - Which project(s) it includes.
-  - Which skills you will practice.
-  - Tips and common mistakes.
-- Then open the project folder itself (for example `Rank 0/LibFT`) and read its specific README.
-- Always keep the **official subject PDF open**: you will find context here, not the exact rules.
+> ⚠️ This repository does **not replace official subject PDFs**.  
+> It is intended strictly as **support and orientation material**.
 
 ---
 
-## 📖 About This Repository
+<h2>
+  <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExOGN0Z3V3eWE1dHRoenN2Y3F6c3ZrZ2w3Y3lrbnRpdm8xbjNndGt1MiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/6KirhLJyR7oMcwgJQk/giphy.gif" width="45" />
+  Skills & Tools
+</h2>
 
-**42_Master** is my main Common Core repository.  
-It contains all projects from the **42 Common Core**, structured as independent modules and submodules.  
-Each project is (or will be) its own GitHub repository; this repo connects them all as a single roadmap.
-
-Here you can see my progression from low‑level C to systems and some full‑stack projects, following the 42 methodology:
-> _“Learning to learn, debugging to survive.”_
-
----
-
-## 🧭 Common Core Progress (Project map)
-
-| Rank | Project | Description | Language | Status |
-|:----:|:---------|:-------------|:----------|:--------:|
-| 00 | [LibFT](https://github.com/AlexGRDev/LibFT) | Custom implementation of libc functions. | C | 100/100 |
-| 01 | [Get Next Line](https://github.com/AlexGRDev/Get-Nex-Line) | Read a line from a file descriptor. | C | 101/100 |
-| 01 | [FT Printf](https://github.com/AlexGRDev/printf) | Reimplementation of printf. | C |  In Progress |
-| 01 | [Born2BeRoot]() | Linux system administration project. | Bash / Debian | In Progress |
-| 02 | [Pipex]() | UNIX pipe and process management. | C |  |
-| 02 | [Push Swap]() | Stack sorting algorithm challenge. | C | |
-| 02 | [So Long]() | 2D game with pathfinding using MLX. | C | |
-| 03 | [Philosophers]() | Multithreading and synchronization. | C | |
-| 03 | [Minishell]() | Building a mini Unix shell. | C | |
-| 04 | [Cub3D]() | 3D raycasting engine. | C | |
-| 04 | [MiniRT]() | Simple ray tracer with lights and shadows. | C | |
-| 04 | [NetPractice]() | Networking and IP routing exercises. | Networking | |
-| 05 | [CPP Modules]() | Introduction to Object-Oriented Programming. | C++ | |
-| 05 | [Inception]() | Docker-based virtualization and DevOps. | Docker / Bash | |
-| 05 | [Webserv]() | HTTP server in C++. | C++ | |
-| 05 | [Ft_Transcendence]() | Full-stack multiplayer pong with NestJS. | TS / Docker / SQL | | 
-
----
-
-## 🧠 Skills & Topics Covered (What you will learn)
-
-| Category | Keywords |
-|:----------|:----------|
-| 🧮 **C Programming** | Pointers, Memory Management, Recursion, Parsing |
-| ⚙️ **System & Unix** | Processes, File Descriptors, Pipes, Signals |
-| 🧵 **Concurrency** | Threads, Mutexes, Race Conditions |
-| 🧰 **Algorithms** | Sorting, Searching, Pathfinding |
-| 🖥️ **Graphics** | MLX42, Raycasting, Raytracing |
-| 🌐 **Networking** | IP, TCP, HTTP, Sockets |
-| 💾 **DevOps** | Docker, Nginx, System Administration |
-| 💻 **C++ / OOP** | Inheritance, Polymorphism, Encapsulation |
-| 🚀 **Full Stack** | TypeScript, NestJS, PostgreSQL, Docker Compose |
+<table>
+  <tr>
+    <th align="center">Languages</th>
+    <th align="center">OS</th>
+    <th align="center">Shell</th>
+    <th align="center">Development Tools</th>
+  </tr>
+  <tr align="center">
+    <td>
+      <img src="https://raw.githubusercontent.com/github/explore/f3e22f0dca2be955676bc70d6214b95b13354ee8/topics/c/c.png" width="60"/>
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" width="60"/>
+    </td>
+    <td>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/3/3a/Linux_logo_icon.svg" width="60"/>
+    </td>
+    <td>
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/zsh/zsh-original.svg" width="57"/>
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bash/bash-original.svg" width="57"/>
+    </td>
+    <td>
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" width="60"/>
+      <img src="https://avatars.githubusercontent.com/u/2387206?s=200&v=4" width="60"/>
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/neovim/neovim-original.svg" width="60"/>
+      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" width="60"/>
+    </td>
+  </tr>
+</table>
 
 ---
 
-## 🧱 Tech Stack
+<h2>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/8/8d/42_Logo.svg" width="35" />
+  Common Core Projects
+</h2>
 
-| Tool | Purpose |
-|:------|:--------|
-| 🐚 Bash / Zsh | Command-line and automation scripts |
-| 🧰 Makefile | Project building and compilation |
-| 🧠 C / C++ | Core programming languages |
-| 🐳 Docker | Virtualized environments |
-| 🧩 Git / GitHub | Version control & collaboration |
-| 🧵 Pthreads | Multithreading and concurrency |
-| 🖼️ MiniLibX | 2D graphics rendering for games |
-| ⚙️ Valgrind | Memory leak testing |
-| 🧪 Norminette | Code style checker (42 standard) |
+| Rank | Project | Overview | Language | Status |
+|------|--------|----------|----------|--------|
+| ![R0](https://img.shields.io/badge/R0-%23000000) | [Libft](https://github.com/AlexGRDev/LibFT) | Custom implementation of core libc functions | C | https://img.shields.io/badge/100/100-%2300FF00 |
+| ![R1](https://img.shields.io/badge/R1-%23000000) | [Get Next Line](https://github.com/AlexGRDev/Get-Nex-Line) | Read one line at a time from a file descriptor | C | https://img.shields.io/badge/101/100-%2300FF00 |
+| ![R1](https://img.shields.io/badge/R1-%23000000) | [ft_printf](https://github.com/AlexGRDev/printf) | Reimplementation of printf with format parsing | C | https://img.shields.io/badge/0/100-%23DC143C |
+| ![R1](https://img.shields.io/badge/R1-%23000000) | Born2BeRoot | Basic Linux system administration and security | Bash / Debian | 🔄 |
 
----
+<h2>
+  <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExajgyZXczNzNxenh2MHF5cXpvenY0YTJjaDc4ZzdhY2R6a2szNXFtbyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/jUQHpQ3UjFBfRlQekP/giphy.gif" width="45" />
+  Methodology & Key Concepts
+</h2>
 
-## 💡 General tips for the Common Core
+- Manual memory management and pointer logic  
+- Strict coding standards (Norminette)  
+- Makefile-based build systems  
+- Unix file descriptors and processes  
+- Debugging and testing with Valgrind  
+- Peer-to-peer evaluations  
 
-- ⚖️ **Time management**: do not underestimate “small” projects like `libft` or `ft_printf`. They are the base of almost everything.
-- 📏 **Run Norminette often**: get used to running it regularly, not only at the end.
-- 🧪 **Test more than the subject examples**: empty inputs, `NULL`, large numbers, system errors, etc.
-- 🧼 **Zero leaks**: use `valgrind` from the beginning, not only on the last day.
-- 🤝 **Peer‑evals**: prepare a short explanation of your design and a few quick examples to show.
-- 📚 **Read the whole subject** before coding: many failures come from not reading the constraints carefully.
+<h2>
+  <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExcXMyeGE0NjJlb2MzcGx6NHB5cjZwODVjYzlndmRyODJyaGNsY2kxYiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/LPCbGMd9phguQ8ULbD/giphy.gif" width="45" />
+  Quote
+</h2>
 
----
-
-## 🏁 Setup (clone with submodules)
+> “The best way to learn is to build, break, and rebuild.”  
 
 ```bash
 git clone --recurse-submodules git@github.com:AlexGRDev/42_Master.git
