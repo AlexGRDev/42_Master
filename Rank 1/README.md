@@ -42,7 +42,7 @@ Having a solid Libft will save you a lot of time here.
 | Project | Description | Language | Status |
 |:--------|:------------|:---------|:-------|
 | **[ft_printf](https://github.com/AlexGRDev/printf)** | Custom implementation of a subset of `printf`. | C | In Progress |
-| **Get Next Line** | Read a line from a file descriptor, one call at a time. | C | In Progress |
+| **Get Next Line (https://github.com/AlexGRDev/Get-Nex-Line)** | Read a line from a file descriptor, one call at a time. | C | In Progress |
 | **Born2beroot** | Configure and harden a Debian-based virtual machine. | Bash / Debian | In Progress |
 
 As you complete each project, you can update this table with final status (e.g. `100/100`) and repository links.
