@@ -5,3 +5,4 @@
 *.tmp
 main.c
 ft_putchar.c
+*.o
