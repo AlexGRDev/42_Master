@@ -6,7 +6,7 @@
 /*   By: agarcia2 <agarcia2@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/25 16:38:36 by agarcia2          #+#    #+#             */
-/*   Updated: 2026/01/28 14:52:41 by agarcia2         ###   ########.fr       */
+/*   Updated: 2026/01/28 15:38:52 by agarcia2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,9 @@ typedef struct s_pair
 {
 	int	value;
 	int	pos;
+	int	i;
+	int	j;
+	int	k;
 }	t_pair;
 
 typedef struct s_stack
