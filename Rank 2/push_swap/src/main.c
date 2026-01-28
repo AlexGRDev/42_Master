@@ -6,7 +6,7 @@
 /*   By: agarcia2 <agarcia2@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/25 16:44:56 by agarcia2          #+#    #+#             */
-/*   Updated: 2026/01/26 12:07:47 by agarcia2         ###   ########.fr       */
+/*   Updated: 2026/01/28 14:16:10 by agarcia2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ int	main(int argc, char **argv)
 
 	stack.a = NULL;
 	stack.b = NULL;
-
 	if (!parse(argc, argv, &stack))
 		return (1);
 	index = ft_calloc(stack.len_a, sizeof(int));
