@@ -6,7 +6,7 @@
 #    By: agarcia2 <agarcia2@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/25 18:10:40 by agarcia2          #+#    #+#              #
-#    Updated: 2026/01/26 10:41:58 by agarcia2         ###   ########.fr        #
+#    Updated: 2026/01/28 15:52:40 by agarcia2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ SRCS = \
 	src/algo/small/short_2.c \
 	src/algo/small/short_3.c \
 	src/algo/small/short_mid.c \
-	src/algo/small/sort_big.c \
+	src/algo/sort_big.c \
 	src/algo/chunks/chunk_utils.c \
 	src/algo/chunks/chunk_costs.c \
 	src/algo/chunks/chunk_move.c \
