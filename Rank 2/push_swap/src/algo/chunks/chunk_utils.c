@@ -6,15 +6,15 @@
 /*   By: agarcia2 <agarcia2@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/26 08:59:03 by agarcia2          #+#    #+#             */
-/*   Updated: 2026/01/26 11:20:08 by agarcia2         ###   ########.fr       */
+/*   Updated: 2026/01/28 15:21:18 by agarcia2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_chunk *chunk_init(t_stack *s)
+t_chunk	*chunk_init(t_stack *s)
 {
-	t_chunk *c;
+	t_chunk	*c;
 	int		len;
 
 	len = s->len_a;
