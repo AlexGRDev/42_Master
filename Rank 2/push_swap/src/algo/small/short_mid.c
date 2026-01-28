@@ -6,10 +6,9 @@
 /*   By: agarcia2 <agarcia2@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/26 07:39:19 by agarcia2          #+#    #+#             */
-/*   Updated: 2026/01/28 15:22:18 by agarcia2         ###   ########.fr       */
+/*   Updated: 2026/01/28 15:50:37 by agarcia2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "push_swap.h"
 
@@ -51,7 +50,6 @@ static void	push_min(t_stack *s)
 	rotate_to_top(s, pos);
 	pb(s);
 }
-
 
 void	sort_mid(t_stack *s)
 {
