@@ -6,7 +6,7 @@
 /*   By: agarcia2 <agarcia2@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/25 19:45:55 by agarcia2          #+#    #+#             */
-/*   Updated: 2026/01/26 09:18:43 by agarcia2         ###   ########.fr       */
+/*   Updated: 2026/01/28 15:49:14 by agarcia2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	error_free(char **args)
 
 char	*ft_strjoin_free(char *s1, char *s2)
 {
-	char *join;
+	char	*join;
 
 	if (!s1 || !s2)
 		return (NULL);
@@ -45,7 +45,7 @@ void	free_args(char **args)
 	int	i;
 
 	if (!args)
-		return;
+		return ;
 	i = 0;
 	while (args[i])
 	{
@@ -58,7 +58,7 @@ void	free_args(char **args)
 void	free_chunks(t_chunk *c)
 {
 	if (!c)
-		return;
+		return ;
 	free(c->cheap);
 	free(c->cost);
 	free(c->cost_a);
