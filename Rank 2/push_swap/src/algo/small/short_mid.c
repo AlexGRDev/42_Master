@@ -6,7 +6,7 @@
 /*   By: agarcia2 <agarcia2@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/26 07:39:19 by agarcia2          #+#    #+#             */
-/*   Updated: 2026/01/26 08:40:27 by agarcia2         ###   ########.fr       */
+/*   Updated: 2026/01/28 15:22:18 by agarcia2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ static int	find_min_pos(t_stack *s)
 	return (pos);
 }
 
-
 static void	rotate_to_top(t_stack *s, int pos)
 {
 	if (pos <= s->len_a / 2)
@@ -43,7 +42,6 @@ static void	rotate_to_top(t_stack *s, int pos)
 			rra(s);
 	}
 }
-
 
 static void	push_min(t_stack *s)
 {
