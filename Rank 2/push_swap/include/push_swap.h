@@ -6,7 +6,7 @@
 /*   By: agarcia2 <agarcia2@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/25 16:38:36 by agarcia2          #+#    #+#             */
-/*   Updated: 2026/02/03 00:28:05 by agarcia2         ###   ########.fr       */
+/*   Updated: 2026/02/03 15:57:32 by agarcia2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	ps_clean_spaces(char *s);
 int		ps_validate(char **args);
 int		ps_count(char **args);
 int		ps_init_stack(t_stack *stack, int len);
-void ps_args_to_stack(t_stack *stack, char **args);
+void	ps_args_to_stack(t_stack *stack, char **args);
 void	ps_free_args(char **args);
 
 char	*ft_strjoin_free(char *s1, char *s2);

@@ -6,17 +6,17 @@
 /*   By: agarcia2 <agarcia2@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/26 09:00:19 by agarcia2          #+#    #+#             */
-/*   Updated: 2026/02/03 00:34:56 by agarcia2         ###   ########.fr       */
+/*   Updated: 2026/02/03 16:00:34 by agarcia2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void chunk_do_cheapest_move(t_chunk *c, t_stack *s)
+void	chunk_do_cheapest_move(t_chunk *c, t_stack *s)
 {
-	int id;
-	int a;
-	int b;
+	int	id;
+	int	a;
+	int	b;
 
 	id = find_cheapest(c, s);
 	a = c->cost_a[id];

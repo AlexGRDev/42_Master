@@ -6,7 +6,7 @@
 /*   By: agarcia2 <agarcia2@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/25 19:22:39 by agarcia2          #+#    #+#             */
-/*   Updated: 2026/02/03 00:28:52 by agarcia2         ###   ########.fr       */
+/*   Updated: 2026/02/03 16:11:50 by agarcia2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,14 @@ int	ps_count(char **args)
 	return (n);
 }
 
-void ps_args_to_stack(t_stack *stack, char **args)
+void	ps_args_to_stack(t_stack *stack, char **args)
 {
 	int	i;
 
 	i = 0;
 	while (args[i])
 	{
-		stack->a[i]= ft_atoi(args[i]);
+		stack->a[i] = ft_atoi(args[i]);
 		stack->original[i] = stack->a[i];
 		i++;
 	}
@@ -38,7 +38,7 @@ void ps_args_to_stack(t_stack *stack, char **args)
 int	ps_init_stack(t_stack *st, int len)
 {
 	st->a = ft_calloc(len, sizeof(int));
-	st->original =ft_calloc(len, sizeof(stack_t));
+	st->original = ft_calloc(len, sizeof(int));
 	if (!st->a)
 		return (0);
 	st->b = ft_calloc(len, sizeof(int));

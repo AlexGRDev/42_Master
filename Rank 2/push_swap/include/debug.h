@@ -6,14 +6,14 @@
 /*   By: agarcia2 <agarcia2@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/02 20:14:43 by agarcia2          #+#    #+#             */
-/*   Updated: 2026/02/02 20:15:19 by agarcia2         ###   ########.fr       */
+/*   Updated: 2026/02/03 15:57:53 by agarcia2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef DEBUG_H
 # define DEBUG_H
 
-#include "push_swap.h"
+# include "push_swap.h"
 
 void	debug_print_stacks(t_stack *s, char *msg);
 int		debug_is_sorted(t_stack *s);

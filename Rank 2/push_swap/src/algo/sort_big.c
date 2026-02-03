@@ -6,16 +6,16 @@
 /*   By: agarcia2 <agarcia2@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/26 00:03:39 by agarcia2          #+#    #+#             */
-/*   Updated: 2026/02/03 00:45:35 by agarcia2         ###   ########.fr       */
+/*   Updated: 2026/02/03 15:59:22 by agarcia2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void push_chunks_to_b(t_stack *s)
+void	push_chunks_to_b(t_stack *s)
 {
-	int chunk;
-	int count;
+	int	chunk;
+	int	count;
 
 	chunk = get_chunk_size(s->len_a);
 	count = 0;
@@ -28,10 +28,10 @@ void push_chunks_to_b(t_stack *s)
 	}
 }
 
-static int find_min_position(t_stack *s)
+static int	find_min_position(t_stack *s)
 {
-	int i;
-	int pos;
+	int	i;
+	int	pos;
 
 	i = 0;
 	pos = 0;
@@ -44,9 +44,9 @@ static int find_min_position(t_stack *s)
 	return (pos);
 }
 
-static void final_rotate(t_stack *s)
+static void	final_rotate(t_stack *s)
 {
-	int pos;
+	int	pos;
 
 	pos = find_min_position(s);
 	if (pos <= s->len_a / 2)
@@ -57,13 +57,13 @@ static void final_rotate(t_stack *s)
 			rrr(s);
 }
 
-void sort_big(t_stack *s)
+void	sort_big(t_stack *s)
 {
-	t_chunk *c;
+	t_chunk	*c;
 
 	c = chunk_init(s);
 	if (!c)
-		return;
+		return ;
 	push_chunks_to_b(s);
 	sort_3(s);
 	while (s->len_b > 0)

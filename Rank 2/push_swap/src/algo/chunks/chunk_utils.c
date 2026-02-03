@@ -6,16 +6,16 @@
 /*   By: agarcia2 <agarcia2@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/26 08:59:03 by agarcia2          #+#    #+#             */
-/*   Updated: 2026/02/03 00:02:41 by agarcia2         ###   ########.fr       */
+/*   Updated: 2026/02/03 16:02:31 by agarcia2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_chunk *chunk_init(t_stack *s)
+t_chunk	*chunk_init(t_stack *s)
 {
-	t_chunk *c;
-	int len;
+	t_chunk	*c;
+	int		len;
 
 	len = s->len_a;
 	c = malloc(sizeof(t_chunk));
@@ -28,14 +28,15 @@ t_chunk *chunk_init(t_stack *s)
 	c->move = ft_calloc(len, sizeof(int));
 	c->pos = ft_calloc(len, sizeof(int));
 	c->target = ft_calloc(len, sizeof(int));
-	if (!c->cheap || !c->cost || !c->cost_a || !c->cost_b || !c->move || !c->pos || !c->target)
+	if (!c->cheap || !c->cost || !c->cost_a
+		|| !c->cost_b || !c->move || !c->pos || !c->target)
 		return (NULL);
 	return (c);
 }
 
-void chunk_calc_positions(t_chunk *c, t_stack *s)
+void	chunk_calc_positions(t_chunk *c, t_stack *s)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < s->len_b)
@@ -45,11 +46,11 @@ void chunk_calc_positions(t_chunk *c, t_stack *s)
 	}
 }
 
-static int get_pos_after_max(t_stack *s)
+static int	get_pos_after_max(t_stack *s)
 {
-	int i;
-	int max;
-	int pos;
+	int	i;
+	int	max;
+	int	pos;
 
 	max = s->a[0];
 	pos = 0;
@@ -66,11 +67,11 @@ static int get_pos_after_max(t_stack *s)
 	return ((pos + 1) % s->len_a);
 }
 
-static int find_target_in_a(t_stack *s, int val)
+static int	find_target_in_a(t_stack *s, int val)
 {
-	int i;
-	int best;
-	int pos;
+	int	i;
+	int	best;
+	int	pos;
 
 	best = INT_MAX;
 	pos = -1;
@@ -89,9 +90,9 @@ static int find_target_in_a(t_stack *s, int val)
 	return (pos);
 }
 
-void chunk_calc_target(t_chunk *c, t_stack *s)
+void	chunk_calc_target(t_chunk *c, t_stack *s)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < s->len_b)
