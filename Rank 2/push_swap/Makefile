@@ -6,10 +6,9 @@
 #    By: agarcia2 <agarcia2@student.42barcelona.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/25 18:10:40 by agarcia2          #+#    #+#              #
-#    Updated: 2026/01/28 15:52:40 by agarcia2         ###   ########.fr        #
+#    Updated: 2026/02/02 20:18:46 by agarcia2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-
 
 NAME        = push_swap
 CC          = cc
@@ -46,16 +45,33 @@ SRCS = \
 	src/movements/reverse_rotate/rrb.c \
 	src/movements/reverse_rotate/rrr.c
 
+DEBUG_SRCS = src/debug/debug.c
+DEBUG_OBJS = $(DEBUG_SRCS:.c=.o)
+
 OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)
+
 $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) $(INCLUDE) $(OBJS) $(LIBFT) -o $(NAME)
+
 %.o: %.c
 	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
+
+# ============================
+#   COMPILACIÓN CON DEBUG
+# ============================
+
+debug: CFLAGS += -DDEBUG
+debug: $(OBJS) $(DEBUG_OBJS)
+	$(CC) $(CFLAGS) $(INCLUDE) $(OBJS) $(DEBUG_OBJS) $(LIBFT) -o $(NAME)
+
 clean:
-	rm -f $(OBJS)
+	rm -f $(OBJS) $(DEBUG_OBJS)
+
 fclean: clean
 	rm -f $(NAME)
+
 re: fclean all
-.PHONY: all clean fclean re
+
+.PHONY: all clean fclean re debug

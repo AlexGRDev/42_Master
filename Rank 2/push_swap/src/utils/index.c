@@ -6,7 +6,7 @@
 /*   By: agarcia2 <agarcia2@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/26 08:02:57 by agarcia2          #+#    #+#             */
-/*   Updated: 2026/01/28 15:46:12 by agarcia2         ###   ########.fr       */
+/*   Updated: 2026/02/03 00:00:14 by agarcia2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,24 +53,24 @@ static void	merge_sort(t_pair *arr, int left, int right)
 	merge(arr, left, mid, right);
 }
 
-void	assign_index(t_stack *s, int *index)
+void	assign_index(t_stack *stack, int *index)
 {
 	t_pair	*tmp;
 	int		i;
 
-	tmp = malloc(sizeof(t_pair) * s->len_a);
+	tmp = malloc(sizeof(t_pair) * stack->len_a);
 	if (!tmp)
 		return ;
 	i = 0;
-	while (i < s->len_a)
+	while (i < stack->len_a)
 	{
-		tmp[i].value = s->a[i];
+		tmp[i].value = stack->a[i];
 		tmp[i].pos = i;
 		i++;
 	}
-	merge_sort(tmp, 0, s->len_a - 1);
+	merge_sort(tmp, 0, stack->len_a - 1);
 	i = 0;
-	while (i < s->len_a)
+	while (i < stack->len_a)
 	{
 		index[tmp[i].pos] = i;
 		i++;

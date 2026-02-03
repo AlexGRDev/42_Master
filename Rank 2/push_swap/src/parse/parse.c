@@ -6,7 +6,7 @@
 /*   By: agarcia2 <agarcia2@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/25 17:06:25 by agarcia2          #+#    #+#             */
-/*   Updated: 2026/01/26 00:58:57 by agarcia2         ###   ########.fr       */
+/*   Updated: 2026/02/03 00:27:43 by agarcia2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	parse(int argc, char **argv, t_stack *stack)
 	len = ps_count(args);
 	if (!ps_init_stack(stack, len))
 		return (ps_free_args(args), 0);
-	ps_args_to_stack(stack->a, args);
+	ps_args_to_stack(stack, args);
 	stack->len_a = len;
 	stack->len_b = 0;
 	ps_free_args(args);
