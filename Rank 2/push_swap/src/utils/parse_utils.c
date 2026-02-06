@@ -6,11 +6,25 @@
 /*   By: agarcia2 <agarcia2@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/25 19:22:39 by agarcia2          #+#    #+#             */
-/*   Updated: 2026/02/03 16:11:50 by agarcia2         ###   ########.fr       */
+/*   Updated: 2026/02/06 16:09:24 by agarcia2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int	ps_is_sorted(t_stack *st)
+{
+	int i;
+
+	i = 0;
+	while (i < st->len_a - 1)
+	{
+		if (st->a[i] > st->a[i + 1])
+		return (0);
+		i++;
+	}
+	return (1);
+}
 
 int	ps_count(char **args)
 {

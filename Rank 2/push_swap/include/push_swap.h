@@ -6,7 +6,7 @@
 /*   By: agarcia2 <agarcia2@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/25 16:38:36 by agarcia2          #+#    #+#             */
-/*   Updated: 2026/02/03 15:57:32 by agarcia2         ###   ########.fr       */
+/*   Updated: 2026/02/06 16:09:39 by agarcia2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ typedef struct s_chunk
 }	t_chunk;
 
 int		parse(int argc, char **argv, t_stack *stack);
+int		ps_is_sorted(t_stack *st);
 char	**ps_prepare_args(int argc, char **argv);
 char	**ps_clean_empty(char **args);
 void	ps_clean_spaces(char *s);

@@ -6,11 +6,27 @@
 /*   By: agarcia2 <agarcia2@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/26 00:41:57 by agarcia2          #+#    #+#             */
-/*   Updated: 2026/01/26 01:00:53 by agarcia2         ###   ########.fr       */
+/*   Updated: 2026/02/06 16:01:47 by agarcia2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+
+static int	ps_has_empty_arg(int argc, char **argv)
+{
+	int	i;
+
+	i = 1;
+	while (i < argc)
+	{
+		if (argv[i][0] == '\0')
+		return (1);
+		i++;
+	}
+	return (0);
+}
+
 
 static char	*ps_join_all(int argc, char **argv)
 {
@@ -39,6 +55,8 @@ char	**ps_prepare_args(int argc, char **argv)
 	char	*line;
 	char	**args;
 
+	if (argc > 2 && ps_has_empty_arg(argc, argv))
+		return (NULL);
 	if (argc == 2)
 	{
 		line = ft_strdup(argv[1]);
