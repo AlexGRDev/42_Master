@@ -6,7 +6,7 @@
 /*   By: agarcia2 <agarcia2@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/26 08:59:48 by agarcia2          #+#    #+#             */
-/*   Updated: 2026/02/02 20:36:14 by agarcia2         ###   ########.fr       */
+/*   Updated: 2026/02/08 13:06:28 by agarcia2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,38 +21,42 @@ static int	abs_val(int n)
 
 static int	calc_rot_cost(int index, int len)
 {
-	if (index <= len / 2)
+	int	mid;
+
+	if (index < 0)
+		return (0);
+	mid = len / 2;
+	if (index <= mid)
 		return (index);
-	else
-		return (index - len);
+	return (index - len);
 }
 
-static int	calc_final_cost(int cost_a, int cost_b)
+static int	calc_final_cost(int a, int b)
 {
-	if ((cost_a > 0 && cost_b > 0) || (cost_a < 0 && cost_b < 0))
+	int	abs_a;
+	int	abs_b;
+
+	abs_a = abs_val(a);
+	abs_b = abs_val(b);
+	if ((a >= 0 && b >= 0) || (a <= 0 && b <= 0))
 	{
-		if (abs_val(cost_a) > abs_val(cost_b))
-			return (abs_val(cost_a));
+		if (abs_a > abs_b)
+			return (abs_a);
 		else
-			return (abs_val(cost_b));
+			return (abs_b);
 	}
-	else
-		return (abs_val(cost_a) + abs_val(cost_b));
+	return (abs_a + abs_b);
 }
 
 void	chunk_calc_costs(t_chunk *c, t_stack *s)
 {
 	int	i;
-	int	a;
-	int	b;
 
 	i = 0;
 	while (i < s->len_b)
 	{
-		a = c->target[i];
-		b = c->pos[i];
-		c->cost_a[i] = calc_rot_cost(a, s->len_a);
-		c->cost_b[i] = calc_rot_cost(b, s->len_b);
+		c->cost_a[i] = calc_rot_cost(c->target[i], s->len_a);
+		c->cost_b[i] = calc_rot_cost(c->pos[i], s->len_b);
 		c->cost[i] = calc_final_cost(c->cost_a[i], c->cost_b[i]);
 		i++;
 	}

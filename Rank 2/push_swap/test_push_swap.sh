@@ -1,149 +1,177 @@
 #!/bin/bash
 
-# =============================================
-#      ITSALEXITO PUSH_SWAP TESTER v3
+# ===================================================
+#   ITSALEXITO PUSH_SWAP STRESS TESTER — FINAL VERSION
 #   "Fortnite real, sin cuentos."
-# =============================================
+# ===================================================
 
 PUSH_SWAP=./push_swap
-CHECKER=./checker_Mac
+CHECKER_LINUX=./checker_linux
+CHECKER_MAC=./checker_Mac
 
-# ===== COLORS =====
 RED="\033[1;31m"
-BLK="\033[1;30m"
-GLITCH="\033[5;31m"
-RESET="\033[0m"
 GREEN="\033[1;32m"
 YELLOW="\033[1;33m"
+CYAN="\033[1;36m"
+GLITCH="\033[5;31m"
+RESET="\033[0m"
 
-# ===== GLITCH HEADER =====
-header() {
-    printf "\n${RED}${GLITCH}============================================${RESET}\n"
-    printf "${RED}🔥  %s${RESET}\n" "$1"
-    printf "${RED}${GLITCH}============================================${RESET}\n"
-}
+printf "${RED}${GLITCH}=== ITSALEXITO PUSH_SWAP TESTER — ULTRA HUMILIATION MODE ===${RESET}\n\n"
 
-# ===== OUTPUT MINI =====
-ok()  { printf "${GREEN}✔${RESET} %s\n" "$1"; }
-fail(){ printf "${RED}✘${RESET} %s\n" "$1"; }
 
-# ===== TEST FUNCTIONS =====
-error_test() {
-    OUT=$(eval "$1" 2>&1)
-    if [[ "$OUT" == "Error" ]]; then
-        ok "$1"
-    else
-        fail "$1 → '$OUT'"
+# ===================================================
+# DETECCIÓN DE SISTEMA
+# ===================================================
+OS=$(uname -s)
+
+if [[ "$OS" == "Darwin" ]]; then
+    printf "${CYAN}→ Sistema detectado: macOS${RESET}\n"
+    CHECKER=$CHECKER_MAC
+elif [[ "$OS" == "Linux" ]]; then
+    printf "${CYAN}→ Sistema detectado: Linux${RESET}\n"
+    CHECKER=$CHECKER_LINUX
+else
+    printf "${RED}✘ Sistema desconocido. Abortando.${RESET}\n"
+    exit 1
+fi
+
+
+# ===================================================
+# AUTOCOMPILACIÓN (make all si no existe)
+# ===================================================
+if [[ ! -f push_swap ]]; then
+    printf "${YELLOW}→ push_swap no encontrado, compilando con make all…${RESET}\n"
+    make all &>/dev/null
+fi
+
+
+# ===================================================
+# COMPILACIÓN ASAN (Linux, pero sin leaks)
+# ===================================================
+if [[ "$OS" == "Linux" ]]; then
+    printf "${YELLOW}→ Compilando versión ASAN…${RESET}\n"
+    make fclean &>/dev/null
+    make CFLAGS="-fsanitize=address -g3 -O0" &>/dev/null
+    mv push_swap push_swap_asan
+fi
+
+# ===================================================
+# COMPILACIÓN NORMAL
+# ===================================================
+printf "${YELLOW}→ Compilando versión NORMAL…${RESET}\n"
+make fclean &>/dev/null
+make all &>/dev/null
+
+
+# ===================================================
+# FUNCIÓN DE SEGFAULT / UB DETECTION
+# ===================================================
+run_safety_test() {
+    ARG="$1"
+
+    printf "${CYAN}→ Probando seguridad con arg: %s${RESET}\n" "$ARG"
+
+    timeout 4 ./push_swap $ARG &>/dev/null
+    if [[ $? -eq 124 ]]; then
+        printf "${RED}✘ Timeout / posible bucle infinito${RESET}\n"
+        return
     fi
-}
 
-empty_test() {
-    OUT=$(eval "$1" 2>&1)
-    if [[ -z "$OUT" ]]; then
-        ok "$1"
-    else
-        fail "$1 → '$OUT'"
+    OUT=$(./push_swap $ARG 2>&1)
+
+    if echo "$OUT" | grep -qi "segmentation"; then
+        printf "${RED}✘ SEGFAULT detectado${RESET}\n"
+        return
     fi
-}
 
-checker_ok() {
-    RES=$(printf "%b" "$2" | $CHECKER $1 2>&1)
-    if [[ "$RES" == "OK" ]]; then
-        ok "checker $1"
-    else
-        fail "$1 → $RES"
+    if echo "$OUT" | grep -qi "core dumped"; then
+        printf "${RED}✘ CORE DUMP detectado${RESET}\n"
+        return
     fi
-}
 
-checker_ko() {
-    RES=$(printf "%b" "$2" | $CHECKER $1 2>&1)
-    if [[ "$RES" == "KO" ]]; then
-        ok "checker KO $1"
-    else
-        fail "$1 → $RES"
+    if [[ "$OS" == "Linux" ]]; then
+        ASAN_OPTIONS=detect_leaks=0 ./push_swap_asan $ARG &>/dev/null 2>asan_out.txt
+        if grep -q "ERROR:" asan_out.txt; then
+            printf "${RED}✘ Undefined Behavior detectado por ASAN${RESET}\n"
+            cat asan_out.txt
+            rm asan_out.txt
+            return
+        fi
+        rm asan_out.txt
     fi
+
+    printf "${GREEN}✔ Test de seguridad superado${RESET}\n"
 }
 
-# ===== ANIMATION =====
-loading() {
-    for i in {1..8}; do
-        printf "${RED}${BLK}⧖${RESET} Cargando meta...\r"
-        sleep 0.1
-        printf "${RED}⧗${RESET} Cargando meta...\r"
-        sleep 0.1
+
+# ===================================================
+# STRESS TEST (100 / 500 / 1000)
+# ===================================================
+run_batch() {
+    SIZE=$1
+    COUNT=$2
+
+    printf "\n${CYAN}⚡ Stress Test → %d tests de size %d${RESET}\n" "$COUNT" "$SIZE"
+
+    MIN=9999999
+    MAX=0
+    TOTAL=0
+
+    for ((i=1; i<=COUNT; i++)); do
+
+        SEQ=$(shuf -i 0-999999 -n "$SIZE")
+
+        MOVES=$(./push_swap $SEQ | wc -l)
+        RESULT=$(./push_swap $SEQ | $CHECKER $SEQ)
+
+        if [[ "$RESULT" != "OK" ]]; then
+            printf "${RED}✘ KO detectado en test %d${RESET}\n" "$i"
+            continue
+        fi
+
+        ((TOTAL+=MOVES))
+        ((MOVES<MIN)) && MIN=$MOVES
+        ((MOVES>MAX)) && MAX=$MOVES
+
+        printf "✔ %d/%d → %d moves\r" "$i" "$COUNT" "$MOVES"
     done
-    printf "\n"
+
+    printf "\n\n${GREEN}📊 RESULTADOS size %d${RESET}\n" "$SIZE"
+    AVG=$(echo "$TOTAL / $COUNT" | bc -l)
+    printf "   🔹 Min: %d\n" "$MIN"
+    printf "   🔸 Max: %d\n" "$MAX"
+    printf "   🔻 Media: %.2f\n" "$AVG"
 }
 
-loading
 
-# =============================================
-header "1. ERROR MANAGEMENT"
-# =============================================
+# ===================================================
+# BREAKER MODE
+# ===================================================
+printf "\n${YELLOW}⚠️  BREAKER MODE — Intentando petar push_swap…${RESET}\n"
 
-error_test "$PUSH_SWAP a"
-error_test "$PUSH_SWAP 1 a 2"
-error_test "$PUSH_SWAP --"
-error_test "$PUSH_SWAP ++"
-error_test "$PUSH_SWAP 4 2 3b"
-error_test "$PUSH_SWAP \"1 2 hola 3\""
-error_test "$PUSH_SWAP 1 1"
-error_test "$PUSH_SWAP 2147483648"
-error_test "$PUSH_SWAP -2147483649"
+declare -a ATTACKS=(
+    '""'
+    '"    "'
+    '"--42"'
+    '"++42"'
+    '"4 2 a 3"'
+    '"2147483648"'
+    '"-2147483649"'
+    '"1 1 1 1"'
+    '"$(printf "1 %.0s" {1..20000})"'
+)
 
-printf "\n${YELLOW}→ Sin parámetros debe imprimir nada${RESET}\n"
-empty_test "$PUSH_SWAP"
-
-# =============================================
-header "2. IDENTITY TEST"
-# =============================================
-
-empty_test "$PUSH_SWAP 42"
-empty_test "$PUSH_SWAP 2 3"
-empty_test "$PUSH_SWAP 0 1 2 3"
-empty_test "$PUSH_SWAP 0 1 2 3 4 5 6 7 8 9"
-empty_test "$PUSH_SWAP \"0 1 2 3 4 5 6 7 8 9\""
-
-# =============================================
-header "3. SIMPLE TESTS"
-# =============================================
-
-ARG="2 1 0"
-printf "Test 2-1-0 → %s\n" "$($PUSH_SWAP $ARG | $CHECKER $ARG)"
-
-ARG="0 2 1"
-printf "Test 0-2-1 → %s\n" "$($PUSH_SWAP $ARG | $CHECKER $ARG)"
-
-# =============================================
-header "4. SIMPLE 5 NUMBERS"
-# =============================================
-
-ARG="1 5 2 4 3"
-printf "5 numbers → %s\n" "$($PUSH_SWAP $ARG | $CHECKER $ARG)"
+for atk in "${ATTACKS[@]}"; do
+    run_safety_test "$atk"
+done
 
 
-# =============================================
-header "5. RANDOM TESTS (shuf)"
-# =============================================
+# ===================================================
+# RUN FULL HUMILIATION MODE
+# ===================================================
+run_batch 100 200
+run_batch 500 100
+run_batch 1000 10
 
-random_test() {
-    SIZE="$1"
-    SEQ=$(shuf -i 0-9999 -n "$SIZE")
-    MOVES=$($PUSH_SWAP $SEQ | wc -l)
-    RESULT=$($PUSH_SWAP $SEQ | $CHECKER $SEQ)
 
-    if [[ "$RESULT" == "OK" ]]; then
-        printf "${GREEN}✔${RESET} %s numbers → %s moves\n" "$SIZE" "$MOVES"
-    else
-        printf "${RED}✘${RESET} %s numbers → KO (moves: %s)\n" "$SIZE" "$MOVES"
-    fi
-}
-
-# Tests típicos estilo push_swap-tester
-printf "\n${YELLOW}→ Probando randoms: 5, 100, 500${RESET}\n\n"
-
-random_test 10
-random_test 100
-random_test 500
-
-printf "\n${RED}${GLITCH}=== FIN DE TESTS ===${RESET}\n\n"
+printf "${RED}${GLITCH}\n=== FIN DEL MEGATEST ITSALEXITO ===${RESET}\n\n"

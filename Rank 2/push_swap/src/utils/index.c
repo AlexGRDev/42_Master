@@ -6,7 +6,7 @@
 /*   By: agarcia2 <agarcia2@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/26 08:02:57 by agarcia2          #+#    #+#             */
-/*   Updated: 2026/02/03 00:00:14 by agarcia2         ###   ########.fr       */
+/*   Updated: 2026/02/08 12:54:13 by agarcia2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,19 +19,14 @@ static void	merge(t_pair *arr, int left, int mid, int right)
 	int		k;
 	t_pair	*tmp;
 
-	i = left;
-	j = mid + 1;
-	k = 0;
 	tmp = malloc(sizeof(t_pair) * (right - left + 1));
 	if (!tmp)
 		return ;
+	i = left;
+	j = mid + 1;
+	k = 0;
 	while (i <= mid && j <= right)
-	{
-		if (arr[i].value < arr[j].value)
-			tmp[k++] = arr[i++];
-		else
-			tmp[k++] = arr[j++];
-	}
+		tmp[k++] = (arr[i].value < arr[j].value) ? arr[i++] : arr[j++];
 	while (i <= mid)
 		tmp[k++] = arr[i++];
 	while (j <= right)
@@ -61,19 +56,15 @@ void	assign_index(t_stack *stack, int *index)
 	tmp = malloc(sizeof(t_pair) * stack->len_a);
 	if (!tmp)
 		return ;
-	i = 0;
-	while (i < stack->len_a)
+	i = -1;
+	while (++i < stack->len_a)
 	{
 		tmp[i].value = stack->a[i];
 		tmp[i].pos = i;
-		i++;
 	}
 	merge_sort(tmp, 0, stack->len_a - 1);
-	i = 0;
-	while (i < stack->len_a)
-	{
+	i = -1;
+	while (++i < stack->len_a)
 		index[tmp[i].pos] = i;
-		i++;
-	}
 	free(tmp);
 }

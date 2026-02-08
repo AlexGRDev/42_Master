@@ -6,7 +6,7 @@
 /*   By: agarcia2 <agarcia2@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/26 00:03:39 by agarcia2          #+#    #+#             */
-/*   Updated: 2026/02/03 15:59:22 by agarcia2         ###   ########.fr       */
+/*   Updated: 2026/02/08 13:06:10 by agarcia2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,19 @@ void	push_chunks_to_b(t_stack *s)
 {
 	int	chunk;
 	int	count;
+	int	median;
 
 	chunk = get_chunk_size(s->len_a);
 	count = 0;
+	median = (s->len_a + s->len_b) / 2;
 	while (s->len_a > 3)
 	{
+		pb(s);
+		if (s->b[0] > median)
+			rb(s);
+		count++;
 		if (count == chunk)
 			count = 0;
-		pb(s);
-		count++;
 	}
 }
 
