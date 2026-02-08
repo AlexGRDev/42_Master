@@ -6,7 +6,7 @@
 /*   By: agarcia2 <agarcia2@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/25 16:44:56 by agarcia2          #+#    #+#             */
-/*   Updated: 2026/02/06 16:04:07 by agarcia2         ###   ########.fr       */
+/*   Updated: 2026/02/08 16:36:58 by agarcia2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,10 @@ static int	ps_exit_if_sorted(t_stack *st)
 	return (0);
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	t_stack	stack;
-	int	*index;
+	int		*index;
 
 	if (argc < 2)
 		return (0);
@@ -49,4 +49,3 @@ int main(int argc, char **argv)
 	free(stack.original);
 	return (0);
 }
-

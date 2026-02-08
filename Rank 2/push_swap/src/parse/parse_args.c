@@ -6,12 +6,11 @@
 /*   By: agarcia2 <agarcia2@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/26 00:41:57 by agarcia2          #+#    #+#             */
-/*   Updated: 2026/02/06 16:01:47 by agarcia2         ###   ########.fr       */
+/*   Updated: 2026/02/08 16:36:46 by agarcia2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
 
 static int	ps_has_empty_arg(int argc, char **argv)
 {
@@ -21,12 +20,11 @@ static int	ps_has_empty_arg(int argc, char **argv)
 	while (i < argc)
 	{
 		if (argv[i][0] == '\0')
-		return (1);
+			return (1);
 		i++;
 	}
 	return (0);
 }
-
 
 static char	*ps_join_all(int argc, char **argv)
 {
