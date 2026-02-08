@@ -18,7 +18,6 @@ RESET="\033[0m"
 
 printf "${RED}${GLITCH}=== ITSALEXITO PUSH_SWAP TESTER — ULTRA HUMILIATION MODE ===${RESET}\n\n"
 
-
 # ===================================================
 # DETECCIÓN DE SISTEMA
 # ===================================================
@@ -27,48 +26,43 @@ OS=$(uname -s)
 if [[ "$OS" == "Darwin" ]]; then
     printf "${CYAN}→ Sistema detectado: macOS${RESET}\n"
     CHECKER=$CHECKER_MAC
+
 elif [[ "$OS" == "Linux" ]]; then
     printf "${CYAN}→ Sistema detectado: Linux${RESET}\n"
     CHECKER=$CHECKER_LINUX
+
 else
     printf "${RED}✘ Sistema desconocido. Abortando.${RESET}\n"
     exit 1
 fi
 
-
 # ===================================================
-# AUTOCOMPILACIÓN (make all si no existe)
+# AUTOCOMPILACIÓN
 # ===================================================
 if [[ ! -f push_swap ]]; then
     printf "${YELLOW}→ push_swap no encontrado, compilando con make all…${RESET}\n"
     make all &>/dev/null
 fi
 
-
 # ===================================================
-# COMPILACIÓN ASAN (Linux, pero sin leaks)
+# COMPILACIÓN ASAN (solo Linux)
 # ===================================================
 if [[ "$OS" == "Linux" ]]; then
-    printf "${YELLOW}→ Compilando versión ASAN…${RESET}\n"
+    printf "${YELLOW}→ Compilando versión ASAN (Linux)…${RESET}\n"
     make fclean &>/dev/null
-    make CFLAGS="-fsanitize=address -g3 -O0" &>/dev/null
+    make CFLAGS="-fsanitize=address -g3 -O0 -fno-omit-frame-pointer" &>/dev/null
     mv push_swap push_swap_asan
 fi
 
-# ===================================================
-# COMPILACIÓN NORMAL
-# ===================================================
 printf "${YELLOW}→ Compilando versión NORMAL…${RESET}\n"
 make fclean &>/dev/null
 make all &>/dev/null
 
-
 # ===================================================
-# FUNCIÓN DE SEGFAULT / UB DETECTION
+# SEGURIDAD + UB TESTER
 # ===================================================
 run_safety_test() {
     ARG="$1"
-
     printf "${CYAN}→ Probando seguridad con arg: %s${RESET}\n" "$ARG"
 
     timeout 4 ./push_swap $ARG &>/dev/null
@@ -103,9 +97,8 @@ run_safety_test() {
     printf "${GREEN}✔ Test de seguridad superado${RESET}\n"
 }
 
-
 # ===================================================
-# STRESS TEST (100 / 500 / 1000)
+# STRESS TEST (100 / 500 / 1000) + TIEMPO RESTANTE
 # ===================================================
 run_batch() {
     SIZE=$1
@@ -117,9 +110,12 @@ run_batch() {
     MAX=0
     TOTAL=0
 
+    START_TIME=$(date +%s)
+
     for ((i=1; i<=COUNT; i++)); do
 
-        SEQ=$(shuf -i 0-999999 -n "$SIZE")
+        # LISTA PERFECTA ÚNICA
+        SEQ=$(seq 0 $((SIZE-1)) | shuf | tr '\n' ' ')
 
         MOVES=$(./push_swap $SEQ | wc -l)
         RESULT=$(./push_swap $SEQ | $CHECKER $SEQ)
@@ -133,7 +129,21 @@ run_batch() {
         ((MOVES<MIN)) && MIN=$MOVES
         ((MOVES>MAX)) && MAX=$MOVES
 
-        printf "✔ %d/%d → %d moves\r" "$i" "$COUNT" "$MOVES"
+        # ======================
+        # CALCULO TIEMPO RESTANTE
+        # ======================
+        NOW=$(date +%s)
+        ELAPSED=$((NOW - START_TIME))
+        AVERAGE_TIME=$(echo "$ELAPSED / $i" | bc -l)
+        REMAINING_TESTS=$((COUNT - i))
+        REMAINING_SECONDS=$(printf "%.0f" $(echo "$AVERAGE_TIME * $REMAINING_TESTS" | bc -l))
+
+        H=$((REMAINING_SECONDS/3600))
+        M=$(( (REMAINING_SECONDS%3600)/60 ))
+        S=$((REMAINING_SECONDS%60))
+
+        printf "✔ %d/%d → %d moves | ⏳ %02d:%02d:%02d restando...\r" \
+            "$i" "$COUNT" "$MOVES" "$H" "$M" "$S"
     done
 
     printf "\n\n${GREEN}📊 RESULTADOS size %d${RESET}\n" "$SIZE"
@@ -143,13 +153,12 @@ run_batch() {
     printf "   🔻 Media: %.2f\n" "$AVG"
 }
 
-
 # ===================================================
 # BREAKER MODE
 # ===================================================
-printf "\n${YELLOW}⚠️  BREAKER MODE — Intentando petar push_swap…${RESET}\n"
+printf "\n${YELLOW}⚠️ BREAKER MODE — Intentando petar push_swap…${RESET}\n"
 
-declare -a ATTACKS=(
+ATTACKS=(
     '""'
     '"    "'
     '"--42"'
@@ -165,13 +174,11 @@ for atk in "${ATTACKS[@]}"; do
     run_safety_test "$atk"
 done
 
-
 # ===================================================
 # RUN FULL HUMILIATION MODE
 # ===================================================
-run_batch 100 200
-run_batch 500 100
-run_batch 1000 10
-
+run_batch 100 20000
+run_batch 500 800
+run_batch 1000 1000
 
 printf "${RED}${GLITCH}\n=== FIN DEL MEGATEST ITSALEXITO ===${RESET}\n\n"
