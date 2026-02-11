@@ -33,7 +33,7 @@ It is recommended to keep the official subject PDF open during development.
 
 | Project | Description | Language | Status |
 |--------|-------------|----------|--------|
-| ![R0](https://img.shields.io/badge/R0-%23000000) | [Libft](https://github.com/AlexGRDev/42_Master/tree/main/Rank%200/LibFT)                 | Custom implementation of core C library functions              | C         | ![Score](https://img.shields.io/badge/100/100-%2300FF00)   |
+| [Libft](https://github.com/AlexGRDev/42_Master/tree/main/Rank%200/LibFT)  | Reimplementation of core libc functions and additional utilities as a static library. | C | ![Score](https://img.shields.io/badge/100/100-%2300FF00) |
 
 ---
 
