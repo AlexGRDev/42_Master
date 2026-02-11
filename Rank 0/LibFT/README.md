@@ -40,7 +40,7 @@ Useful for validating memory-related behavior when sanitizers are not used.
 
 [42 Project Subject official PDF](http://cdn.intra.42.fr/pdf/pdf/198341/en.subject.pdf)
 
-Functional requirements, mandatory functions, and project rules.
+------------------------------------------------------------------------
 
 ## Use of AI
 
