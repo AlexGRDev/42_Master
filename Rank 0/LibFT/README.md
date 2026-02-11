@@ -1,144 +1,198 @@
-# 🧠 Libft — Custom C Standard Library
+*This project has been created as part of the 42 curriculum by
+agarcia2.*
 
-> 42 Barcelona — **Libft** project (Rank 0).  
-> A small, self‑contained implementation of core C standard library functions plus extra utilities.
+# Libft
 
----
+## Description
 
-## 👤 Who is this README for?
+Libft is the first foundational project in the 42 curriculum.\
+Its purpose is to reimplement essential functions from the C standard
+library, as well as additional utilities that will be reused throughout
+future projects.\
+The goal is to build a robust understanding of memory management, string
+manipulation, pointers, and low-level logic by recreating these tools
+from scratch.
 
-- 42 students doing **Libft** (Rank 0) for the first time.  
-- People who want a **practical overview** of the project before diving into the subject.  
-- Anyone who already passed Libft and wants a **quick recap** of what the project contains.
+This repository contains the full implementation of the mandatory part
+of the project, following all technical and Norm requirements.
 
----
+------------------------------------------------------------------------
 
-## 🗺️ How to use this project
+# Instructions
 
-- Read this file together with the **official Libft subject**.  
-- Use the sections below to understand the **big picture**: what the library contains, how to build it, and how to test it.  
-- Come back here during the project as a reminder of the **goals and expectations**.
+## Compilation
 
----
+The project provides a `Makefile` with the mandatory rules:
 
-## 📚 Overview
+-   `$(NAME)`
+-   `all`
+-   `clean`
+-   `fclean`
+-   `re`
 
-This directory contains the **Libft** project, the first mandatory assignment in the 42 Common Core.  
-The goal is to re‑implement part of the C standard library and a set of extra helpers that will be
-reused in many later projects (`ft_printf`, `get_next_line`, `push_swap`, etc.).
+The static library produced is:
 
-Key ideas:
+    libft.a
 
-- Work directly with **pointers**, **arrays**, and **manual memory management**.
-- Understand how common libc functions behave, including edge cases.
-- Build a **static library** (`libft.a`) that you can link against from any C program.
+All `.c` files must compile with the following flags:
 
----
+    -Wall -Wextra -Werror
 
-## 👣 If this is your first C project
+The use of `ar` is required for creating the library.\
+The use of `libtool` is forbidden.
 
-1. **Read the full Libft subject** once without coding.  
-2. Start with the **simplest functions** (character checks, `ft_strlen`, etc.).  
-3. Write small `main.c` test files for **one function at a time**.  
-4. Do not copy code from the internet: the goal is to learn to **reason in C**.
-5. When something does not work, use `printf` and draw pointers/memory on paper.
+Global variables and unused files are not allowed.
 
----
+------------------------------------------------------------------------
 
-## ⚙️ Build
+# Library Contents
 
-From this `LibFT/` directory:
+A complete description of all mandatory functions included in this
+library.
 
-```bash
-make            # Build libft.a
-make clean      # Remove object files
-make fclean     # Remove object files and libft.a
-make re         # Full rebuild
+## Part 1 --- Libc Functions
+
+Reimplemented to behave exactly like their original counterparts (except
+being prefixed with `ft_`):
+
+### Character classification
+
+-   `ft_isalpha`
+-   `ft_isdigit`
+-   `ft_isalnum`
+-   `ft_isascii`
+-   `ft_isprint`
+
+(Return `1` if true, `0` if false.)
+
+### Memory
+
+-   `ft_memset`
+-   `ft_bzero`
+-   `ft_memcpy`
+-   `ft_memmove`
+-   `ft_memchr`
+-   `ft_memcmp`
+-   `ft_calloc`\
+    Must return a freeable pointer even when size is zero.
+
+### Strings
+
+-   `ft_strlen`
+-   `ft_strlcpy`
+-   `ft_strlcat`
+-   `ft_strchr`
+-   `ft_strrchr`
+-   `ft_strncmp`
+-   `ft_strnstr`
+-   `ft_strdup`
+-   `ft_atoi`
+
+Note: On glibc systems, `strlcpy` and `strlcat` may require
+`<bsd/string.h>` and `-lbsd` for comparison.
+
+------------------------------------------------------------------------
+
+## Part 2 --- Additional Functions
+
+### String manipulation
+
+-   `ft_substr`
+-   `ft_strjoin`
+-   `ft_strtrim`
+-   `ft_split`
+-   `ft_itoa`
+
+All of these functions allocate memory dynamically and must return
+`NULL` on allocation failure.
+
+### Functional operations
+
+-   `ft_strmapi`
+-   `ft_striteri`
+
+### File descriptor output
+
+-   `ft_putchar_fd`
+-   `ft_putstr_fd`
+-   `ft_putendl_fd`
+-   `ft_putnbr_fd`
+
+------------------------------------------------------------------------
+
+## Part 3 --- Linked List Functions
+
+This section introduces the `t_list` struct:
+
+``` c
+typedef struct s_list
+{
+    void            *content;
+    struct s_list   *next;
+} t_list;
 ```
 
-The build uses `gcc` with:
+List utilities included:
 
-- `-Wall -Wextra -Werror`
+-   `ft_lstnew`
+-   `ft_lstadd_front`
+-   `ft_lstsize`
+-   `ft_lstlast`
+-   `ft_lstadd_back`
+-   `ft_lstdelone`
+-   `ft_lstclear`
+-   `ft_lstiter`
+-   `ft_lstmap`
 
-so the code must compile **without warnings**.
+Memory must be handled correctly, using the provided `del` function
+where required.
 
----
+------------------------------------------------------------------------
 
-## 🧩 Contents
+# Usage
 
-### Part 1 — libc reimplementation
+Example minimal program:
 
-Core functions that mirror the behavior of their standard C counterparts:
-
-- Character checks: `ft_isalpha`, `ft_isdigit`, `ft_isalnum`, `ft_isascii`, `ft_isprint`
-- Case conversion: `ft_toupper`, `ft_tolower`
-- String length: `ft_strlen`
-- Memory: `ft_memset`, `ft_bzero`, `ft_memcpy`, `ft_memmove`, `ft_memchr`, `ft_memcmp`, `ft_calloc`
-- Strings: `ft_strlcpy`, `ft_strlcat`, `ft_strchr`, `ft_strrchr`, `ft_strncmp`, `ft_strnstr`, `ft_strdup`
-- Conversion: `ft_atoi`
-
-These functions are intended to behave like the original libc versions (undefined behavior
-remains undefined, as in the real C library).
-
-### Part 2 — Extra utilities
-
-Higher‑level helpers commonly used across 42 projects:
-
-- String allocation: `ft_substr`, `ft_strjoin`, `ft_strtrim`, `ft_split`, `ft_itoa`
-- Functional-style string processing: `ft_strmapi`, `ft_striteri`
-- File‑descriptor I/O: `ft_putchar_fd`, `ft_putstr_fd`, `ft_putendl_fd`, `ft_putnbr_fd`
-
-These are 42‑specific utilities, designed to be small, predictable building blocks for future work.
-
----
-
-## 🧪 Testing & guarantees
-
-- Part 1 functions have been **manually compared against the standard C library** (`strlen`, `memcmp`,
-  `strncmp`, `strnstr`, `atoi`, etc.) on representative inputs.
-- Edge cases:
-  - `ft_itoa` handles **`INT_MIN`** safely by working internally with a `long`.
-  - `ft_split` handles **empty strings**, strings with only delimiters, and allocation failures
-    without leaking memory.
-- All code is written to comply with **42 Norminette** constraints, including the
-  **25‑line limit per function** (helpers are extracted when necessary).
-
-Local ad‑hoc test programs were used during development but are not kept in the final repository
-so the project tree stays clean for evaluation.
-
----
-
-## 🧪 Tips for Moulinette and oral defense
-
-- Have a small **test program** ready that uses several libft functions (strings, memory, `itoa`, etc.).
-- Be ready to explain **how you manage memory** in functions like `ft_split` or `ft_substr`.
-- Run `valgrind` on your tests before the evaluation.
-- If the evaluator asks you to try a weird case (very long strings, many spaces, etc.), try to **reason out loud** about what should happen.
-
----
-
-## 🔗 Using libft in another project
-
-Example minimal usage from a separate C file:
-
-```c
-#include "LibFT/libft.h"
+``` c
+#include "libft.h"
+#include <stdio.h>
 
 int main(void)
 {
-    char *s = ft_strdup("Hello from libft!\n");
-
-    if (!s)
-        return (1);
-    ft_putstr_fd(s, 1);
-    free(s);
-    return (0);
+    printf("%zu\n", ft_strlen("Hello Libft"));
+    return 0;
 }
 ```
 
-Compile and link against `libft.a` (from the repository root, adjust paths as needed):
+Compile with:
 
-```bash
-cc main.c LibFT/libft.a -o main
-./main
+``` bash
+cc main.c libft.a -o test
 ```
+
+------------------------------------------------------------------------
+
+# Resources
+
+Recommended references:
+
+-   Standard C library documentation
+-   man pages: `malloc`, `free`, `write`
+-   BSD vs glibc differences (for `strlcpy` / `strlcat`)
+
+### AI Usage Statement
+
+AI was used exclusively for: - Documentation clarification\
+- Structuring this README\
+- Improving explanations and formatting
+
+All reasoning, implementation, debugging and testing of the code were
+performed manually.
+
+------------------------------------------------------------------------
+
+# License
+
+This project follows the rules and evaluation guidelines of 42.\
+All functions respect the Norm and must be free of crashes and memory
+leaks.
