@@ -1,198 +1,57 @@
-*This project has been created as part of the 42 curriculum by
-agarcia2.*
+*This project has been created as part of the 42 curriculum by agarcia2.*
 
 # Libft
 
 ## Description
 
-Libft is the first foundational project in the 42 curriculum.\
-Its purpose is to reimplement essential functions from the C standard
-library, as well as additional utilities that will be reused throughout
-future projects.\
-The goal is to build a robust understanding of memory management, string
-manipulation, pointers, and low-level logic by recreating these tools
-from scratch.
-
-This repository contains the full implementation of the mandatory part
-of the project, following all technical and Norm requirements.
+This project is your very first project as a learner at 42. You will need to recode a few functions from the C standard library, as well as some other utility functions that you will use throughout your whole curriculum.
 
 ------------------------------------------------------------------------
+## Instrctions
 
-# Instructions
-
-## Compilation
-
-The project provides a `Makefile` with the mandatory rules:
-
--   `$(NAME)`
--   `all`
--   `clean`
--   `fclean`
--   `re`
-
-The static library produced is:
-
-    libft.a
-
-All `.c` files must compile with the following flags:
-
-    -Wall -Wextra -Werror
-
-The use of `ar` is required for creating the library.\
-The use of `libtool` is forbidden.
-
-Global variables and unused files are not allowed.
-
-------------------------------------------------------------------------
-
-# Library Contents
-
-A complete description of all mandatory functions included in this
-library.
-
-## Part 1 --- Libc Functions
-
-Reimplemented to behave exactly like their original counterparts (except
-being prefixed with `ft_`):
-
-### Character classification
-
--   `ft_isalpha`
--   `ft_isdigit`
--   `ft_isalnum`
--   `ft_isascii`
--   `ft_isprint`
-
-(Return `1` if true, `0` if false.)
-
-### Memory
-
--   `ft_memset`
--   `ft_bzero`
--   `ft_memcpy`
--   `ft_memmove`
--   `ft_memchr`
--   `ft_memcmp`
--   `ft_calloc`\
-    Must return a freeable pointer even when size is zero.
-
-### Strings
-
--   `ft_strlen`
--   `ft_strlcpy`
--   `ft_strlcat`
--   `ft_strchr`
--   `ft_strrchr`
--   `ft_strncmp`
--   `ft_strnstr`
--   `ft_strdup`
--   `ft_atoi`
-
-Note: On glibc systems, `strlcpy` and `strlcat` may require
-`<bsd/string.h>` and `-lbsd` for comparison.
-
-------------------------------------------------------------------------
-
-## Part 2 --- Additional Functions
-
-### String manipulation
-
--   `ft_substr`
--   `ft_strjoin`
--   `ft_strtrim`
--   `ft_split`
--   `ft_itoa`
-
-All of these functions allocate memory dynamically and must return
-`NULL` on allocation failure.
-
-### Functional operations
-
--   `ft_strmapi`
--   `ft_striteri`
-
-### File descriptor output
-
--   `ft_putchar_fd`
--   `ft_putstr_fd`
--   `ft_putendl_fd`
--   `ft_putnbr_fd`
-
-------------------------------------------------------------------------
-
-## Part 3 --- Linked List Functions
-
-This section introduces the `t_list` struct:
-
-``` c
-typedef struct s_list
-{
-    void            *content;
-    struct s_list   *next;
-} t_list;
+```bash
+make all      # compiiles the LibFT
+make asan     # compiles with flags -fsanitize=undefined,address,leak -g3 
+              # Checks: memory leaks, stack/heap buffer overflow, segmentation faults,
+              # undefined behavior, use-after-free, double free, null pointer issues,
+              # signed integer overflows, invalid pointer arithmetic
+make clean    # cleans all .o
+make fclean   # cleans libft.a
 ```
-
-List utilities included:
-
--   `ft_lstnew`
--   `ft_lstadd_front`
--   `ft_lstsize`
--   `ft_lstlast`
--   `ft_lstadd_back`
--   `ft_lstdelone`
--   `ft_lstclear`
--   `ft_lstiter`
--   `ft_lstmap`
-
-Memory must be handled correctly, using the provided `del` function
-where required.
-
-------------------------------------------------------------------------
-
-# Usage
-
-Example minimal program:
-
-``` c
-#include "libft.h"
-#include <stdio.h>
-
-int main(void)
-{
-    printf("%zu\n", ft_strlen("Hello Libft"));
-    return 0;
-}
-```
-
-Compile with:
-
-``` bash
-cc main.c libft.a -o test
+Using LibFT in other projects:
+```bash
+ cc -Wall -Werror -Wextra -I libft.a main.c
 ```
 
 ------------------------------------------------------------------------
+## Resources
 
-# Resources
+C Standard Library Reference (manual pages)
+`man 3 <function>`
+*Example:* `man 3 memset`, `man 3 strlen`, `man 3 calloc`
 
-Recommended references:
+The C Programming Language – Kernighan & Ritchie (K&R)
+Classic reference for understanding the C language and its foundations.
 
--   Standard C library documentation
--   man pages: `malloc`, `free`, `write`
--   BSD vs glibc differences (for `strlcpy` / `strlcat`)
+ISO C90 / C99 Standards (summaries)
+Summaries of type rules, defined/undefined behavior, conversions, and core language specifications.
 
-### AI Usage Statement
+GNU Compiler Collection (GCC) Documentation
+Compiler flags, warnings, optimizations, and sanitizer usage.
 
-AI was used exclusively for: - Documentation clarification\
-- Structuring this README\
-- Improving explanations and formatting
+Valgrind Documentation
+Useful for validating memory-related behavior when sanitizers are not used.
 
-All reasoning, implementation, debugging and testing of the code were
-performed manually.
+42 Project Subject [official PDF](http://cdn.intra.42.fr/pdf/pdf/198341/en.subject.pdf)
 
-------------------------------------------------------------------------
+Functional requirements, mandatory functions, and project rules.
 
-# License
+## Use of AI
 
-This project follows the rules and evaluation guidelines of 42.\
-All functions respect the Norm and must be free of crashes and memory
-leaks.
+AI was used only for the following:
+- Improving and clarifying the wording of the README.
+- Enhancing explanations and documentation style.
+- Reviewing Makefile comments and structure.
+- Providing examples of usage and descriptions.
+
+AI was not used to generate or implement any Libft source code, ensuring full compliance with the 42 School evaluation standards.
