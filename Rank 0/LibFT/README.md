@@ -11,10 +11,6 @@ This project is your very first project as a learner at 42. You will need to rec
 
 ```bash
 make all      # compiiles the LibFT
-make asan     # compiles with flags -fsanitize=undefined,address,leak -g3 
-              # Checks: memory leaks, stack/heap buffer overflow, segmentation faults,
-              # undefined behavior, use-after-free, double free, null pointer issues,
-              # signed integer overflows, invalid pointer arithmetic
 make clean    # cleans all .o
 make fclean   # cleans libft.a
 ```
