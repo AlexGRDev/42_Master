@@ -21,24 +21,24 @@ Using LibFT in other projects:
 
 ------------------------------------------------------------------------
 ## Resources
+[42 Project Subject official PDF](http://cdn.intra.42.fr/pdf/pdf/198341/en.subject.pdf)
 
-C Standard Library Reference (manual pages)
+1. C Standard Library Reference (manual pages)
 `man 3 <function>`
 *Example:* `man 3 memset`, `man 3 strlen`, `man 3 calloc`
 
-The C Programming Language – Kernighan & Ritchie (K&R)
+2. The C Programming Language – Kernighan & Ritchie (K&R)
 Classic reference for understanding the C language and its foundations.
 
-ISO C90 / C99 Standards (summaries)
+3. ISO C90 / C99 Standards (summaries)
 Summaries of type rules, defined/undefined behavior, conversions, and core language specifications.
 
-GNU Compiler Collection (GCC) Documentation
+4. GNU Compiler Collection (GCC) Documentation
 Compiler flags, warnings, optimizations, and sanitizer usage.
 
-Valgrind Documentation
+5. Valgrind Documentation
 Useful for validating memory-related behavior when sanitizers are not used.
 
-[42 Project Subject official PDF](http://cdn.intra.42.fr/pdf/pdf/198341/en.subject.pdf)
 
 ------------------------------------------------------------------------
 
