@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agarcia2 <agarcia2@student.42barcelona.co  +#+  +:+       +#+        */
+/*   By: agarcia2 <agarcia2@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/20 10:04:04 by agarcia2          #+#    #+#             */
-/*   Updated: 2025/11/20 16:20:00 by agarcia2         ###   ########.fr       */
+/*   Updated: 2026/03/24 10:10:18 by agarcia2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ static char	*gnl_realloc_bytes(char *bytes, size_t *cap,
 	if (!new_bytes)
 	{
 		free(bytes);
+		bytes = NULL;
 		return (NULL);
 	}
 	dst = new_bytes;
@@ -66,6 +67,7 @@ static char	*gnl_realloc_bytes(char *bytes, size_t *cap,
 	while (len1--)
 		*dst++ = *src++;
 	free(bytes);
+	bytes = NULL;
 	return (new_bytes);
 }
 
