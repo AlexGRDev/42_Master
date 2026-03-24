@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agarcia2 <agarcia2@student.42barcelona.co  +#+  +:+       +#+        */
+/*   By: agarcia2 <agarcia2@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/20 10:03:53 by agarcia2          #+#    #+#             */
-/*   Updated: 2025/11/20 16:50:30 by agarcia2         ###   ########.fr       */
+/*   Updated: 2026/03/24 12:11:48 by agarcia2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,10 @@ static char	*read_to_bytes(int fd, char *bytes)
 
 	buf = (char *)malloc(BUFFER_SIZE + 1);
 	if (!buf)
+	{
 		return (free(bytes), NULL);
+		bytes = NULL;
+	}
 	cap = ft_strlen_gnl(bytes) + 1;
 	status = 1;
 	while (!ft_strchr_gnl(bytes, '\n') && status > 0)
@@ -42,10 +45,13 @@ static char	*read_to_bytes(int fd, char *bytes)
 	if (status < 0)
 	{
 		free(buf);
+		buf = NULL;
 		free(bytes);
+		bytes = NULL;
 		return (NULL);
 	}
 	free(buf);
+	buf = NULL;
 	return (bytes);
 }
 
@@ -90,6 +96,7 @@ static char	*clean_bytes(char *bytes)
 	if (!nl)
 	{
 		free(bytes);
+		bytes = NULL;
 		return (NULL);
 	}
 	dst = bytes;
