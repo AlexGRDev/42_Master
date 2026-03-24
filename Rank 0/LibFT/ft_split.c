@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agarcia2 <agarcia2@student.42barcelona.co  +#+  +:+       +#+        */
+/*   By: agarcia2 <agarcia2@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/23 10:50:51 by agarcia2          #+#    #+#             */
-/*   Updated: 2025/10/23 11:05:00 by agarcia2         ###   ########.fr       */
+/*   Updated: 2026/03/24 10:07:21 by agarcia2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ static void	*free_all(char **arr)
 	while (*tmp)
 		free(*tmp++);
 	free(arr);
+	arr = NULL;
 	return (NULL);
 }
 
