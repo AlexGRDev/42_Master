@@ -6,7 +6,7 @@
 /*   By: agarcia2 <agarcia2@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/25 19:45:55 by agarcia2          #+#    #+#             */
-/*   Updated: 2026/01/28 15:49:14 by agarcia2         ###   ########.fr       */
+/*   Updated: 2026/03/24 10:21:23 by agarcia2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int	error_free(char **args)
 		i++;
 	}
 	free(args);
+	args = NULL;
 	return (0);
 }
 
@@ -37,6 +38,7 @@ char	*ft_strjoin_free(char *s1, char *s2)
 		return (NULL);
 	join = ft_strjoin(s1, s2);
 	free(s1);
+	s1 = NULL;
 	return (join);
 }
 
@@ -53,6 +55,7 @@ void	free_args(char **args)
 		i++;
 	}
 	free(args);
+	args = NULL;
 }
 
 void	free_chunks(t_chunk *c)
@@ -67,4 +70,5 @@ void	free_chunks(t_chunk *c)
 	free(c->pos);
 	free(c->target);
 	free(c);
+	c = NULL;
 }

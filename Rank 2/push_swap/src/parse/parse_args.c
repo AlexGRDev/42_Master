@@ -6,7 +6,7 @@
 /*   By: agarcia2 <agarcia2@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/26 00:41:57 by agarcia2          #+#    #+#             */
-/*   Updated: 2026/02/08 16:36:46 by agarcia2         ###   ########.fr       */
+/*   Updated: 2026/03/24 10:12:29 by agarcia2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ char	**ps_prepare_args(int argc, char **argv)
 		ps_clean_spaces(line);
 		args = ft_split(line, ' ');
 		free(line);
+		line = NULL;
 		return (args);
 	}
 	line = ps_join_all(argc, argv);
@@ -70,5 +71,6 @@ char	**ps_prepare_args(int argc, char **argv)
 		return (NULL);
 	args = ft_split(line, ' ');
 	free(line);
+	line = NULL;
 	return (args);
 }

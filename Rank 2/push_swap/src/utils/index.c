@@ -6,7 +6,7 @@
 /*   By: agarcia2 <agarcia2@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/26 08:02:57 by agarcia2          #+#    #+#             */
-/*   Updated: 2026/02/08 16:54:42 by agarcia2         ###   ########.fr       */
+/*   Updated: 2026/03/24 10:20:10 by agarcia2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ static void	merge(t_pair *arr, int left, int mid, int right)
 	while (k--)
 		arr[right--] = tmp[k];
 	free(tmp);
+	tmp = NULL;
 }
 
 static void	merge_sort(t_pair *arr, int left, int right)
@@ -76,4 +77,5 @@ void	assign_index(t_stack *stack, int *index)
 		i++;
 	}
 	free(tmp);
+	tmp = NULL;
 }

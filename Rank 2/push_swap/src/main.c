@@ -6,7 +6,7 @@
 /*   By: agarcia2 <agarcia2@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/25 16:44:56 by agarcia2          #+#    #+#             */
-/*   Updated: 2026/02/08 16:36:58 by agarcia2         ###   ########.fr       */
+/*   Updated: 2026/03/24 10:21:34 by agarcia2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ int	main(int argc, char **argv)
 	assign_index(&stack, index);
 	ft_memcpy(stack.a, index, stack.len_a * sizeof(int));
 	free(index);
+	index = NULL;
 	push_swap_sort(&stack);
 	free(stack.a);
 	free(stack.b);

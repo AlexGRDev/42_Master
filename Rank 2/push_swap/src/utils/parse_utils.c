@@ -6,7 +6,7 @@
 /*   By: agarcia2 <agarcia2@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/25 19:22:39 by agarcia2          #+#    #+#             */
-/*   Updated: 2026/02/06 17:13:11 by agarcia2         ###   ########.fr       */
+/*   Updated: 2026/03/24 10:20:29 by agarcia2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,4 +74,5 @@ void	ps_free_args(char **args)
 		i++;
 	}
 	free(args);
+	args = NULL;
 }
