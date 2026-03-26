@@ -6,7 +6,7 @@
 /*   By: agarcia2 <agarcia2@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/20 10:03:53 by agarcia2          #+#    #+#             */
-/*   Updated: 2026/03/24 12:11:48 by agarcia2         ###   ########.fr       */
+/*   Updated: 2026/03/26 13:01:26 by agarcia2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static int	gnl_read_append(int fd, char *buf, char **bytes, size_t *cap)
 {
 	ssize_t	nread;
 
-	nread = read(fd, buf, BUFFER_SIZE);
+	nread = read(fd, buf, BUFFER_SIZE -1);
 	if (nread <= 0)
 		return ((int)nread);
 	*(buf + nread) = '\0';
