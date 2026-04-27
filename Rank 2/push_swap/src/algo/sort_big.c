@@ -14,21 +14,14 @@
 
 void	push_chunks_to_b(t_stack *s)
 {
-	int	chunk;
-	int	count;
 	int	median;
 
-	chunk = get_chunk_size(s->len_a);
-	count = 0;
 	median = (s->len_a + s->len_b) / 2;
 	while (s->len_a > 3)
 	{
 		pb(s);
 		if (s->b[0] > median)
 			rb(s);
-		count++;
-		if (count == chunk)
-			count = 0;
 	}
 }
 

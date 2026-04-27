@@ -12,13 +12,6 @@
 
 #include "push_swap.h"
 
-int	get_chunk_size(int len)
-{
-	if (len <= 100)
-		return (20);
-	return (45);
-}
-
 void	push_swap_sort(t_stack *s)
 {
 	if (s->len_a <= 1)

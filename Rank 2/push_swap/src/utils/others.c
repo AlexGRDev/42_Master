@@ -62,11 +62,9 @@ void	free_chunks(t_chunk *c)
 {
 	if (!c)
 		return ;
-	free(c->cheap);
 	free(c->cost);
 	free(c->cost_a);
 	free(c->cost_b);
-	free(c->move);
 	free(c->pos);
 	free(c->target);
 	free(c);

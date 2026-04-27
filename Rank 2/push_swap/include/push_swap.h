@@ -20,9 +20,6 @@ typedef struct s_pair
 {
 	int	value;
 	int	pos;
-	int	i;
-	int	j;
-	int	k;
 }	t_pair;
 
 typedef struct s_stack
@@ -36,11 +33,9 @@ typedef struct s_stack
 
 typedef struct s_chunk
 {
-	int	*cheap;
 	int	*cost;
 	int	*cost_a;
 	int	*cost_b;
-	int	*move;
 	int	*pos;
 	int	*target;
 }	t_chunk;
@@ -73,7 +68,6 @@ void	rrr(t_stack *s);
 void	sort_2(t_stack *s);
 void	sort_3(t_stack *s);
 
-int		get_chunk_size(int len);
 void	push_chunks_to_b(t_stack *s);
 void	push_swap_sort(t_stack *s);
 

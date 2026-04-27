@@ -21,18 +21,19 @@ int	parse(int argc, char **argv, t_stack *stack)
 		return (0);
 	args = ps_prepare_args(argc, argv);
 	if (!args)
-		return (0);
+		return (write(2, "Error\n", 6), 0);
 	args = ps_clean_empty(args);
 	if (!args)
-		return (0);
+		return (write(2, "Error\n", 6), 0);
 	if (!ps_validate(args))
 		return (ps_free_args(args), 0);
 	len = ps_count(args);
+	if (len == 0)
+		return (write(2, "Error\n", 6), ps_free_args(args), 0);
 	if (!ps_init_stack(stack, len))
 		return (ps_free_args(args), 0);
 	ps_args_to_stack(stack, args);
 	stack->len_a = len;
 	stack->len_b = 0;
-	ps_free_args(args);
-	return (1);
+	return (ps_free_args(args), 1);
 }

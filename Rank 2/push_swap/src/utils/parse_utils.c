@@ -52,12 +52,14 @@ void	ps_args_to_stack(t_stack *stack, char **args)
 int	ps_init_stack(t_stack *st, int len)
 {
 	st->a = ft_calloc(len, sizeof(int));
-	st->original = ft_calloc(len, sizeof(int));
 	if (!st->a)
 		return (0);
 	st->b = ft_calloc(len, sizeof(int));
 	if (!st->b)
 		return (free(st->a), 0);
+	st->original = ft_calloc(len, sizeof(int));
+	if (!st->original)
+		return (free(st->a), free(st->b), 0);
 	return (1);
 }
 

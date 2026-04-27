@@ -18,19 +18,19 @@ t_chunk	*chunk_init(t_stack *s)
 	t_chunk	*c;
 
 	len = s->len_a;
-	c = malloc(sizeof(t_chunk));
+	c = ft_calloc(1, sizeof(t_chunk));
 	if (!c)
 		return (NULL);
-	c->cheap = ft_calloc(len, sizeof(int));
 	c->cost = ft_calloc(len, sizeof(int));
 	c->cost_a = ft_calloc(len, sizeof(int));
 	c->cost_b = ft_calloc(len, sizeof(int));
-	c->move = ft_calloc(len, sizeof(int));
 	c->pos = ft_calloc(len, sizeof(int));
 	c->target = ft_calloc(len, sizeof(int));
-	if (!c->cheap || !c->cost || !c->cost_a || !c->cost_b
-		|| !c->move || !c->pos || !c->target)
+	if (!c->cost || !c->cost_a || !c->cost_b || !c->pos || !c->target)
+	{
+		free_chunks(c);
 		return (NULL);
+	}
 	return (c);
 }
 
