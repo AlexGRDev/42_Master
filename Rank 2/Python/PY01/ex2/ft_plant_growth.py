@@ -1,33 +1,32 @@
 #!/usr/bin/python3
 
-class Plant:
-    def __init__(self: object, name: str, height: float, age: int):
-        self.name = name
-        self.height = height
-        self.age = age
-        self.base_height = None
 
-    def grow(self: object, amount: float):
-        if self.base_height is None:
-            self.base_height = self.height
+class Plant:
+    def __init__(self, name: str, height: float, age: int) -> None:
+        self.name: str = name
+        self.height: float = height
+        self.age: int = age
+        self.base_height: float = height
+
+    def grow(self, amount: float) -> None:
         self.height += amount
 
-    def age_one_day(self: object):
+    def age_one_day(self) -> None:
         self.age += 1
 
-    def __str__(self: object):
+    def __str__(self) -> str:
         return f"{self.name}: {self.height}cm, {self.age} days old"
 
 
-def get_info(plant: object) -> None:
+def get_info(plant: Plant) -> None:
     print(plant)
 
 
 def main() -> int:
-    garden: object
+    garden: Plant
     i: int
     days: int
-    total_growth: None
+    total_growth: float
 
     garden = Plant("Rose", 25, 30)
     i = 0
@@ -40,7 +39,7 @@ def main() -> int:
         i += 1
     total_growth = garden.height - garden.base_height
     print(f"Growth this week: +{total_growth}cm")
-    return (0)
+    return 0
 
 
 if __name__ == '__main__':

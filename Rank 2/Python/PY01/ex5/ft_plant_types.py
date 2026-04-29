@@ -1,8 +1,10 @@
 #!/usr/bin/python3
 
+from typing import Any
+
 
 class Plant:
-    def __init__(self, name: str, height: float, age: int):
+    def __init__(self, name: str, height: float, age: int) -> None:
         self.name: str = name
         self.height: float = height
         self.age: int = age
@@ -12,7 +14,9 @@ class Plant:
 
 
 class Flower(Plant):
-    def __init__(self, name: str, height: float, age: int, color: str):
+    def __init__(
+        self, name: str, height: float, age: int, color: str
+    ) -> None:
         super().__init__(name, height, age)
         self.color: str = color
 
@@ -32,7 +36,7 @@ class Tree(Plant):
         height: float,
         age: int,
         trunk_diameter: float
-    ):
+    ) -> None:
         super().__init__(name, height, age)
         self.trunk_diameter: float = trunk_diameter
 
@@ -54,7 +58,7 @@ class Vegetable(Plant):
         age: int,
         harvest_season: str,
         nutritional_value: str
-    ):
+    ) -> None:
         super().__init__(name, height, age)
         self.harvest_season: str = harvest_season
         self.nutritional_value: str = nutritional_value
@@ -68,26 +72,26 @@ class Vegetable(Plant):
         print(f"{self.name} is rich in {self.nutritional_value}")
 
 
-def load_plants(data: list[dict[str, None]], cls: None) -> None:
+def load_plants(data: list[dict[str, Any]], cls: type[Plant]) -> None:
     i: int
-    p: dict[str, None]
-    obj: None
+    p: dict[str, Any]
+    obj: Plant
 
     i = 0
     while i < len(data):
         p = data[i]
         if cls is Flower:
-            obj = cls(p["name"], p["height"], p["age"], p["color"])
+            obj = Flower(p["name"], p["height"], p["age"], p["color"])
             print("\n")
             print(obj)
             obj.bloom()
         elif cls is Tree:
-            obj = cls(p["name"], p["height"], p["age"], p["trunk"])
+            obj = Tree(p["name"], p["height"], p["age"], p["trunk"])
             print("\n")
             print(obj)
             obj.produce_shade()
         else:
-            obj = cls(
+            obj = Vegetable(
                 p["name"], p["height"], p["age"],
                 p["season"], p["nutrition"]
             )
@@ -98,7 +102,7 @@ def load_plants(data: list[dict[str, None]], cls: None) -> None:
 
 
 def main() -> int:
-    plants: dict[str, list[dict[str, None]]]
+    plants: dict[str, list[dict[str, Any]]]
 
     plants = {
         "flowers": [
@@ -118,7 +122,7 @@ def main() -> int:
     load_plants(plants["flowers"], Flower)
     load_plants(plants["trees"], Tree)
     load_plants(plants["vegetables"], Vegetable)
-    return (0)
+    return 0
 
 
 if __name__ == "__main__":
