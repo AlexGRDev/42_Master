@@ -6,6 +6,7 @@ def input_temperature(temp_str: str) -> int:
     tmp = int(temp_str)
     return (tmp)
 
+
 def main() -> int:
     tmp: str
 
