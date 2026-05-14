@@ -1,4 +1,18 @@
-#!/usr/bin/python3
+# *************************************************************************** #
+#                                                                             #
+#                                                        :::      ::::::::    #
+#    ft_garden_data.py                                 :+:      :+:    :+:    #
+#                                                    +:+ +:+         +:+      #
+#    By: agarcia2 <agarcia2@student.42barcelona.c  +#+  +:+       +#+         #
+#                                                +#+#+#+#+#+   +#+            #
+#    Created: 2026/05/14 11:25:09 by agarcia2         #+#    #+#              #
+#    Updated: 2026/05/14 11:25:12 by agarcia2        ###   ########.fr        #
+#                                                                             #
+# *************************************************************************** #
+
+# !/usr/bin/python3
+
+from typing import TypedDict
 
 
 class Plant:
@@ -11,8 +25,14 @@ class Plant:
         return f"{self.name}: {self.height}cm, {self.age} days old"
 
 
+class GardenData(TypedDict):
+    name: list[str]
+    height: list[float]
+    age: list[int]
+
+
 def main() -> int:
-    plants: dict[str, list]
+    plants: GardenData
     i: int
 
     plants = {
