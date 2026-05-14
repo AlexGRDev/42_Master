@@ -9,5 +9,5 @@
 #    Updated: 2026/05/14 11:12:48 by agarcia2        ###   ########.fr        #
 #                                                                             #
 # *************************************************************************** #
-def ft_hello_garden():
+def ft_hello_garden() -> None:
     print("Hello, Garden Community!")

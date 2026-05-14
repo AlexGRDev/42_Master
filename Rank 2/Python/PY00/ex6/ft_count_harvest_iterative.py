@@ -9,7 +9,7 @@
 #    Updated: 2026/05/14 11:15:25 by agarcia2        ###   ########.fr        #
 #                                                                             #
 # *************************************************************************** #
-def ft_count_harvest_iterative():
+def ft_count_harvest_iterative() -> None:
     days: int
     i: int
 

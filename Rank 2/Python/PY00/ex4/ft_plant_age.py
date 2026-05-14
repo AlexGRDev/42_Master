@@ -9,7 +9,7 @@
 #    Updated: 2026/05/14 11:14:56 by agarcia2        ###   ########.fr        #
 #                                                                             #
 # *************************************************************************** #
-def ft_plant_age():
+def ft_plant_age() -> None:
     age: int
 
     age = int(input("Enter plant age in days: "))

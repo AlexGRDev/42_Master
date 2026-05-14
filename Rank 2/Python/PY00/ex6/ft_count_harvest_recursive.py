@@ -9,12 +9,12 @@
 #    Updated: 2026/05/14 11:15:36 by agarcia2        ###   ########.fr        #
 #                                                                             #
 # *************************************************************************** #
-def ft_count_harvest_recursive():
+def ft_count_harvest_recursive() -> None:
     days: int
 
     days = int(input("Days until harvest: "))
 
-    def ft_recursive(n):
+    def ft_recursive(n: int) -> None:
         if n <= 0:
             return
         ft_recursive(n - 1)

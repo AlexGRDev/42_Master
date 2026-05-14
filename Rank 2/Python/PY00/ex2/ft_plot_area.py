@@ -9,7 +9,7 @@
 #    Updated: 2026/05/14 11:14:22 by agarcia2        ###   ########.fr        #
 #                                                                             #
 # *************************************************************************** #
-def ft_plot_area():
+def ft_plot_area() -> None:
     length: int
     width: int
     result: int

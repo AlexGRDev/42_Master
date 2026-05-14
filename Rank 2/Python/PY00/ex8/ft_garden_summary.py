@@ -9,7 +9,7 @@
 #    Updated: 2026/05/14 11:16:15 by agarcia2        ###   ########.fr        #
 #                                                                             #
 # *************************************************************************** #
-def ft_garden_summary():
+def ft_garden_summary() -> None:
     garden: str
     plants: str
 

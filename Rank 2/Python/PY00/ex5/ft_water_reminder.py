@@ -9,7 +9,7 @@
 #    Updated: 2026/05/14 11:15:13 by agarcia2        ###   ########.fr        #
 #                                                                             #
 # *************************************************************************** #
-def ft_water_reminder():
+def ft_water_reminder() -> None:
     days: int
 
     days = int(input("Days since last watering: "))

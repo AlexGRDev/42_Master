@@ -9,7 +9,7 @@
 #    Updated: 2026/05/14 11:14:37 by agarcia2        ###   ########.fr        #
 #                                                                             #
 # *************************************************************************** #
-def ft_harvest_total():
+def ft_harvest_total() -> None:
     day1: int
     day2: int
     day3: int
