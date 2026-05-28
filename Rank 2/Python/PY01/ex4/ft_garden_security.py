@@ -6,11 +6,11 @@
 #    By: agarcia2 <agarcia2@student.42barcelona.c  +#+  +:+       +#+         #
 #                                                +#+#+#+#+#+   +#+            #
 #    Created: 2026/05/14 11:26:18 by agarcia2         #+#    #+#              #
-#    Updated: 2026/05/14 11:26:20 by agarcia2        ###   ########.fr        #
+#    Updated: 2026/05/27 18:04:25 by agarcia2        ###   ########.fr        #
 #                                                                             #
 # *************************************************************************** #
 
-# !/usr/bin/python3
+#!/usr/bin/python3
 
 
 class SecurePlant:

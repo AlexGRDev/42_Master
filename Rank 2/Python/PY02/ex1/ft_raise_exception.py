@@ -6,11 +6,11 @@
 #    By: agarcia2 <agarcia2@student.42barcelona.c  +#+  +:+       +#+         #
 #                                                +#+#+#+#+#+   +#+            #
 #    Created: 2026/05/14 12:12:24 by agarcia2         #+#    #+#              #
-#    Updated: 2026/05/14 20:27:50 by agarcia2        ###   ########.fr        #
+#    Updated: 2026/05/27 18:06:12 by agarcia2        ###   ########.fr        #
 #                                                                             #
 # *************************************************************************** #
 
-# !/usr/bin/python3
+#!/usr/bin/python3
 
 from typing import Any
 

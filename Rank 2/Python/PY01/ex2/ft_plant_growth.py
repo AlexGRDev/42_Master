@@ -6,11 +6,11 @@
 #    By: agarcia2 <agarcia2@student.42barcelona.c  +#+  +:+       +#+         #
 #                                                +#+#+#+#+#+   +#+            #
 #    Created: 2026/05/14 11:25:21 by agarcia2         #+#    #+#              #
-#    Updated: 2026/05/14 11:25:23 by agarcia2        ###   ########.fr        #
+#    Updated: 2026/05/27 17:58:59 by agarcia2        ###   ########.fr        #
 #                                                                             #
 # *************************************************************************** #
 
-# !/usr/bin/python3
+#!/usr/bin/python3
 
 
 class Plant:
