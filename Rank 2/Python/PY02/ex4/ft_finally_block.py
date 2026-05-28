@@ -1,11 +1,11 @@
 # *************************************************************************** #
 #                                                                             #
 #                                                        :::      ::::::::    #
-#    ft_custom_errors.py                               :+:      :+:    :+:    #
+#    ft_finally_block.py                               :+:      :+:    :+:    #
 #                                                    +:+ +:+         +:+      #
 #    By: agarcia2 <agarcia2@student.42barcelona.c  +#+  +:+       +#+         #
 #                                                +#+#+#+#+#+   +#+            #
-#    Created: 2026/05/28 18:21:15 by agarcia2         #+#    #+#              #
+#    Created: 2026/05/28 19:24:24 by agarcia2         #+#    #+#              #
 #    Updated: 2026/05/28 19:24:24 by agarcia2        ###   ########.fr        #
 #                                                                             #
 # *************************************************************************** #
@@ -23,49 +23,38 @@ class PlantError(GardenError):
         super().__init__(msg)
 
 
-class WaterError(GardenError):
-    def __init__(self, msg: str = "Unknown water error") -> None:
-        super().__init__(msg)
+def water_plant(plant_name: str) -> None:
+    if (plant_name != plant_name.capitalize()):
+        raise PlantError(f"Invalid plant name to water: '{plant_name}'")
+    print(f"Watering {plant_name}: [OK]")
 
 
-def test_plant_error() -> None:
-    print("Testing PlantError...")
+def test_watering_system(plants: list[str]) -> None:
+    i: int
+
+    print("Opening watering system")
     try:
-        raise PlantError("The tomato plant is wilting!")
+        i = 0
+        while (i < len(plants)):
+            water_plant(plants[i])
+            i += 1
     except PlantError as e:
         print(f"Caught PlantError: {e}")
-    print()
-
-
-def test_water_error() -> None:
-    print("Testing WaterError...")
-    try:
-        raise WaterError("Not enough water in the tank!")
-    except WaterError as e:
-        print(f"Caught WaterError: {e}")
-    print()
-
-
-def test_catch_all() -> None:
-    print("Testing catching all garden errors...")
-    try:
-        raise PlantError("The tomato plant is wilting!")
-    except GardenError as e:
-        print(f"Caught GardenError: {e}")
-    try:
-        raise WaterError("Not enough water in the tank!")
-    except GardenError as e:
-        print(f"Caught GardenError: {e}")
-    print()
+        print(".. ending tests and returning to main")
+    finally:
+        print("Closing watering system")
 
 
 def main() -> int:
-    print("=== Custom Garden Errors Demo ===")
+    print("=== Garden Watering System ===")
     print()
-    test_plant_error()
-    test_water_error()
-    test_catch_all()
-    print("All custom error types work correctly!")
+    print("Testing valid plants...")
+    test_watering_system(["Tomato", "Lettuce", "Carrots"])
+    print()
+    print("Testing invalid plants...")
+    test_watering_system(["Tomato", "lettuce"])
+    print()
+    print("Cleanup always happens, even with errors!")
     return (0)
 
 
