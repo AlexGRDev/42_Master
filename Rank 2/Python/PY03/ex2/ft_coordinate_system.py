@@ -6,7 +6,7 @@
 #    By: agarcia2 <agarcia2@student.42barcelona.c  +#+  +:+       +#+         #
 #                                                +#+#+#+#+#+   +#+            #
 #    Created: 2026/05/29 17:08:10 by agarcia2         #+#    #+#              #
-#    Updated: 2026/05/29 18:50:38 by agarcia2        ###   ########.fr        #
+#    Updated: 2026/05/29 23:13:27 by agarcia2        ###   ########.fr        #
 #                                                                             #
 # *************************************************************************** #
 
@@ -26,29 +26,52 @@ def get_player_pos(matrix: list[list[float]]) -> float:
     return (float((x ** 2 + y ** 2 + z ** 2) ** 0.5))
 
 
-def main() -> int:
+def read_matrix() -> list[list[float]]:
     raw: str
     new: list[str]
     coords: list[float]
-    matrix: list[list]
+    i: int
 
     while (True):
         raw = input("Enter new coordinates as floats in format 'x,y,z': ")
         new = raw.split(',')
         if (len(new) != 3):
-            print("invalid")
+            print("Invalid syntax")
             continue
+        coords = []
         i = 0
-        while (i < len(new)):
-            coords = []
-            coords.append(float(new[i].strip()))
-            i = 0
-            while (i < len(coords)):
-                matrix = [[], [], []]
-                get_player_pos(matrix[coords[0]], matrix[coords[1]], matrix[coords[3]])
+        try:
+            while (i < len(new)):
+                coords.append(float(new[i].strip()))
                 i += 1
-            i += 1
-    print(coords)
+        except ValueError as e:
+            print(f"Error on parameter '{new[i].strip()}': {e}")
+            continue
+        break
+    return ([[0.0, 0.0, 0.0, coords[0]],
+             [0.0, 0.0, 0.0, coords[1]],
+             [0.0, 0.0, 0.0, coords[2]]])
+
+
+def main() -> int:
+    m1: list[list[float]]
+    v1: list[float]
+    v2: list[float]
+    dist: float
+
+    print("=== Game Coordinate System ===\n")
+    print("Get a first set of coordinates")
+    m1 = read_matrix()
+    v1 = get_matrix(m1)
+    print(f"Got a first tuple: {tuple(v1)}")
+    print(f"It includes: X={v1[0]}, Y={v1[1]}, Z={v1[2]}")
+    print(f"Distance to center: {get_player_pos(m1):.4f}\n")
+    print("Get a second set of coordinates")
+    v2 = get_matrix(read_matrix())
+    dist = get_player_pos([[0, 0, 0, v2[0] - v1[0]],
+                           [0, 0, 0, v2[1] - v1[1]],
+                           [0, 0, 0, v2[2] - v1[2]]])
+    print(f"Distance between the 2 sets of coordinates: {dist:.4f}")
     return (0)
 
 
