@@ -17,22 +17,21 @@ import sys
 from typing import IO
 
 
-def check_fragement(fd: bytes) -> None:
-    return (print(fd.decode('utf-8'), end=""))
+def check_fragement(fd: bytes) -> str:
+    return (fd.decode('utf-8'))
 
 
-def trans_data(fd: bytes) -> None:
+def trans_data(fd: bytes) -> str:
     i: int
     line: bytes
 
     line = fd
     i = 0
     while (i < len(line)):
-        if (line[i] == 10):
-            print('#', end="")
-            print(bytes([line[i]]).decode('utf-8'), end="")
+        if (line[i] == " "):
+            return(check_fragement(bytes([line[i]]))  + '#' + '\n')
         i += 1
-
+    return ("")
 
 def main(ac: int, av: list[str]) -> int:
     fd: bytes
@@ -53,13 +52,13 @@ def main(ac: int, av: list[str]) -> int:
             print(f"Error opening file '{av[1]}': {e}")
             sys.exit(1)
         print("---")
-        check_fragement(fd)
+        print(check_fragement(fd), end="")
         print("---")
         print(f"File '{av[i]}' closed.")
         print()
         print(f"Transform data: '{av[1]}\n")
         print("---")
-        trans_data(fd)
+        print(trans_data(fd), end="")
         print("---")
         i += 1
         f.close()
