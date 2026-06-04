@@ -28,10 +28,28 @@ def trans_data(fd: bytes) -> str:
     line = fd
     i = 0
     while (i < len(line)):
-        if (line[i] == " "):
-            return(check_fragement(bytes([line[i]]))  + '#' + '\n')
+        if (line[i] == 10):
+            line = line[:i] + b"#" + line[i:]
+            i += 1
         i += 1
-    return ("")
+        if (len(line) > 0 and line[-1] != 10 and line[-1] != 35):
+            line = line + b'#'
+    return (check_fragement(line))
+
+
+def save_file(fd: bytes) -> None:
+    new: str
+    f: IO
+
+    new = input("Enter new file name (or empty): ")
+    if (new != ""):
+        with (open(fd, 'wb', encoding='utf-8')) as f:
+            f.write(trans_data(fd))
+        print(f"Saving data to '{new}'")
+        print(f"Data saved in file {new}")
+    else:
+        print("Not saving data.")
+
 
 def main(ac: int, av: list[str]) -> int:
     fd: bytes
@@ -60,6 +78,7 @@ def main(ac: int, av: list[str]) -> int:
         print("---")
         print(trans_data(fd), end="")
         print("---")
+        save_file(fd)
         i += 1
         f.close()
     return (0)
