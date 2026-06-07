@@ -43,7 +43,7 @@ def save_file(fd: bytes) -> None:
 
     new = input("Enter new file name (or empty): ")
     if (new != ""):
-        with (open(fd, 'wb', encoding='utf-8')) as f:
+        with (open(new, 'w', encoding='utf-8')) as f:
             f.write(trans_data(fd))
         print(f"Saving data to '{new}'")
         print(f"Data saved in file {new}")
