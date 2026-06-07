@@ -57,7 +57,7 @@ def save_file(fd: bytes) -> None:
 
 def main(ac: int, av: list[str]) -> int:
     fd: bytes
-    f: IO
+    f: IO[bytes]
     i: int
 
     if (ac != 2):
@@ -72,8 +72,8 @@ def main(ac: int, av: list[str]) -> int:
                 fd = f.read()
         except Exception as e:
             print(
-                    f"[STDERR] Error opening file '{av[i]}': {e}",
-                    file=sys.stderr
+                f"[STDERR] Error opening file '{av[i]}': {e}",
+                file=sys.stderr
             )
             sys.exit(1)
         print("---")

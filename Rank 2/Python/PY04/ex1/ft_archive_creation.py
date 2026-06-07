@@ -39,7 +39,7 @@ def trans_data(fd: bytes) -> str:
 
 def save_file(fd: bytes) -> None:
     new: str
-    f: IO
+    f: IO[str]
 
     new = input("Enter new file name (or empty): ")
     if (new != ""):
@@ -53,7 +53,7 @@ def save_file(fd: bytes) -> None:
 
 def main(ac: int, av: list[str]) -> int:
     fd: bytes
-    f: IO
+    f: IO[bytes]
     i: int
 
     if (ac != 2):

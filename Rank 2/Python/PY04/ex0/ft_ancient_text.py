@@ -24,7 +24,7 @@ def check_fragement(fd: bytes) -> None:
 
 def main(ac: int, av: list[str]) -> int:
     fd: bytes
-    f: IO
+    f: IO[bytes]
     i: int
 
     if (ac != 2):
