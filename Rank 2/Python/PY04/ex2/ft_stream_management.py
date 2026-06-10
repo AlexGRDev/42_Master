@@ -39,6 +39,7 @@ def trans_data(fd: bytes) -> str:
 
 def save_file(fd: bytes) -> None:
     new: str
+    f: IO[str]
 
     print("Enter new file name (or empty): ", end="")
     sys.stdout.flush()
@@ -46,9 +47,10 @@ def save_file(fd: bytes) -> None:
     if (new != ""):
         print(f"Saving data to '{new}'")
         try:
-            with open(new, 'w', encoding='utf-8') as f:
-                f.write(trans_data(fd))
+            f = open(new, 'w', encoding='utf-8')
+            f.write(trans_data(fd))
             print(f"Data saved in file {new}")
+            f.close()
         except Exception as e:
             print(f"[STDERR] Error opening file '{new}': {e}", file=sys.stderr)
             print("Data not saved.")

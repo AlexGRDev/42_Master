@@ -35,14 +35,15 @@ def main(ac: int, av: list[str]) -> int:
         try:
             print("== Cyber Archives Recovery ===")
             print(f"Accessing file '{av[1]}'\n")
-            with open(av[i], 'rb') as f:
-                fd = f.read()
+            f = open(av[i], 'rb')
+            fd = f.read()
         except Exception as e:
             print(f"Error opening file '{av[1]}': {e}")
             sys.exit(1)
         check_fragement(fd)
         print(f"File '{av[i]}' closed.")
         i += 1
+        f.close()
     return (0)
 
 

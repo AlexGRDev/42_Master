@@ -43,8 +43,8 @@ def save_file(fd: bytes) -> None:
 
     new = input("Enter new file name (or empty): ")
     if (new != ""):
-        with (open(new, 'w', encoding='utf-8')) as f:
-            f.write(trans_data(fd))
+        f = open(new, 'w', encoding='utf-8')
+        f.write(trans_data(fd))
         print(f"Saving data to '{new}'")
         print(f"Data saved in file {new}")
     else:
@@ -64,8 +64,8 @@ def main(ac: int, av: list[str]) -> int:
         try:
             print("== Cyber Archives Recovery ===")
             print(f"Accessing file '{av[1]}'\n")
-            with open(av[i], 'rb') as f:
-                fd = f.read()
+            f = open(av[i], 'rb')
+            fd = f.read()
         except Exception as e:
             print(f"Error opening file '{av[1]}': {e}")
             sys.exit(1)
