@@ -1,25 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agarcia2 <agarcia2@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/23 14:10:24 by agarcia2          #+#    #+#             */
-/*   Updated: 2025/11/25 10:28:36 by agarcia2         ###   ########.fr       */
+/*   Created: 2025/10/02 18:37:35 by agarcia2          #+#    #+#             */
+/*   Updated: 2025/10/03 11:34:17 by agarcia2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
-# include "./LibFT/libft.h"
-# include <stdint.h>
+#include "libft.h"
 
-int	ft_printf(const char *str, ...);
-int	ft_putchar(int c);
-int	ft_putstr(char *str);
-int	ft_printptr(uintptr_t ptr);
-int	ft_putnbr(int n);
-int	ft_putu(unsigned int n);
-int	ft_printhex(unsigned int nr, const char *base);
-#endif
+size_t	ft_strlcpy(char *dst, const char *src, size_t dst_size)
+{
+	const char	*s;
+	char		*d;
+	size_t		len;
+
+	s = src;
+	d = dst;
+	len = ft_strlen(src);
+	if (dst_size)
+	{
+		while (*s && dst_size-- > 1)
+			*d++ = *s++;
+		*d = '\0';
+	}
+	return (len);
+}

@@ -1,25 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agarcia2 <agarcia2@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/23 14:10:24 by agarcia2          #+#    #+#             */
-/*   Updated: 2025/11/25 10:28:36 by agarcia2         ###   ########.fr       */
+/*   Created: 2025/09/28 16:39:59 by agarcia2          #+#    #+#             */
+/*   Updated: 2025/09/28 16:41:47 by agarcia2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
-# include "./LibFT/libft.h"
-# include <stdint.h>
+#include "libft.h"
 
-int	ft_printf(const char *str, ...);
-int	ft_putchar(int c);
-int	ft_putstr(char *str);
-int	ft_printptr(uintptr_t ptr);
-int	ft_putnbr(int n);
-int	ft_putu(unsigned int n);
-int	ft_printhex(unsigned int nr, const char *base);
-#endif
+void	ft_bzero(void *s, size_t n)
+{
+	ft_memset(s, 0, n);
+}

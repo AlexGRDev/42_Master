@@ -5,34 +5,46 @@
 #                                                     +:+ +:+         +:+      #
 #    By: agarcia2 <agarcia2@student.42barcelona.co  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/10/25 22:49:28 by agarcia2          #+#    #+#              #
-#    Updated: 2025/11/28 12:50:33 by agarcia2         ###   ########.fr        #
+#    Created: 2025/11/28 12:50:57 by agarcia2          #+#    #+#              #
+#    Updated: 2025/11/28 12:51:01 by agarcia2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 MAKEFLAGS	+=	--no-print-directory
-NAME		=	libftprintf.a
+NAME		=	libft.a
+OBJDIR		=	objs
 CC		=	cc
-CFLAGS		=	-Wall -Werror -Wextra
+CFLAGS		=	-Wall -Wextra -Werror
 ASAN_FLAGS	=	-g3 -fsanitize=address
 AR		=	ar rcs
-RM		=	rm -f
+RM		=	rm -rf
+MKDIR		=	mkdir -p
 
-SRCS		=	ft_printf.c	ft_putchar.c	ft_putstr.c	ft_printptr.c\
-			ft_putnbr.c	ft_putu.c	ft_printhex.c	./LibFT/ft_putchar_fd.c \
-			./LibFT/ft_strlen.c
-OBJS		=	$(SRCS:.c=.o)
+SRC_LIBFT1	= ft_isalpha.c	ft_isdigit.c	ft_isalnum.c	ft_isascii.c \
+		  ft_isprint.c	ft_strlen.c	ft_memset.c	ft_bzero.c \
+		  ft_memcpy.c	ft_memmove.c	ft_strlcpy.c	ft_strlcat.c \
+		  ft_toupper.c	ft_tolower.c	ft_strchr.c	ft_strrchr.c \
+		  ft_strncmp.c	ft_memchr.c	ft_memcmp.c	ft_strnstr.c \
+		  ft_atoi.c
+
+SRC_LIBFT2	= ft_calloc.c	ft_strdup.c	ft_substr.c	ft_strjoin.c \
+		  ft_strtrim.c	ft_split.c	ft_itoa.c	ft_strmapi.c \
+		  ft_striteri.c	ft_putchar_fd.c	ft_putstr_fd.c 	ft_putendl_fd.c \
+		  ft_putnbr_fd.c
+
+SRC		= $(SRC_LIBFT1) $(SRC_LIBFT2)
+OBJ		= $(SRC:.c=.o)
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
-	$(AR) $(NAME) $(OBJS)
+$(NAME): $(OBJ)
+	$(AR) $(NAME) $(OBJ)
 
-%.o: %.c  Makefile ft_printf.h
+%.o: %.c Makefile libft.h
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	$(RM) $(OBJS)
+	$(RM) $(OBJ)
 
 fclean: clean
 	$(RM) $(NAME)
@@ -41,5 +53,4 @@ re: fclean all
 
 asan: fclean
 	$(MAKE) CFLAGS="$(CFLAGS) $(ASAN_FLAGS)" all
-
-.PHONY: all clean fclean re asan
+.PHONY: all clean fclean re

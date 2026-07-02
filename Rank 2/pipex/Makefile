@@ -5,41 +5,51 @@
 #                                                     +:+ +:+         +:+      #
 #    By: agarcia2 <agarcia2@student.42barcelona.co  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/10/25 22:49:28 by agarcia2          #+#    #+#              #
-#    Updated: 2025/11/28 12:50:33 by agarcia2         ###   ########.fr        #
+#    Created: 2025/11/26 10:01:29 by agarcia2          #+#    #+#              #
+#    Updated: 2025/11/28 19:30:36 by agarcia2         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 MAKEFLAGS	+=	--no-print-directory
-NAME		=	libftprintf.a
+NAME		=	pipex
 CC		=	cc
-CFLAGS		=	-Wall -Werror -Wextra
-ASAN_FLAGS	=	-g3 -fsanitize=address
-AR		=	ar rcs
-RM		=	rm -f
-
-SRCS		=	ft_printf.c	ft_putchar.c	ft_putstr.c	ft_printptr.c\
-			ft_putnbr.c	ft_putu.c	ft_printhex.c	./LibFT/ft_putchar_fd.c \
-			./LibFT/ft_strlen.c
-OBJS		=	$(SRCS:.c=.o)
-
+CFLAGS		= 	-Wall -Werror -Wextra
+ASAN_FLAGS	=	 -fsanitize=undefined,address
+RM		= 	rm -f
+SRCS		= 	main.c	pipex.c pipex_utils.c
+OBJS		= 	$(SRCS:.c=.o)
+LIBFTPRINTF	=	ft_printf/libftprintf.a
+LIBFTPRINTF_DIR	=	ft_printf
+LIBFT		=	ft_printf/LibFT/libft.a
+LIBFT_DIR	=	ft_printf/LibFT
+ 
 all: $(NAME)
-
-$(NAME): $(OBJS)
-	$(AR) $(NAME) $(OBJS)
-
-%.o: %.c  Makefile ft_printf.h
+ 
+$(NAME): $(OBJS) $(LIBFTPRINTF) $(LIBFT)
+	$(CC) $(CFLAGS) $(OBJS) $(LIBFTPRINTF) $(LIBFT) -o $(NAME)
+ 
+$(LIBFTPRINTF):
+	$(MAKE) -C $(LIBFTPRINTF_DIR)
+ 
+$(LIBFT):
+	$(MAKE) -C $(LIBFT_DIR)
+ 
+%.o: %.c  Makefile pipex.h
 	$(CC) $(CFLAGS) -c $< -o $@
-
+ 
 clean:
 	$(RM) $(OBJS)
-
+	$(MAKE) -C $(LIBFTPRINTF_DIR) clean
+	$(MAKE) -C $(LIBFT_DIR) clean
+ 
 fclean: clean
 	$(RM) $(NAME)
-
+	$(MAKE) -C $(LIBFTPRINTF_DIR) fclean
+	$(MAKE) -C $(LIBFT_DIR) fclean
+ 
 re: fclean all
 
 asan: fclean
-	$(MAKE) CFLAGS="$(CFLAGS) $(ASAN_FLAGS)" all
+	$(MAKE) CFLAGS="$(CFLAGS) $(ASAN_FLAGS)" re
 
 .PHONY: all clean fclean re asan

@@ -1,25 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agarcia2 <agarcia2@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/23 14:10:24 by agarcia2          #+#    #+#             */
-/*   Updated: 2025/11/25 10:28:36 by agarcia2         ###   ########.fr       */
+/*   Created: 2025/10/04 18:09:54 by agarcia2          #+#    #+#             */
+/*   Updated: 2025/10/22 10:34:03 by agarcia2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
-# include "./LibFT/libft.h"
-# include <stdint.h>
+#include "libft.h"
 
-int	ft_printf(const char *str, ...);
-int	ft_putchar(int c);
-int	ft_putstr(char *str);
-int	ft_printptr(uintptr_t ptr);
-int	ft_putnbr(int n);
-int	ft_putu(unsigned int n);
-int	ft_printhex(unsigned int nr, const char *base);
-#endif
+void	*ft_calloc(size_t count, size_t size)
+{
+	void	*ptr;
+
+	if (size != 0 && count > (size_t)-1 / size)
+		return (NULL);
+	ptr = malloc(count * size);
+	if (!ptr)
+		return (NULL);
+	ft_bzero(ptr, count * size);
+	return (ptr);
+}

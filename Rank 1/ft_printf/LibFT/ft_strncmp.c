@@ -1,25 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agarcia2 <agarcia2@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/23 14:10:24 by agarcia2          #+#    #+#             */
-/*   Updated: 2025/11/25 10:28:36 by agarcia2         ###   ########.fr       */
+/*   Created: 2025/10/04 11:45:33 by agarcia2          #+#    #+#             */
+/*   Updated: 2025/10/04 12:08:23 by agarcia2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
-# include "./LibFT/libft.h"
-# include <stdint.h>
+#include "libft.h"
 
-int	ft_printf(const char *str, ...);
-int	ft_putchar(int c);
-int	ft_putstr(char *str);
-int	ft_printptr(uintptr_t ptr);
-int	ft_putnbr(int n);
-int	ft_putu(unsigned int n);
-int	ft_printhex(unsigned int nr, const char *base);
-#endif
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
+{
+	while (n-- > 0 && (*s1 || *s2))
+		if (*(unsigned char *)s1++ != *(unsigned char *)s2++)
+			return (*(unsigned char *)--s1 - *(unsigned char *)--s2);
+	return (0);
+}
