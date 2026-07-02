@@ -1,32 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strmapi.c                                       :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agarcia2 <agarcia2@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: agarcia2 <agarcia2@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/14 13:07:06 by agarcia2          #+#    #+#             */
-/*   Updated: 2026/03/24 10:08:46 by agarcia2         ###   ########.fr       */
+/*   Created: 2025/10/06 13:26:20 by agarcia2          #+#    #+#             */
+/*   Updated: 2025/10/08 10:57:34 by agarcia2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strmapi(const char *s, char (*f)(unsigned int, char))
+char	*ft_strjoin(const char *s1, const char *s2)
 {
-	unsigned int		i;
-	char				*res;
-	char				*ptr;
+	char	*join;
+	char	*ptr;
 
-	if (!s || !f)
+	if (!s1 || !s2)
 		return (NULL);
-	res = (char *)malloc(sizeof(char) * (ft_strlen(s) + 1));
-	if (!res)
+	join = (char *)malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
+	if (!join)
 		return (NULL);
-	ptr = res;
-	i = 0;
-	while (*s)
-		*ptr++ = f(i++, *s++);
+	ptr = join;
+	while (*s1 || *s2)
+	{
+		if (*s1)
+			*ptr++ = *s1++;
+		else
+			*ptr++ = *s2++;
+	}
 	*ptr = '\0';
-	return (res);
+	return (join);
 }

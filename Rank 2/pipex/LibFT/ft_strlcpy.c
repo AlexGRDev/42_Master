@@ -1,28 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agarcia2 <agarcia2@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: agarcia2 <agarcia2@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/04 18:09:54 by agarcia2          #+#    #+#             */
-/*   Updated: 2026/03/24 11:39:50 by agarcia2         ###   ########.fr       */
+/*   Created: 2025/10/02 18:37:35 by agarcia2          #+#    #+#             */
+/*   Updated: 2025/10/03 11:34:17 by agarcia2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_calloc(size_t count, size_t size)
+size_t	ft_strlcpy(char *dst, const char *src, size_t dst_size)
 {
-	int		len;
-	void	*ptr;
+	const char	*s;
+	char		*d;
+	size_t		len;
 
-	if (size != 0 && count > (size_t)-1 / size)
-		return (NULL);
-	len = count * size;
-	ptr = malloc(len);
-	if (!ptr)
-		return (NULL);
-	ft_bzero(ptr, count * size);
-	return (ptr);
+	s = src;
+	d = dst;
+	len = ft_strlen(src);
+	if (dst_size)
+	{
+		while (*s && dst_size-- > 1)
+			*d++ = *s++;
+		*d = '\0';
+	}
+	return (len);
 }

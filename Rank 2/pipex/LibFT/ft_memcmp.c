@@ -1,36 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agarcia2 <agarcia2@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/04 12:47:02 by agarcia2          #+#    #+#             */
-/*   Updated: 2025/12/27 11:46:51 by agarcia2         ###   ########.fr       */
+/*   Created: 2025/09/29 15:10:24 by agarcia2          #+#    #+#             */
+/*   Updated: 2025/09/29 23:19:27 by agarcia2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *str)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	long	num;
-	int		sign;
+	const unsigned char	*dst;
+	const unsigned char	*src;
 
-	num = 0;
-	sign = 1;
-	while (*str == ' ' || (*str >= 9 && *str <= 13))
-		str++;
-	if (*str == '-' || *str == '+')
+	dst = (const unsigned char *)s1;
+	src = (const unsigned char *)s2;
+	while (n--)
 	{
-		if (*str == '-')
-			sign = -1;
-		str++;
+		if (*dst != *src)
+			return ((int)*dst - (int)*src);
+		dst++;
+		src++;
 	}
-	while (*str >= '0' && *str <= '9')
-	{
-		num = num * 10 + (*str - '0');
-		str++;
-	}
-	return ((int)(num * sign));
+	return (0);
 }

@@ -1,36 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agarcia2 <agarcia2@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/04 12:47:02 by agarcia2          #+#    #+#             */
-/*   Updated: 2025/12/27 11:46:51 by agarcia2         ###   ########.fr       */
+/*   Created: 2025/10/03 14:45:23 by agarcia2          #+#    #+#             */
+/*   Updated: 2025/11/20 09:25:48 by agarcia2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *str)
+char	*ft_strrchr(const char *s, int c)
 {
-	long	num;
-	int		sign;
+	const char		*str;
+	unsigned char	chr;
+	size_t			len;
+	const char		*ocurrences;
 
-	num = 0;
-	sign = 1;
-	while (*str == ' ' || (*str >= 9 && *str <= 13))
-		str++;
-	if (*str == '-' || *str == '+')
-	{
-		if (*str == '-')
-			sign = -1;
-		str++;
-	}
-	while (*str >= '0' && *str <= '9')
-	{
-		num = num * 10 + (*str - '0');
-		str++;
-	}
-	return ((int)(num * sign));
+	str = (char *)s;
+	len = ft_strlen(str);
+	chr = (char)c;
+	if (chr == '\0')
+		return ((char *)str + len);
+	ocurrences = NULL;
+	while (len--)
+		if (*(str + len) == chr)
+			return ((char *)str + len);
+	if (*str == chr)
+		ocurrences = str;
+	return ((char *)ocurrences);
 }
