@@ -52,6 +52,24 @@ __MACOSX/
 *.pdf
 *.log
 
+# ----------------------------- PYTHON ----------------------------------------
+__pycache__/
+*.pyc
+*.pyo
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+.lint_venv/
+.venv/
+venv/
+*_env/
+env/
+.env
+!.env.example
+*.egg-info/
+build/
+dist/
+
 # ----------------------------- YOUR LOCAL FILES -----------------------------
 # Si quieres mantener main.c localmente sin subirlo:
 # (DESCOMENTA si deseas ignorarlo)

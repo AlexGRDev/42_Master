@@ -1,25 +1,25 @@
 # *************************************************************************** #
 #                                                                             #
 #                                                        :::      ::::::::    #
-#    recipes.py                                        :+:      :+:    :+:    #
+#    __init__.py                                       :+:      :+:    :+:    #
 #                                                    +:+ +:+         +:+      #
 #    By: agarcia2 <agarcia2@student.42barcelona.c  +#+  +:+       +#+         #
 #                                                +#+#+#+#+#+   +#+            #
-#    Created: 2026/06/15 19:03:52 by agarcia2         #+#    #+#              #
-#    Updated: 2026/06/15 19:04:35 by agarcia2        ###   ########.fr        #
+#    Created: 2026/07/02 09:10:00 by agarcia2         #+#    #+#              #
+#    Updated: 2026/07/02 09:10:00 by agarcia2        ###   ########.fr        #
 #                                                                             #
 # *************************************************************************** #
 
+from ex1.factories import (
+    HealingCreatureFactory,
+    TransformCreatureFactory,
+)
+from ex1.heal import HealCapability
+from ex1.transform import TransformCapability
 
-from alchemy.elements import create_air
-from elements import create_fire
-
-from ..potions import strength_potion
-
-
-def lead_to_gold() -> str:
-    air = create_air()
-    strength = strength_potion()
-    fire = create_fire()
-    return (f"Recipe transmuting Lead to Gold: brew '{air}' and "
-            f"'{strength}' mixed with '{fire}'")
+__all__: list[str] = [
+    "HealingCreatureFactory",
+    "TransformCreatureFactory",
+    "HealCapability",
+    "TransformCapability",
+]

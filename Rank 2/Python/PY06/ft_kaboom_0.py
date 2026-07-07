@@ -1,25 +1,18 @@
 # *************************************************************************** #
 #                                                                             #
 #                                                        :::      ::::::::    #
-#    recipes.py                                        :+:      :+:    :+:    #
+#    ft_kaboom_0.py                                    :+:      :+:    :+:    #
 #                                                    +:+ +:+         +:+      #
 #    By: agarcia2 <agarcia2@student.42barcelona.c  +#+  +:+       +#+         #
 #                                                +#+#+#+#+#+   +#+            #
-#    Created: 2026/06/15 19:03:52 by agarcia2         #+#    #+#              #
-#    Updated: 2026/06/15 19:04:35 by agarcia2        ###   ########.fr        #
+#    Created: 2026/07/02 20:21:00 by agarcia2         #+#    #+#              #
+#    Updated: 2026/07/02 20:22:00 by agarcia2        ###   ########.fr        #
 #                                                                             #
 # *************************************************************************** #
 
+from alchemy.grimoire.light_spellbook import light_spell_record
 
-from alchemy.elements import create_air
-from elements import create_fire
-
-from ..potions import strength_potion
-
-
-def lead_to_gold() -> str:
-    air = create_air()
-    strength = strength_potion()
-    fire = create_fire()
-    return (f"Recipe transmuting Lead to Gold: brew '{air}' and "
-            f"'{strength}' mixed with '{fire}'")
+print("=== Kaboom 0 ===")
+print("Using grimoire module directly")
+result = light_spell_record("Fantasy", "Earth, wind and fire")
+print(f"Testing record light spell: {result}")

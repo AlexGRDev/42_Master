@@ -1,0 +1,5 @@
+# Real .env files hold local/dev secrets (API keys, DB credentials).
+# They must never be committed - only .env.example (placeholders) is
+# tracked so collaborators know which variables to set themselves.
+.env
+!.env.example

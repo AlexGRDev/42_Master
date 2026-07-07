@@ -1,25 +1,20 @@
 # *************************************************************************** #
 #                                                                             #
 #                                                        :::      ::::::::    #
-#    recipes.py                                        :+:      :+:    :+:    #
+#    heal.py                                           :+:      :+:    :+:    #
 #                                                    +:+ +:+         +:+      #
 #    By: agarcia2 <agarcia2@student.42barcelona.c  +#+  +:+       +#+         #
 #                                                +#+#+#+#+#+   +#+            #
-#    Created: 2026/06/15 19:03:52 by agarcia2         #+#    #+#              #
-#    Updated: 2026/06/15 19:04:35 by agarcia2        ###   ########.fr        #
+#    Created: 2026/07/02 09:05:00 by agarcia2         #+#    #+#              #
+#    Updated: 2026/07/02 09:05:00 by agarcia2        ###   ########.fr        #
 #                                                                             #
 # *************************************************************************** #
 
-
-from alchemy.elements import create_air
-from elements import create_fire
-
-from ..potions import strength_potion
+from abc import ABC, abstractmethod
 
 
-def lead_to_gold() -> str:
-    air = create_air()
-    strength = strength_potion()
-    fire = create_fire()
-    return (f"Recipe transmuting Lead to Gold: brew '{air}' and "
-            f"'{strength}' mixed with '{fire}'")
+class HealCapability(ABC):
+
+    @abstractmethod
+    def heal(self, target: str = "itself") -> str:
+        ...
