@@ -10,7 +10,6 @@
 #                                                                             #
 # *************************************************************************** #
 
-#!/usr/bin/python3
 
 def garden_operations(nbr: int) -> object:
     f: object

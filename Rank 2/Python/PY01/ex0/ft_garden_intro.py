@@ -6,11 +6,9 @@
 #    By: agarcia2 <agarcia2@student.42barcelona.c  +#+  +:+       +#+         #
 #                                                +#+#+#+#+#+   +#+            #
 #    Created: 2026/05/14 11:22:24 by agarcia2         #+#    #+#              #
-#    Updated: 2026/05/27 17:54:34 by agarcia2        ###   ########.fr        #
+#    Updated: 2026/07/08 10:22:37 by agarcia2        ###   ########.fr        #
 #                                                                             #
 # *************************************************************************** #
-
-#!/usr/bin/python3
 
 def main() -> int:
     name: str

@@ -10,8 +10,6 @@
 #                                                                             #
 # *************************************************************************** #
 
-#!/usr/bin/python3
-
 
 def get_matrix(matrix: list[list[float]]) -> list[float]:
     return ([matrix[0][3], matrix[1][3], matrix[2][3]])

@@ -10,8 +10,6 @@
 #                                                                             #
 # *************************************************************************** #
 
-#!/usr/bin/python3
-
 
 class GardenError(Exception):
     def __init__(self, msg: str = "Unknown garden error") -> None:
