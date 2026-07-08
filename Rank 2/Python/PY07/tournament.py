@@ -46,7 +46,11 @@ def battle(opponents: list[Opponent]) -> None:
     print()
     for i in range(len(opponents)):
         for j in range(i + 1, len(opponents)):
-            fight(opponents[i], opponents[j])
+            try:
+                fight(opponents[i], opponents[j])
+            except InvalidStrategyError as error:
+                print(f"Battle error, aborting tournament: {error}")
+                return
 
 
 if __name__ == "__main__":
@@ -95,8 +99,5 @@ if __name__ == "__main__":
     for title, description, opponents in scenarios:
         print(title)
         print(description)
-        try:
-            battle(opponents)
-        except InvalidStrategyError as error:
-            print(f"Battle error, aborting tournament: {error}")
+        battle(opponents)
         print()
