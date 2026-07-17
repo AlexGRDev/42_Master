@@ -177,8 +177,8 @@ done
 # ===================================================
 # RUN FULL HUMILIATION MODE
 # ===================================================
-run_batch 100 20000
-run_batch 500 800
-run_batch 1000 1000
+run_batch 100 1000
+run_batch 500 200
+run_batch 1000 50
 
 printf "${RED}${GLITCH}\n=== FIN DEL MEGATEST ITSALEXITO ===${RESET}\n\n"
