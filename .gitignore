@@ -82,6 +82,10 @@ debug/
 sandbox/
 playground/
 
+# Born2beRoot: local-only, never submitted/committed
+Rank 1/Born2beRoot/CREDENTIALS.txt
+Rank 1/Born2beRoot/DEFENSE_PREP.md
+
 ################################################################################
 # FIN                                                                           
 ################################################################################
