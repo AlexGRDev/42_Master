@@ -1,221 +1,128 @@
-*This project has been created as part of the 42 curriculum by agarcia2.*
+# 🖨️ ft_printf — Custom `printf` Implementation
 
-# ft_printf
-
-## Description
-This project consists of recreating the standard C library function `printf`.
-The goal is to build a static library, `libftprintf.a`, containing a function
-`ft_printf()` that mimics the behavior of the original `printf` for a defined
-set of format specifiers.
-
-This project introduces the use of variadic functions in C and focuses on
-string parsing, formatted output, and modular code design.
-Once completed, `ft_printf` can be integrated into `libft` and reused in future
-C projects at 42.
+> 42 Barcelona — **ft_printf** project.
+> A reimplementation of `printf` as a static library (`libftprintf.a`), supporting the
+> mandatory conversions: `%c %s %p %d %i %u %x %X %%`.
 
 ---
 
-## Instructions
+## ⚙️ Build
 
-### Compilation
-The project includes a `Makefile` with the mandatory rules:
+From the repository root:
 
 ```bash
-make        # Compiles the library libftprintf.a
-make clean  # Removes object files
-make fclean # Removes object files and the library
-make re     # Recompiles the project
+make            # Build libftprintf.a
+make clean      # Remove object files
+make fclean     # Remove object files, libftprintf.a and the test/demo binaries
+make re         # Full rebuild
+make asan       # Rebuild with AddressSanitizer / UBSan flags
 ```
 
-Compilation is done using:
-```
-cc -Wall -Wextra -Werror
-```
+---
 
-### Usage
-Include the header file in your source code:
-```c
-#include "ft_printf.h"
-```
+## 🧪 Running the tests
 
-Compile your program with the library:
+All correctness tests live in the `tests/` folder — one file per conversion
+(`test_char.c`, `test_string.c`, `test_int.c` + `test_int_edge.c`, `test_unsigned.c`,
+`test_hex.c`, `test_pointer.c`, `test_percent.c`), sharing a small framework
+(`test_utils.h` / `test_utils.c`) that:
+
+1. redirects `stdout` to a temp file around each `ft_printf` call,
+2. computes the expected output with `snprintf` (the real libc formatter),
+3. compares both the output **and** the return value,
+4. prints a colored `[PASS]` / `[FAIL]` per case, plus a final summary.
+
+### Run everything
+
 ```bash
-cc main.c libftprintf.a
+make tests
 ```
 
-Example:
+This builds `libftprintf.a`, compiles every file in `tests/` against it, links the
+`tests/tester` binary, and runs it right away. Example output:
+
+```
+========================================
+        FT_PRINTF TEST SUITE
+========================================
+
+-- %c tests --
+  [PASS] %c letter
+  [PASS] %c digit
+  [PASS] %c space
+
+-- %s tests --
+  [PASS] %s word
+  ...
+
+========================================
+20/20 tests passed
+========================================
+```
+
+A `[FAIL]` line prints what `ft_printf` actually produced next to what was expected:
+
+```
+  [FAIL] %d INT_MIN
+        got:      "-2147483647"
+        expected: "-2147483648"
+        ret ft: 12 | ret real: 11
+```
+
+### Run again without rebuilding
+
+```bash
+./tests/tester
+```
+
+### Add a new test case
+
+Pick the file matching the conversion (e.g. `tests/test_hex.c`), add a new
+`static void case_xxx(void)` following the existing pattern, and call it from the
+file's `test_x(void)` dispatcher:
+
 ```c
-
-#include <stdio.h>
-#include <stdlib.h>
-#include "ft_printf.h"
-
-#define INT_MAX 2147483647
-#define INT_MIN -2147483648
-
-int	main(int argc, char **argv)
+static void	case_my_new_case(void)
 {
-	int	ret_ft;
-	int	ret_pf;
+	char	expected[32];
+	int		ft_ret;
+	int		pf_ret;
 
-	ft_printf("+============================+\n");
-	ft_printf("| FT_PRINTF TEST BY agarcia2 |\n");
-	ft_printf("+============================+\n\n");
-
-	if (argc != 2)
-	{
-		ft_printf("Usage: ./ft_printf <string>\n");
-		return (1);
-	}
-
-	ft_printf("+===========+\n");
-	ft_printf("| CHAR TEST |\n");
-	ft_printf("+===========+\n");
-	ret_ft = ft_printf("ft_printf: %c\n", 'A');
-	ret_pf = printf("printf   : %c\n", 'A');
-	ft_printf("ret ft: %d | ret printf: %d\n\n", ret_ft, ret_pf);
-
-	ft_printf("+=============+\n");
-	ft_printf("| STRING TEST |\n");
-	ft_printf("+=============+\n");
-	ret_ft = ft_printf("ft_printf: %s\n", argv[1]);
-	ret_pf = printf("printf   : %s\n", argv[1]);
-	ft_printf("ret ft: %d | ret printf: %d\n\n", ret_ft, ret_pf);
-
-	ret_ft = ft_printf("ft_printf NULL: %s\n", (char *)NULL);
-	ret_pf = printf("printf   NULL: %s\n", (char *)NULL);
-	ft_printf("ret ft: %d | ret printf: %d\n\n", ret_ft, ret_pf);
-	
-	ft_printf("+=============+\n");
-	ft_printf("| INT / DIGIT |\n");
-	ft_printf("+=============+\n");
-	ret_ft = ft_printf("ft_printf: %d %i\n", INT_MAX, INT_MIN);
-	ret_pf = printf("printf   : %d %li\n", INT_MAX, INT_MIN);
-	ft_printf("ret ft: %d | ret printf: %d\n\n", ret_ft, ret_pf);
-
-	ft_printf("+===============+\n");
-	ft_printf("| UNSIGNED TEST |\n");
-	ft_printf("+===============+\n");
-	ret_ft = ft_printf("ft_printf: %u\n", -1);
-	ret_pf = printf("printf   : %u\n", -1);
-	ft_printf("ret ft: %d | ret printf: %d\n\n", ret_ft, ret_pf);
-	
-	ft_printf("+==========+\n");
-	ft_printf("| HEX TEST |\n");
-	ft_printf("+==========+\n");
-	ret_ft = ft_printf("ft_printf: %x %X\n", 3735928559u, 3735928559u);
-	ret_pf = printf("printf   : %x %X\n", 3735928559u, 3735928559u);
-	ft_printf("ret ft: %d | ret printf: %d\n\n", ret_ft, ret_pf);
-	
-	ft_printf("+==============+\n");
-	ft_printf("| POINTER TEST |\n");
-	ft_printf("+==============+\n");
-	ret_ft = ft_printf("ft_printf: %p\n", argv);
-	ret_pf = printf("printf   : %p\n", argv);
-	ft_printf("ret ft: %d | ret printf: %d\n\n", ret_ft, ret_pf);
-
-	ret_ft = ft_printf("ft_printf NULL: %p\n", NULL);
-	ret_pf =    printf("printf    NULL: %p\n", NULL);
-	ft_printf("ret ft: %d | ret printf: %d\n\n", ret_ft, ret_pf);
-
-	ft_printf("+==============+\n");
-	ft_printf("| PERCENT TEST |\n");
-	ft_printf("+==============+\n");
-	ret_ft = ft_printf("ft_printf: %%\n");
-	ret_pf = printf("printf   : %%\n");
-	ft_printf("ret ft: %d | ret printf: %d\n\n", ret_ft, ret_pf);
-
-	ft_printf("+====================+\n");
-	ft_printf("| END OF TEST SUITE |\n");
-	ft_printf("+====================+\n");
-	
-	return (0);
+	test_before();
+	ft_ret = ft_printf("%x", 42u);
+	pf_ret = snprintf(expected, sizeof(expected), "%x", 42u);
+	test_after("%x my case", ft_ret, pf_ret, expected);
 }
 ```
 
----
-
-## Supported Conversions
-The `ft_printf` function supports the following format specifiers:
-
-- `%c` : prints a single character
-- `%s` : prints a string
-- `%p` : prints a pointer address in hexadecimal format
-- `%d` : prints a signed decimal number
-- `%i` : prints an integer in base 10
-- `%u` : prints an unsigned decimal number
-- `%x` : prints a hexadecimal number (lowercase)
-- `%X` : prints a hexadecimal number (uppercase)
-- `%%` : prints a percent sign
+If you add a brand-new conversion file, remember to:
+- declare its `test_x(void)` entry point in `tests/test_utils.h`,
+- call it from `tests/main_tests.c`,
+- add the new `.c` file to `TEST_SRCS` in the `Makefile`.
 
 ---
 
-## Algorithm and Data Structures
+## 🎮 Manual demo
 
-### Format Parsing
-The function iterates through the format string character by character.
+`make demo` builds a small interactive comparison binary (`main.c` +
+`demo_report.c` + `demo_basic.c` + `demo_extra.c`) that runs each conversion once
+against a string you pass in, side by side with the real `printf`:
 
-- If the current character is not `%`, it is written directly to standard output.
-- When `%` is encountered, the following character is interpreted as a conversion specifier.
-
-### Variadic Arguments
-The project uses `<stdarg.h>` to handle a variable number of arguments:
-- `va_start` initializes argument processing.
-- `va_arg` retrieves each argument according to the detected format.
-- `va_end` cleans up once processing is finished.
-
-### Conversion Handling
-Each format specifier is handled by a dedicated function, improving readability
-and maintainability.
-Numeric values are converted using base-specific logic (base 10 or base 16),
-and characters are written using the `write()` system call.
-
-### Pointer Formatting
-Pointers are printed by:
-1. Writing the `"0x"` prefix.
-2. Converting the address to a lowercase hexadecimal representation.
-
-### Design Choices
-- No buffer management is implemented, as required by the subject.
-- The code is modular to allow easy extension (bonus part).
-- No unnecessary dynamic memory allocation is used.
-- All outputs are written directly to file descriptor `1`.
-
----
-
-## Resources
-
-### References
-- `man 3 printf`
-- `man stdarg`
-- The C Programming Language – Kernighan & Ritchie
-- 42 subject PDF: **ft_printf (version 12.0)**
-
-### AI Usage
-AI tools were used exclusively for:
-- Understanding and summarizing the project requirements.
-- Structuring the  project directory.
-
-AI was **not** used to generate source code, implement algorithms, or debug the
-project logic, in accordance with the 42 AI usage guidelines.
-
----
-
-## Bonus
-If implemented, the bonus part extends `ft_printf` with:
-- Flags: `-`, `0`, `.`, and minimum field width
-- Flags: `#`, `+`, and space
-
-The bonus is evaluated only if the mandatory part is fully correct.
-
----
-
-## Project Output
-The final output of this project is the static library:
-
-```
-libftprintf.a
+```bash
+make demo
+./ft_printf "some string"
 ```
 
-located at the root of the repository.
+This is meant for quick eyeballing, not for correctness — `make tests` is the
+source of truth.
 
+---
+
+## 🧩 Norm
+
+Every file (library, `main.c`, `demo_*.c`, and everything under `tests/`) passes
+**42 Norminette**. Run it from the project root:
+
+```bash
+norminette .
+```
