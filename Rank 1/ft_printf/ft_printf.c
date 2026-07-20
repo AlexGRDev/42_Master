@@ -51,7 +51,7 @@ int	ft_printf(const char *fmt, ...)
 	const char	*ptr;
 	t_fmt		*formats;
 
-	formats = NULL;
+	formats = malloc(sizeof(t_fmt) * 6);
 	formats[0] = (t_fmt){"c", ft_putchar};
 	formats[1] = (t_fmt){"s", ft_putstr};
 	formats[2] = (t_fmt){"i", ft_putnbr};
