@@ -26,15 +26,15 @@ void	run_int_case(int n, const char *fmt, const char *label, int *p)
 	check(ft, og, label, p);
 }
 
-void	run_ptr_case(void *ptr, const char *label, int *passed)
+void	run_ptr_case(void *ptr, const char *fmt, const char *label, int *p)
 {
 	int	ft;
 	int	og;
 
 	printf("  ft: ");
-	ft = ft_printf("[%p]", ptr);
+	ft = ft_printf(fmt, ptr);
 	printf("  og: ");
-	og = printf("[%p]", ptr);
+	og = printf(fmt, ptr);
 	printf("\n");
-	check(ft, og, label, passed);
+	check(ft, og, label, p);
 }

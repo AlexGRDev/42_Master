@@ -24,28 +24,28 @@ void	check(int ft, int og, const char *label, int *passed)
 		printf("  \033[31mKO\033[0m  %-14s ft=%-3d og=%-3d\n", label, ft, og);
 }
 
-void	run_char_case(char c, const char *label, int *passed)
+void	run_char_case(char c, const char *fmt, const char *label, int *passed)
 {
 	int	ft;
 	int	og;
 
 	printf("  ft: ");
-	ft = ft_printf("[%c]", c);
+	ft = ft_printf(fmt, c);
 	printf("  og: ");
-	og = printf("[%c]", c);
+	og = printf(fmt, c);
 	printf("\n");
 	check(ft, og, label, passed);
 }
 
-void	run_str_case(char *s, const char *label, int *passed)
+void	run_str_case(char *s, const char *fmt, const char *label, int *passed)
 {
 	int	ft;
 	int	og;
 
 	printf("  ft: ");
-	ft = ft_printf("[%s]", s);
+	ft = ft_printf(fmt, s);
 	printf("  og: ");
-	og = printf("[%s]", s);
+	og = printf(fmt, s);
 	printf("\n");
 	check(ft, og, label, passed);
 }

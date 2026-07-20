@@ -13,7 +13,7 @@
 #include "ft_printf.h"
 #include "tests/test_runners.h"
 
-#define TOTAL_TESTS 18
+#define TOTAL_TESTS 32
 
 int	main(void)
 {
