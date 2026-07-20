@@ -77,7 +77,6 @@ dist/
 
 # Ignorar archivos de prácticas o tests temporales
 test/
-tests/
 debug/
 sandbox/
 playground/
