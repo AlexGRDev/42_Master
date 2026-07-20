@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agarcia2 <agarcia2@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/20 10:03:53 by agarcia2          #+#    #+#             */
-/*   Updated: 2026/03/26 13:01:26 by agarcia2         ###   ########.fr       */
+/*   Created: 2026/07/17 14:00:00 by agarcia2          #+#    #+#             */
+/*   Updated: 2026/07/17 14:11:07 by agarcia2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "../include/get_next_line_bonus.h"
 
 static int	gnl_read_append(int fd, char *buf, char **bytes, size_t *cap)
 {
 	ssize_t	nread;
 
-	nread = read(fd, buf, BUFFER_SIZE -1);
+	nread = read(fd, buf, BUFFER_SIZE - 1);
 	if (nread <= 0)
 		return ((int)nread);
 	*(buf + nread) = '\0';
@@ -28,20 +28,17 @@ static int	gnl_read_append(int fd, char *buf, char **bytes, size_t *cap)
 
 static char	*read_to_bytes(int fd, char *bytes)
 {
-	char		*buf;
-	int			status;
-	size_t		cap;
+	char	*buf;
+	int		status;
+	size_t	len;
 
 	buf = (char *)malloc(BUFFER_SIZE + 1);
 	if (!buf)
-	{
 		return (free(bytes), NULL);
-		bytes = NULL;
-	}
-	cap = ft_strlen_gnl(bytes) + 1;
+	len = ft_strlen_gnl(bytes) + 1;
 	status = 1;
 	while (!ft_strchr_gnl(bytes, '\n') && status > 0)
-		status = gnl_read_append(fd, buf, &bytes, &cap);
+		status = gnl_read_append(fd, buf, &bytes, &len);
 	if (status < 0)
 	{
 		free(buf);
@@ -109,27 +106,21 @@ static char	*clean_bytes(char *bytes)
 
 char	*get_next_line(int fd)
 {
-	static char	*bytes = NULL;
+	static char	*bytes[FD_MAX];
 	char		*line;
 
-	if (fd < 0 || BUFFER_SIZE <= 0)
+	if (fd < 0 || fd >= FD_MAX || BUFFER_SIZE <= 0)
 		return (NULL);
-	bytes = read_to_bytes(fd, bytes);
-	if (!bytes)
+	bytes[fd] = read_to_bytes(fd, bytes[fd]);
+	if (!bytes[fd])
 		return (NULL);
-	if (!bytes[0])
-	{
-		free(bytes);
-		bytes = NULL;
-		return (NULL);
-	}
-	line = extract_line(bytes);
+	line = extract_line(bytes[fd]);
 	if (!line)
 	{
-		free(bytes);
-		bytes = NULL;
+		free(bytes[fd]);
+		bytes[fd] = NULL;
 		return (NULL);
 	}
-	bytes = clean_bytes(bytes);
+	bytes[fd] = clean_bytes(bytes[fd]);
 	return (line);
 }

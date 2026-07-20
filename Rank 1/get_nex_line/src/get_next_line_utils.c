@@ -6,11 +6,11 @@
 /*   By: agarcia2 <agarcia2@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/20 10:04:04 by agarcia2          #+#    #+#             */
-/*   Updated: 2026/03/24 10:10:18 by agarcia2         ###   ########.fr       */
+/*   Updated: 2026/07/17 14:01:49 by agarcia2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "../include/get_next_line.h"
 
 size_t	ft_strlen_gnl(const char *s)
 {
