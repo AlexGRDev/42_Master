@@ -1,37 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putptr.c                                        :+:      :+:    :+:   */
+/*   ft_putund.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agarcia2 <agarcia2@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/07/20 15:20:00 by agarcia2          #+#    #+#             */
-/*   Updated: 2026/07/20 15:20:00 by agarcia2         ###   ########.fr       */
+/*   Created: 2026/07/20 16:35:00 by agarcia2          #+#    #+#             */
+/*   Updated: 2026/07/20 16:35:00 by agarcia2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char	*ft_putptr(va_list *args)
+char	*ft_putund(va_list *args)
 {
-	uintptr_t	addr;
-	uintptr_t	divisor;
-	char		buf[19];
-	int			idx;
+	unsigned int	num;
+	unsigned int	divisor;
+	char			buf[11];
+	int				idx;
 
-	addr = (uintptr_t)va_arg(*args, void *);
-	if (!addr)
-		return (ft_strdup("(nil)"));
-	buf[0] = '0';
-	buf[1] = 'x';
-	idx = 2;
+	num = va_arg(*args, unsigned int);
+	idx = 0;
 	divisor = 1;
-	while (addr / divisor >= 16)
-		divisor *= 16;
+	while (num / divisor >= 10)
+		divisor *= 10;
 	while (divisor > 0)
 	{
-		buf[idx++] = "0123456789abcdef"[(addr / divisor) % 16];
-		divisor /= 16;
+		buf[idx++] = (num / divisor % 10) + '0';
+		divisor /= 10;
 	}
 	buf[idx] = '\0';
 	return (ft_strdup(buf));

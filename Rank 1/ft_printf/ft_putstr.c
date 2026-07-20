@@ -12,12 +12,12 @@
 
 #include "ft_printf.h"
 
-int	ft_putstr(va_list *args)
+char	*ft_putstr(va_list *args)
 {
-	char	*s;
+	char	*str;
 
-	s = (char *)va_arg(*args, char *);
-	if (!s)
-		return (write(1, "(null)", 6));
-	return (write(1, s, ft_strlen(s)));
+	str = (char *)va_arg(*args, char *);
+	if (!str)
+		return (ft_strdup("(null)"));
+	return (ft_strdup(str));
 }

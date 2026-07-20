@@ -12,10 +12,14 @@
 
 #include "ft_printf.h"
 
-int	ft_putchar(va_list *args)
+char	*ft_putchar(va_list *args)
 {
-	char	c;
+	char	*buf;
 
-	c = (char)va_arg(*args, int);
-	return (write(1, &c, 1));
+	buf = malloc(2);
+	if (!buf)
+		return (NULL);
+	buf[0] = (char)va_arg(*args, int);
+	buf[1] = '\0';
+	return (buf);
 }
