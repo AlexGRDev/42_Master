@@ -86,6 +86,11 @@ playground/
 Rank 1/Born2beRoot/CREDENTIALS.txt
 Rank 1/Born2beRoot/DEFENSE_PREP.md
 
+# pipex: manual test artifacts
+Rank 2/pipex/infile
+Rank 2/pipex/out_bash.txt
+Rank 2/pipex/out_pipex.txt
+
 ################################################################################
 # FIN                                                                           
 ################################################################################
