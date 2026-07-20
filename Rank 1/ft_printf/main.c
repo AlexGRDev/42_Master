@@ -1,33 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: agarcia2 <agarcia2@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/07/20 11:17:12 by agarcia2          #+#    #+#             */
-/*   Updated: 2026/07/20 12:44:16 by agarcia2         ###   ########.fr       */
+/*   Created: 2026/07/20 12:28:00 by agarcia2          #+#    #+#             */
+/*   Updated: 2026/07/20 12:45:40 by agarcia2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
-# include <stdarg.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <unistd.h>
+#include "ft_printf.h"
 
-# include "./LibFT/libft.h"
-
-typedef struct formtaers
+int	main(int ac, char **av)
 {
-	char	*fmt;
-	int		(*c)(va_list *args);
-	int		(*s)(va_list *args);
+	char	*c;
+	int		ft;
+	int		og;
+	(void)ac;
 
-}	t_fmt;
-
-int	ft_printf(const char *fmt, ...);
-int	ft_putchar(va_list *args);
-int	ft_putstr(va_list *args);
-#endif
+	c = av[1];
+	ft = ft_printf("ft: %s\n", c);
+	og = printf("og: %s\n", c);
+	if (ft == og)
+		printf("OK (ft=%d og=%d)\n", ft, og);
+	else
+		printf("KO (ft=%d og=%d)\n", ft, og);
+	return (0);
+}
