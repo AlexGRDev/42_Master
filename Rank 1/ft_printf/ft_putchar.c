@@ -5,20 +5,17 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: agarcia2 <agarcia2@student.42barcelona.co  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/24 11:00:00 by agarcia2          #+#    #+#             */
-/*   Updated: 2025/11/25 10:21:03 by agarcia2         ###   ########.fr       */
+/*   Created: 2026/07/20 12:24:07 by agarcia2          #+#    #+#             */
+/*   Updated: 2026/07/20 12:24:24 by agarcia2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <unistd.h>
 
-int	ft_putchar(int c)
+int	ft_putchar(va_list *args)
 {
-	size_t	written;
+	char	c;
 
-	written = write(1, &c, 1);
-	if (written != 1)
-		return (-1);
-	return ((int)written);
+	c = (char)va_arg(*args, int);
+	return (write(1, &c, 1));
 }
