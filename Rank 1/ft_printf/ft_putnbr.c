@@ -12,28 +12,28 @@
 
 #include "ft_printf.h"
 
-char	*ft_putnbr(va_list *args)
+int	ft_putnbr(va_list *args)
 {
-	long	num;
-	long	divisor;
-	char	buf[13];
-	int		idx;
+	long	n;
+	long	div;
+	int		count;
+	char	c;
 
-	num = va_arg(*args, int);
-	idx = 0;
-	if (num < 0)
+	n = va_arg(*args, int);
+	count = 0;
+	if (n < 0)
 	{
-		buf[idx++] = '-';
-		num = -num;
+		count += write(1, "-", 1);
+		n = -n;
 	}
-	divisor = 1;
-	while (num / divisor >= 10)
-		divisor *= 10;
-	while (divisor > 0)
+	div = 1;
+	while (n / div >= 10)
+		div *= 10;
+	while (div > 0)
 	{
-		buf[idx++] = (num / divisor % 10) + '0';
-		divisor /= 10;
+		c = (n / div % 10) + '0';
+		count += write(1, &c, 1);
+		div /= 10;
 	}
-	buf[idx] = '\0';
-	return (ft_strdup(buf));
+	return (count);
 }

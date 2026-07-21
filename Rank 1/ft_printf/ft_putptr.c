@@ -12,27 +12,25 @@
 
 #include "ft_printf.h"
 
-char	*ft_putptr(va_list *args)
+int	ft_putptr(va_list *args)
 {
 	uintptr_t	addr;
-	uintptr_t	divisor;
-	char		buf[19];
-	int			idx;
+	uintptr_t	div;
+	int			count;
+	char		c;
 
 	addr = (uintptr_t)va_arg(*args, void *);
 	if (!addr)
-		return (ft_strdup("(nil)"));
-	buf[0] = '0';
-	buf[1] = 'x';
-	idx = 2;
-	divisor = 1;
-	while (addr / divisor >= 16)
-		divisor *= 16;
-	while (divisor > 0)
+		return (write(1, "(nil)", 5));
+	count = write(1, "0x", 2);
+	div = 1;
+	while (addr / div >= 16)
+		div *= 16;
+	while (div > 0)
 	{
-		buf[idx++] = "0123456789abcdef"[(addr / divisor) % 16];
-		divisor /= 16;
+		c = "0123456789abcdef"[(addr / div) % 16];
+		count += write(1, &c, 1);
+		div /= 16;
 	}
-	buf[idx] = '\0';
-	return (ft_strdup(buf));
+	return (count);
 }

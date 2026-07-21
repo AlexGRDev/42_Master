@@ -13,12 +13,11 @@
 NAME    = libftprintf.a
 CC      = cc
 CFLAGS  = -Wall -Werror -Wextra
-ASAN	= -fsanitize=address,undefined,leak -g3 -O0
+ASAN	= -fsanitize=address,undefined,leaks -g3 -O0
 AR      = ar rcs
 RM      = rm -f
-SRCS    = ft_printf.c	ft_parse_mods.c	ft_putchar.c	ft_putstr.c	ft_putnbr.c	\
-	  ft_putptr.c	ft_putund.c	ft_puthex.c	ft_puthexmaj.c	\
-	  ./LibFT/ft_strlen.c	./LibFT/ft_strdup.c	./LibFT/ft_strchr.c
+SRCS    = ft_printf.c	ft_putchar.c	ft_putstr.c	ft_putnbr.c	ft_putptr.c	\
+	  ./LibFT/ft_strlen.c
 OBJS    = $(SRCS:.c=.o)
 
 TESTS_BIN	= test_ft_printf
